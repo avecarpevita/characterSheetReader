@@ -19,3 +19,6 @@ tbl rawLores
 sp readCharacterJsonForLores 
     --called by tmProcessAllSheets.py, passing in the json
     
+
+♦ Deliverable #1.5
+todo    I will need to have an error log for the runs to catch unparsed characters getting barfed

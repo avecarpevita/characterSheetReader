@@ -22,6 +22,16 @@ import tmReadSheet
 import json
 import os
 from dotenv import load_dotenv
+import math
+
+def nan_to_none(obj):
+    if isinstance(obj, dict):
+        return {k: nan_to_none(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [nan_to_none(elem) for elem in obj]
+    elif isinstance(obj, float) and math.isnan(obj):
+        return None
+    return obj
 
 def tmPlayerName(dfCharacter):
     #returns player name (usually found in 2nd column, 2nd row)
@@ -206,11 +216,14 @@ def tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath):
                            ,"exceptions": str(e2)
                            ,"excelFilePath": excelFilePath
                            }           
-    return json.dumps(dictCharacter,indent=4)
+             
+    dictCharacterProcessed=nan_to_none(dictCharacter)             
+    return json.dumps(dictCharacterProcessed,indent=4)
 
 if __name__ == "__main__":
-    load_dotenv(dotenv_path=r'C:\sheetReader\.env')
+    load_dotenv(dotenv_path=r'C:\characterSheetReader\.env')
     sheetsDirectory=os.getenv('sheetsDirectory')
+    print(f'sheetsDirectory {sheetsDirectory}  ')
     excelFilePath=f'{sheetsDirectory}/Scott Ross (Gaeden) (Staff).xlsx'
     #print(tmPlayerName(tmReadSheet.tmReadSheet(excelFilePath)[0]))
     dfCharacter = tmReadSheet.tmReadSheet(excelFilePath)[0]
@@ -231,8 +244,10 @@ if __name__ == "__main__":
     print('mana ',tmMana(dfCharacter))
     print('cp ',tmCharacterPoints(dfCharacter))
     '''
-    print(tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath))
-    #print (json.dumps(tmSkills(dfCharacter)))
+    #print(tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath))
+    print(tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath).strip())
+    
+
     
     
     

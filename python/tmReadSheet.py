@@ -32,11 +32,11 @@ def tmReadSheet(excelFilePath):
     return [dfCharacter,dfProgression,dfHistory,dfEmergency,dictAllSheets]
 
 if __name__ == "__main__":
-    load_dotenv(dotenv_path=r'C:\sheetReader\.env')
+    load_dotenv(dotenv_path=r'C:\characterSheetReader\.env')
     sheetsDirectory=os.getenv('sheetsDirectory')
+    print(f'sheetsDirectory {sheetsDirectory}  ')
     excelFilePath=f'{sheetsDirectory}/Aaron Vandhana (Aeloss).xlsx'
     print(excelFilePath)
     dictAllSheets = tmReadSheet(excelFilePath)[4]
     print(dictAllSheets.keys()) # Prints all sheet names
-    
     

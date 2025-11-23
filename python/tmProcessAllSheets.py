@@ -14,6 +14,12 @@ C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/charac
 C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sK" "-eO"
 C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sP" "-eT"
 C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sU" "-eZ"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sU" "-eU"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sK" "-eK"
+
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sGa" "-eGa"
+
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sO" "-eO"
 '''
 import tmParseSheet
 import tmReadSheet
@@ -21,6 +27,7 @@ import json
 import os
 from dotenv import load_dotenv
 import sys
+import pyodbc
 
 
 
@@ -36,10 +43,11 @@ def getXlsxInputPath(inputPath,startFileName,endFileName):
         print(f"Error: Folder '{inputPath}' not found.")                    
     except Exception as e:
         print(f"An error occured: {e}")     
+        sys.exit(1)
     if startFileName!=None and endFileName!=None:
         workList=[]
         for inputFilePath in listXlsx:      
-            if startFileName.upper()[0:1] <= os.path.basename(inputFilePath).upper()[0:1] <= endFileName.upper()[0:1]:
+            if startFileName.upper()[0:len(startFileName)] <= os.path.basename(inputFilePath).upper()[0:len(startFileName)] <= endFileName.upper()[0:len(startFileName)]:
                 workList.append(inputFilePath)
         listXlsx=workList
     return listXlsx        
@@ -54,7 +62,7 @@ def exportCharacterToJson(inputFilePath,outputFilePath):
         f.write(characterJson)
         f.close()
         
-def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cur):
+def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query):
     dfCharacter = tmReadSheet.tmReadSheet(inputFilePath)[0]
     dfProgression = tmReadSheet.tmReadSheet(inputFilePath)[1]
     dfHistory = tmReadSheet.tmReadSheet(inputFilePath)[2]
@@ -63,22 +71,20 @@ def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cur):
     with open(outputFilePath, "w") as f:
         f.write(characterJson)
         f.close()
-    sql=f'call loadcharacterjson(\''+characterJson.replace('\n','').replace('\r','').replace('    ','').replace('\'','\'\'')+'\')'   
+    
+    cursor = cnxn.cursor()
+   
+    values=(outputFilePath,0)
     try:      
-        cur.execute(sql)
-    except psycopg2.Error as e:
-        print(f"psycopg2 Error ", e)
-    #this returns an error on most sheets, so we only write out on sql process errors
-    sqlResultOutputFilePath = outputFilePath.replace('.json','.sqllog')
-    f2=open(sqlResultOutputFilePath, "w")
-    try:
-        sqlReturnRows=cur.fetchall()
-        if cur.rowcount>0:
-            for row in sqlReturnRows:
-                f2.write(row)
-    except:
-        f2.write('no sql errors')
-    f2.close() 
+        cursor.execute(query,values)
+        cnxn.commit()
+    except Exception as e:
+        print(f"pyodbc Error ", e)
+        sys.exit(1)
+    finally:
+        cursor.close()        
+
+ 
 
 ###MAIN BLOCK###
 if __name__ == "__main__":
@@ -90,9 +96,7 @@ if __name__ == "__main__":
     outputPath=None
     startFileName=None
     endFileName=None
-    load_dotenv(dotenv_path=r'C:\sheetReader\.env')
-    
-
+    load_dotenv(dotenv_path=r'C:\characterSheetReader\.env')
     
     for i in range(1, len(sys.argv)):
         if sys.argv[i][:2]=="-i":
@@ -110,24 +114,37 @@ if __name__ == "__main__":
     
     inputPath=os.getenv('sheetsDirectory')
     outputPath=inputPath +'/json/'
-
+    server=os.getenv('server')
+    database=os.getenv('database')
 
     print('inputPath                ', inputPath)            
     print('outputPath               ', outputPath)  
     print('startFileName            ', startFileName)  
     print('endFileName              ', endFileName)  
-    
+    print('server                   ', server)  
+    print('database                 ', database)  
+
     #get .xlsx files in the inputPath folder        
     listXlsx=getXlsxInputPath(inputPath,startFileName,endFileName)
     print('number of files found    ', len(listXlsx))
     
+    conn_str = (
+            "DRIVER={ODBC Driver 17 for SQL Server};"  # Or your specific driver name
+            f"SERVER={server};"
+            f"DATABASE={database};"
+            "Trusted_Connection=yes;"
+        )
+    cnxn = pyodbc.connect(conn_str)
+
     processCount=0
     for inputFilePath in listXlsx:
         outputFilePath = outputPath + os.path.basename(inputFilePath)[:len(os.path.basename(inputFilePath))-5] + '.json'
         processCount+=1
         print('#' , str(processCount) , ' ' ,inputFilePath, ' ', outputFilePath)
-        exportCharacterToJson(inputFilePath,outputFilePath)
-        #exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cur)
+        #exportCharacterToJson(inputFilePath,outputFilePath)
+        #query=f"exec readCharacterJsonForLores ?, ?"        #this is the query to populate tbl rawLores for Olivia
+        query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl rawLores for Olivia
+        exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query)
     
   
-            
+    cnxn.close()
