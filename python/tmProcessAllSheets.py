@@ -8,13 +8,20 @@ py tmProcessAllSheets.py "-ic:/characterSheets" "-oc:/characterSheets/json" "-sF
 py tmProcessAllSheets.py "-ic:/characterSheets" "-oc:/characterSheets/json" "-sK" "-eO"
 py tmProcessAllSheets.py "-ic:/characterSheets" "-oc:/characterSheets/json" "-sP" "-eT"
 py tmProcessAllSheets.py "-ic:/characterSheets" "-oc:/characterSheets/json" "-sU" "-eZ"
+py python\tmProcessAllSheets.py "-sU" "-eZ"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sA" "-eE"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sF" "-eJ"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sK" "-eO"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sP" "-eT"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sU" "-eZ"
 '''
 import tmParseSheet
 import tmReadSheet
 import json
 import os
+from dotenv import load_dotenv
 import sys
-import psycopg2
+
 
 
 def getXlsxInputPath(inputPath,startFileName,endFileName):
@@ -83,6 +90,10 @@ if __name__ == "__main__":
     outputPath=None
     startFileName=None
     endFileName=None
+    load_dotenv(dotenv_path=r'C:\sheetReader\.env')
+    
+
+    
     for i in range(1, len(sys.argv)):
         if sys.argv[i][:2]=="-i":
             inputPath=sys.argv[i][2:len(sys.argv[i])]
@@ -96,6 +107,9 @@ if __name__ == "__main__":
             startFileName=sys.argv[i][2:len(sys.argv[i])]
         if sys.argv[i][:2]=="-e":
             endFileName=sys.argv[i][2:len(sys.argv[i])]
+    
+    inputPath=os.getenv('sheetsDirectory')
+    outputPath=inputPath +'/json/'
 
 
     print('inputPath                ', inputPath)            
@@ -107,21 +121,13 @@ if __name__ == "__main__":
     listXlsx=getXlsxInputPath(inputPath,startFileName,endFileName)
     print('number of files found    ', len(listXlsx))
     
-    pgConn=psycopg2.connect(database=os.getenv('pgDatabase'), user=os.getenv('pgUser'), password=os.getenv('pgPassword'), host=os.getenv('pgServer'))
-    pgConn.autocommit = True
-    print('connection made to ', os.getenv('pgDatabase') , ' with user ', os.getenv('pgUser'))
-    cur = pgConn.cursor()
-
     processCount=0
     for inputFilePath in listXlsx:
         outputFilePath = outputPath + os.path.basename(inputFilePath)[:len(os.path.basename(inputFilePath))-5] + '.json'
         processCount+=1
         print('#' , str(processCount) , ' ' ,inputFilePath, ' ', outputFilePath)
-        #exportCharacterToJson(inputFilePath,outputFilePath)
-        exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cur)
+        exportCharacterToJson(inputFilePath,outputFilePath)
+        #exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cur)
     
-    #close the cursor and connection objects
-    cur.close()
-    if pgConn:
-            pgConn.close()  
+  
             

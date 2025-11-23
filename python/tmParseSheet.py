@@ -20,6 +20,8 @@
 import pandas as pd
 import tmReadSheet
 import json
+import os
+from dotenv import load_dotenv
 
 def tmPlayerName(dfCharacter):
     #returns player name (usually found in 2nd column, 2nd row)
@@ -207,8 +209,9 @@ def tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath):
     return json.dumps(dictCharacter,indent=4)
 
 if __name__ == "__main__":
-    #excelFilePath='C:/characterSheets/Alex Nicholson (Akillix).xlsx'
-    excelFilePath='C:/characterSheets/Scott Ross (Gaeden) (Staff).xlsx'
+    load_dotenv(dotenv_path=r'C:\sheetReader\.env')
+    sheetsDirectory=os.getenv('sheetsDirectory')
+    excelFilePath=f'{sheetsDirectory}/Scott Ross (Gaeden) (Staff).xlsx'
     #print(tmPlayerName(tmReadSheet.tmReadSheet(excelFilePath)[0]))
     dfCharacter = tmReadSheet.tmReadSheet(excelFilePath)[0]
     dfProgression = tmReadSheet.tmReadSheet(excelFilePath)[1]
