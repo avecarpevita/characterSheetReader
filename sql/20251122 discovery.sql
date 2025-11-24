@@ -1,4 +1,3 @@
-
 use tm
 --select * from sys.tables
 
@@ -70,13 +69,13 @@ drop table if exists #work
 		)
 select * into #work from cte_charactersLast3Games
 
-select distinct eventName,eventDate from #work--only two, since this is a snapshot that does not include September games
-select * from #work where eventDate is null--a few, but we'll live with it
+--select distinct rawEventName,eventName,rawEventDate,eventDate from #work--only two, since this is a snapshot that does not include September games
+--select * from #work where eventDate is null--a few, but we'll live with it
 
 select eventName,count(distinct playerName) playerCount,count(distinct characterName) characterCount from #work group by eventName order by 1
 
 
-select distinct left(playerName,1) from #work order by 1 --only 21, incomplete -- no U, Uli hasn't played recently
+select distinct left(playerName,1) from #work order by 1 --only 24, incomplete -- no U, Uli hasn't played recently, as nobody recent with a Q either
 
 --dedupe to latest event
 drop table if exists #deduped
@@ -91,6 +90,9 @@ drop table if exists #deduped
 		into #deduped from cte where rn=1
 --dedupe to player
 ;with cte as (select *,row_number() over(partition by playerName order by spentCP desc) rn2 from #deduped) delete cte where rn2>1
+create unique clustered index cp on #deduped(playerName) --unique to players
+
+
 
 --median/avg CP
 SELECT DISTINCT
@@ -116,5 +118,8 @@ select cpGrouping,count(*) numberOfMainCharacters
 	,min(corruption) minCorruption,max(corruption) maxCorruption
 	from #deduped group by cpGrouping order by 1
 
-
+	
 select * from #deduped where corruption>5
+
+
+--I popped these into https://docs.google.com/spreadsheets/d/12FbiG3viVmbceeo0zyUV5Zn4GUtNY1RO8pOJdLzuLLw/edit?gid=0#gid=0

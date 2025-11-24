@@ -143,7 +143,7 @@ if __name__ == "__main__":
         print('#' , str(processCount) , ' ' ,inputFilePath, ' ', outputFilePath)
         #exportCharacterToJson(inputFilePath,outputFilePath)
         #query=f"exec readCharacterJsonForLores ?, ?"        #this is the query to populate tbl rawLores for Olivia
-        query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl rawLores for Olivia
+        query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl the cp/corruption/event data for Olivia
         exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query)
     
   
