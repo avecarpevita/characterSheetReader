@@ -84,7 +84,32 @@ def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query):
     finally:
         cursor.close()        
 
- 
+def processRangeOfSheets(inputPath,outputPath,startFileName,endFileName, server, database):
+
+    #get .xlsx files in the inputPath folder        
+    listXlsx=getXlsxInputPath(inputPath,startFileName,endFileName)
+    print('number of files found    ', len(listXlsx))
+    
+    conn_str = (
+            "DRIVER={ODBC Driver 17 for SQL Server};"  # Or your specific driver name
+            f"SERVER={server};"
+            f"DATABASE={database};"
+            "Trusted_Connection=yes;"
+        )
+    cnxn = pyodbc.connect(conn_str)
+
+    processCount=0
+    for inputFilePath in listXlsx:
+        outputFilePath = outputPath + os.path.basename(inputFilePath)[:len(os.path.basename(inputFilePath))-5] + '.json'
+        processCount+=1
+        print('#' , str(processCount) , ' ' ,inputFilePath, ' ', outputFilePath)
+        #exportCharacterToJson(inputFilePath,outputFilePath)
+        #query=f"exec readCharacterJsonForLores ?, ?"        #this is the query to populate tbl rawLores for Olivia
+        query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl the cp/corruption/event data for Olivia
+        exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query)
+    
+  
+    cnxn.close()
 
 ###MAIN BLOCK###
 if __name__ == "__main__":
@@ -124,27 +149,4 @@ if __name__ == "__main__":
     print('server                   ', server)  
     print('database                 ', database)  
 
-    #get .xlsx files in the inputPath folder        
-    listXlsx=getXlsxInputPath(inputPath,startFileName,endFileName)
-    print('number of files found    ', len(listXlsx))
-    
-    conn_str = (
-            "DRIVER={ODBC Driver 17 for SQL Server};"  # Or your specific driver name
-            f"SERVER={server};"
-            f"DATABASE={database};"
-            "Trusted_Connection=yes;"
-        )
-    cnxn = pyodbc.connect(conn_str)
-
-    processCount=0
-    for inputFilePath in listXlsx:
-        outputFilePath = outputPath + os.path.basename(inputFilePath)[:len(os.path.basename(inputFilePath))-5] + '.json'
-        processCount+=1
-        print('#' , str(processCount) , ' ' ,inputFilePath, ' ', outputFilePath)
-        #exportCharacterToJson(inputFilePath,outputFilePath)
-        #query=f"exec readCharacterJsonForLores ?, ?"        #this is the query to populate tbl rawLores for Olivia
-        query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl the cp/corruption/event data for Olivia
-        exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query)
-    
-  
-    cnxn.close()
+    processRangeOfSheets(inputPath,outputPath,startFileName,endFileName, server, database)

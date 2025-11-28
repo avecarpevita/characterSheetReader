@@ -67,7 +67,8 @@ drop table if exists #work
 			and (try_cast(e.eventDate as date) between '2025.04.01' and '2025.10.01'
 			or eventName like '%event 8[456]%')
 		)
-select * into #work from cte_charactersLast3Games
+select * 
+	into #work from cte_charactersLast3Games
 
 --select distinct rawEventName,eventName,rawEventDate,eventDate from #work--only two, since this is a snapshot that does not include September games
 --select * from #work where eventDate is null--a few, but we'll live with it
@@ -81,7 +82,8 @@ select distinct left(playerName,1) from #work order by 1 --only 24, incomplete -
 drop table if exists #deduped
 ;with cte as (select *,row_number() over(partition by playerName,characterName order by eventDate desc) rn from #work) 
 	select * 
-		,case when spentCP between 1 and 149 then '[1] under 150 CP'
+		,case 
+		when spentCP between 1 and 149 then '[1] under 150 CP'
 		when spentCp between 150 and 300 then '[2] 150-300 CP'
 		when spentCp between 301 and 450 then '[3] 301-450 CP'
 		when spentCp between 451 and 600 then '[4] 451-600 CP'
@@ -122,4 +124,138 @@ select cpGrouping,count(*) numberOfMainCharacters
 select * from #deduped where corruption>5
 
 
+
 --I popped these into https://docs.google.com/spreadsheets/d/12FbiG3viVmbceeo0zyUV5Zn4GUtNY1RO8pOJdLzuLLw/edit?gid=0#gid=0
+
+select  top 100 *,dbo.getEventDate(r.eventName,r.eventDate) from rawEvents r
+
+
+select top 100 * from rawCpData where try_cast(spentCP as int) is null
+
+select top 100 * from rawEvents where characterName='Gaeden'--NPR
+select top 100 * from rawEvents where characterName='Cecil'--NPR
+select top 100 * from rawEvents where characterName='Corvus Uldraven'--New Player Referral
+
+select * from rawEvents where eventName like '%NPR%' or eventName like '%New Player%' or eventName like '%Referral%'
+
+select top 100 characterName,playerName,spentCp
+	,(select top 1 dbo.getEventName(r.eventName,r.eventDate) from rawEvents r where r.characterName=c.characterName and r.playerName=c.playerName order by dbo.getEventDate(r.eventName,r.eventDate) desc) lastEventPlayed
+	,(select count(*) from rawEvents r with(nolock) where r.characterName=c.characterName and r.playerName=c.playerName
+	and (
+	r.eventName like '%NPR%' or r.eventName like '%New Player%' or r.eventName like '%Referral%'
+		)) referralCount
+	from rawCpData c
+		where exists (select null from rawEvents r where r.characterName=c.characterName and r.playerName=c.playerName	and dbo.getEventDate(r.eventName,r.eventDate) between '2024.11.01' and getdate())
+	order by try_cast(spentCp as int) desc
+	--order by (select count(*) from rawEvents r with(nolock) where r.characterName=c.characterName and r.playerName=c.playerName
+	--and (
+	--r.eventName like '%NPR%' or r.eventName like '%New Player%' or r.eventName like '%Referral%'
+	--	))  desc
+
+
+;with cte as (select top 100 characterName,playerName,spentCp
+	,(select top 1 dbo.getEventName(r.eventName,r.eventDate) from rawEvents r where r.characterName=c.characterName and r.playerName=c.playerName order by dbo.getEventDate(r.eventName,r.eventDate) desc) lastEventPlayed
+	,(select count(*) from rawEvents r with(nolock) where r.characterName=c.characterName and r.playerName=c.playerName
+	and (
+	r.eventName like '%NPR%' or r.eventName like '%New Player%' or r.eventName like '%Referral%'
+		)) referralCount
+	from rawCpData c
+		where exists (select null from rawEvents r where r.characterName=c.characterName and r.playerName=c.playerName	and dbo.getEventDate(r.eventName,r.eventDate) between '2024.11.01' and getdate())
+	order by try_cast(spentCp as int) desc
+	)
+	select * 
+		,dbo.getPlayerEventCount(playerName,characterName)
+		from cte order by spentCp desc
+	
+
+	select * from rawEvents where characterName='Gaeden'--event 28 2016-07-01--Event 28 July 2016	2016-07-01	30 sheets turned in
+	--Event 42 June 2018	2018-06-01	138 -- my first game as staff
+	
+select dbo.getEventName(r.eventName,r.eventDate)
+	,(select top 1 eventDate from eventsWithDates ed where ed.eventName=dbo.getEventName(r.eventName,r.eventDate))
+	,count(distinct playerName) distinctPlayerCount
+	from rawEvents r where eventName like '%event%'
+	group by dbo.getEventName(r.eventName,r.eventDate)
+	order by 2 desc
+
+drop table if exists #eventsWithNames
+select *,dbo.getEventName(r.eventName,r.eventDate) cleanEventName into #eventsWithName from rawEvents r where eventName like '%event%'
+
+
+
+;with cte as (select top 100 characterName,playerName,spentCp
+	,(select top 1 dbo.getEventName(r.eventName,r.eventDate) from rawEvents r where r.characterName=c.characterName and r.playerName=c.playerName order by dbo.getEventDate(r.eventName,r.eventDate) desc) lastEventPlayed
+	,(select count(*) from rawEvents r with(nolock) where r.characterName=c.characterName and r.playerName=c.playerName
+	and (
+	r.eventName like '%NPR%' or r.eventName like '%New Player%' or r.eventName like '%Referral%'
+		)) referralCount
+	from rawCpData c
+		where exists (select null from rawEvents r where r.characterName=c.characterName and r.playerName=c.playerName	and dbo.getEventDate(r.eventName,r.eventDate) between '2024.11.01' and getdate())
+	order by try_cast(spentCp as int) desc
+	)
+	select * 
+		,(select count(*) eventCount from (select distinct dbo.getEventName(r.eventName,r.eventDate) eventName from rawEvents r where r.characterName=c.characterName and r.playerName=c.playerName
+			and r.eventName like '%event%') ef) eventCount
+		from cte c order by spentCp desc
+
+
+
+--get characters played in the last three events, but add their total historical games also
+drop table if exists #work
+;with cte_charactersLast3Games as (select c.playerName,c.characterName
+	,try_cast(spentCp as int) spentCp
+	,try_cast(corruption as int) corruption
+	,e.eventName rawEventName
+	,case when eventName like '%event 84%' then 'Event 84 April 2025'
+	when eventName like '%event 85%' then 'Event 85 August 2025'
+	when eventName like '%event 86%' then 'Event 86 September 2025' 
+	when try_cast(e.eventDate as date) between '2025.04.01' and '2025.04.30' then 'Event 84 April 2025'
+	when try_cast(e.eventDate as date) between '2025.08.01' and '2025.08.31' then 'Event 85 August 2025'
+	when try_cast(e.eventDate as date) between '2025.09.01' and '2025.09.30' then 'Event 85 September 2025'
+		end eventName
+	,e.eventDate as rawEventDate
+	,try_cast(e.eventDate as date) eventDate
+	from rawCpData c
+		join rawEvents e on c.playerName=e.playerName and c.characterName=e.characterName
+		where eventName like '%event%'
+			and (try_cast(e.eventDate as date) between '2025.04.01' and '2025.10.01'
+			or eventName like '%event 8[456]%')
+		)
+select * 
+	--,(select count(distinct dbo.getEventName(re.playerName,re.characterName)) from rawEvents re where re.playerName=c.playerName and re.characterName=c.characterName) as totalEvents
+	into #work from cte_charactersLast3Games c
+
+
+--dedupe to latest event
+drop table if exists #deduped
+;with cte as (select *,row_number() over(partition by playerName,characterName order by eventDate desc) rn from #work) 
+	select * 
+		,case 
+		when spentCP between 1 and 149 then '[1] 3+ games, under 150 CP'
+		when spentCp between 150 and 300 then '[2] 150-300 CP'
+		when spentCp between 301 and 450 then '[3] 301-450 CP'
+		when spentCp between 451 and 600 then '[4] 451-600 CP'
+		when spentCp>=601 then '[5] 601+ CP' end as cpGrouping
+		,(select count(distinct dbo.getEventName(re.eventName,re.eventDate)) from rawEvents re where re.playerName=c.playerName and re.characterName=c.characterName) as totalEvents
+		into #deduped from cte c where rn=1
+--dedupe to player
+;with cte as (select *,row_number() over(partition by playerName order by spentCP desc) rn2 from #deduped) delete cte where rn2>1
+create unique clustered index cp on #deduped(playerName) --unique to players
+update #deduped set cpGrouping='[0] 0-2 games' where totalEvents between 0 and 2
+
+declare @totalMainCharacters int=(select count(*) from #deduped)
+select cpGrouping,count(*) numberOfMainCharacters
+	,count(*)*1.0/@totalMainCharacters*100.0 percOfAllPlayers
+	,avg(corruption*1.0) avgCorruption
+	,min(corruption) minCorruption,max(corruption) maxCorruption
+	,avg(totalEvents*1.0) avgTotalEvents
+	,min(totalEvents) minTotalEvents,max(totalEvents) maxTotalEvents
+	from #deduped group by cpGrouping order by 1
+
+	#deduped where totalEvents=26 and cpGrouping='[1] 3+ games, under 150 CP'
+	#deduped where totalEvents=42 and cpGrouping='[3] 301-450 CP'
+	#deduped where totalEvents=32 and cpGrouping='[4] 451-600 CP'
+
+
+select top 100 * from #deduped order by spentCp desc
+
