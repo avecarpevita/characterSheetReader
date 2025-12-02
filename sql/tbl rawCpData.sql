@@ -9,3 +9,4 @@ create table rawCpData (
 	,insertDate datetime not null default getdate()
 	)
 alter table rawCpData add primary key clustered(characterName,playerName)
+create index p on rawCpData(playerName)
