@@ -93,3 +93,4 @@ insert into tickets (eventName,eventDate,rawPlayerName,playerName,ticketType)
 
 
 select * from tickets where eventName='Event 87 December 2025'--526--looks good for dec25
+	

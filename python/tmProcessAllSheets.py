@@ -30,6 +30,29 @@ import sys
 import pyodbc
 
 
+def getXlsxInputPathRecursive(inputPath,startFileName,endFileName):
+    listXlsx=[]
+    try:
+        file_list = []
+        for root, dirs, files in os.walk(inputPath):
+            for file in files:
+                full_path = os.path.join(root, file)
+                #file_list.append(full_path)
+                if os.path.isfile(full_path) and file[-5:]=='.xlsx':
+                    listXlsx.append(full_path)
+    except FileNotFoundError:
+        print(f"Error: Folder '{inputPath}' not found.")                    
+    except Exception as e:
+        print(f"An error occured: {e}")     
+        sys.exit(1)
+    if startFileName!=None and endFileName!=None:
+        workList=[]
+        for inputFilePath in listXlsx:      
+            if startFileName.upper()[0:len(startFileName)] <= os.path.basename(inputFilePath).upper()[0:len(startFileName)] <= endFileName.upper()[0:len(startFileName)]:
+                workList.append(inputFilePath)
+        listXlsx=workList
+    return listXlsx     
+
 
 def getXlsxInputPath(inputPath,startFileName,endFileName):
     listXlsx=[]
@@ -62,7 +85,7 @@ def exportCharacterToJson(inputFilePath,outputFilePath):
         f.write(characterJson)
         f.close()
         
-def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query):
+def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2):
     dfCharacter = tmReadSheet.tmReadSheet(inputFilePath)[0]
     dfProgression = tmReadSheet.tmReadSheet(inputFilePath)[1]
     dfHistory = tmReadSheet.tmReadSheet(inputFilePath)[2]
@@ -73,7 +96,6 @@ def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query):
         f.close()
     
     cursor = cnxn.cursor()
-   
     values=(outputFilePath,0)
     try:      
         cursor.execute(query,values)
@@ -82,12 +104,25 @@ def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query):
         print(f"pyodbc Error ", e)
         sys.exit(1)
     finally:
-        cursor.close()        
+        cursor.close()     
+
+    cursor2 = cnxn.cursor()
+    values=(outputFilePath,0)
+    try:      
+        cursor2.execute(query2,values)
+        cnxn.commit()
+    except Exception as e:
+        print(f"pyodbc Error ", e)
+        sys.exit(1)
+    finally:
+        cursor2.close()     
+
 
 def processRangeOfSheets(inputPath,outputPath,startFileName,endFileName, server, database):
 
     #get .xlsx files in the inputPath folder        
-    listXlsx=getXlsxInputPath(inputPath,startFileName,endFileName)
+    #listXlsx=getXlsxInputPath(inputPath,startFileName,endFileName)
+    listXlsx=getXlsxInputPathRecursive(inputPath,startFileName,endFileName)
     print('number of files found    ', len(listXlsx))
     
     conn_str = (
@@ -102,11 +137,15 @@ def processRangeOfSheets(inputPath,outputPath,startFileName,endFileName, server,
     for inputFilePath in listXlsx:
         outputFilePath = outputPath + os.path.basename(inputFilePath)[:len(os.path.basename(inputFilePath))-5] + '.json'
         processCount+=1
-        print('#' , str(processCount) , ' ' ,inputFilePath, ' ', outputFilePath)
+        print('#' , str(processCount) , ' of ' , len(listXlsx) ,inputFilePath, ' ', outputFilePath)
         #exportCharacterToJson(inputFilePath,outputFilePath)
         #query=f"exec readCharacterJsonForLores ?, ?"        #this is the query to populate tbl rawLores for Olivia
-        query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl the cp/corruption/event data for Olivia
-        exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query)
+        #query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl the cp/corruption/event data for Olivia
+        #query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl the cp/corruption/event data for Olivia
+        query=f"exec readCharacterJsonForSkills ?, ?"        #this is the query to populate tbl rawLores for Olivia
+        query2=f"exec readCharacterJsonForCpData ?, ?"  
+        exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2)
+        
     
   
     cnxn.close()

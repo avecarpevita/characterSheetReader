@@ -1,24 +1,26 @@
 use tm
 go
-create or alter proc readCharacterJsonForLores(@characterJsonPath nvarchar(max), @show bit=0)
+create or alter proc readCharacterJsonForSkills(@characterJsonPath nvarchar(max), @show bit=0)
 as
 /*
-select * from rawLores with(nolock)
-truncate table rawLores
+select * from rawSkills with(nolock)
+truncate table rawSkills
 DECLARE @json NVARCHAR(MAX);
 SELECT @json = BulkColumn
 FROM OPENROWSET(BULK 'C:\characterSheets20250916\json\Fei Leung (Anziel).json', SINGLE_CLOB) AS j; 
 
-exec readCharacterJsonForLores @characterJsonPath='C:\characterSheets20250916\json\Fei Leung (Anziel).json', @show=1
-exec readCharacterJsonForLores @characterJsonPath='c:/characterSheets20250916/json/Kelsey Daily (Odette) (Advocate).json', @show=1
+exec readCharacterJsonForSkills @characterJsonPath='C:\characterSheets20250916\json\Fei Leung (Anziel).json', @show=1
+exec readCharacterJsonForSkills @characterJsonPath='c:/characterSheets20250916/json/Kelsey Daily (Odette) (Advocate).json', @show=1
+exec readCharacterJsonForSkills @characterJsonPath='c:/characterSheets20250916/json/Scott Ross (Gaeden) (Staff).json', @show=1
 
 
-
+select * from rawSkills where rawSkill like '%chann%' and rawSkill not like '%lore%'
 
 */
 begin
 set nocount on
 
+--declare @characterJsonPath nvarchar(max)='c:/characterSheets20250916/json/Kelsey Daily (Odette) (Advocate).json', @show bit=1
 declare @characterJson nvarchar(max)
 drop table if exists #characterJson
 create table #characterJson (bulkColumn nvarchar(max))
@@ -46,7 +48,7 @@ declare @playerName nvarchar(100), @characterName nvarchar(100)
 select @playerName=playerName,@characterName=characterName from #characterSheet
 --select @skills
 
-drop table if exists #lores
+drop table if exists #skills
 ;with cte as (
 select skills.*
 	from OPENJSON(@skills)
@@ -55,17 +57,18 @@ with (
 	,rawCPCost nvarchar(100)
 	) as skills
 )
-select * into #lores from cte where rawSkillName like '%lore%'
+select * into #skills from cte 
 
-insert into rawLores (rawLore,characterName,playerName)
-	select distinct rawSkillName,@characterName,@playerName from #lores l 
-		where not exists (select null from rawLores r where r.rawLore=l.rawSkillName
+insert into rawSkills (rawSkill,characterName,playerName,rawCpSpent)
+	select rawSkillName,@characterName,@playerName,max(rawCpCost) from #skills l 
+		where not exists (select null from rawSkills r where r.rawSkill=l.rawSkillName
 			and r.characterName=@characterName
 			and r.playerName=@playerName
 			)
+			and isnull(rawSkillName,'')<>''
+			group by rawSkillName
 
-
-if @show=1 select * from rawLores
+if @show=1 select * from rawSkills
 
 
 end

@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Scott Ross</Author>
+  <LastAuthor>Scott Ross</LastAuthor>
+  <Created>2026-01-01T13:58:54Z</Created>
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Enabled dt:dt="string">true</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Enabled>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_SetDate dt:dt="string">2026-01-01T13:57:12Z</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_SetDate>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Method dt:dt="string">Standard</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Method>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Name dt:dt="string">defa4170-0d19-0005-0004-bc88714345d2</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Name>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_SiteId dt:dt="string">7c2701a1-19e9-4fed-abb6-c7884f7131c9</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_SiteId>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_ActionId dt:dt="string">e736e4bb-1e54-4f39-aa1c-ad8c419f2f0b</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_ActionId>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_ContentBits dt:dt="string">0</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_ContentBits>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Tag dt:dt="string">10, 3, 0, 1</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Tag>
+ </CustomDocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11865</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>32767</WindowTopX>
+  <WindowTopY>32767</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s16">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s17">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <NumberFormat ss:Format="m/d/yyyy\ h:mm:ss"/>
+  </Style>
+  <Style ss:ID="s18">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s78">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Form Responses 1">
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="12" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="66" ss:DefaultRowHeight="15.75">
+   <Column ss:AutoFitWidth="0" ss:Width="99" ss:Span="3"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="197.25" ss:Span="1"/>
+   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="151.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="197.25" ss:Span="1"/>
+   <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="99" ss:Span="5"/>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Timestamp</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Email Address</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Real Name</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Character Name</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What game did you organize the practice session? (e.g. December 2025)</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What Style did you practice at this session? (if the session was for multiple styles, please make multiple entries)</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">When was this practice session?</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What ooc rules did you review in this session?</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Please list the participants in this format.&#10;Character Name (as listed on character sheet) - Player name (as listed on character sheet).&#10;&#10;Example&#10;Gaeden - Scott Ross&#10;Atticus - Matt Salus </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-07T18:50:22.554</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">asoyatoe@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Clint Duff</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Richard</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Richard - Clint Duff&#10;Luz Villalobos - Ana Alvarez&#10;Sayid Ibn Rashid - Carlos Baldeon&#10;Valdmir Luthren - Christopher Rice&#10;Ard Proudsmith - Jason Deal&#10;Rai Atsushi - Jeffrey Gerard&#10;Dame Ti-zhan Payne - Kaitlyn Risser&#10;Retitus Tenebris - Michael-Bryan Kelly&#10;Baersrym Joybarrel - John Vescio&#10;Lucky Nova - Nicholas Avery&#10;Kaede - Cidny On&#10;Chainbreaker - Brian Reyes&#10;Tobias Finndaren - Christopher Bynum</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-09T18:00:54.644</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">andrewtfrejek@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Andrew Frejek</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Skull Maggot</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Khar'tan - Brian Kibler&#10;Audax - Collin Babcock&#10;Victor Frost - Dylan Yanke&#10;Jarin'ael Aethyn - Jonathan Young&#10;Chimera - Lux Icarian&#10;Sylver Sequioa - Russell Willoughby&#10;Kavu - Sebastian della Gatta&#10;Sa'ad Aldin Wajid - Shaun Wada&#10;Kandoryn Pellintie - Jerrod Hayes&#10;Saelinn Mordighan - Natasha Hayes&#10;Sufficient Wanderer - Chris Bennett&#10;Zar'ghest - Michel Wong&#10;Nimbus Tear - Josh Bisquera</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-09T19:45:45.265</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">sphader@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Matthew Salus</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Atticus Velyrone</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">1. Oak - Andrew Buczacki&#10;2. Clemency of Dusk -  Ben Hasenbalg&#10;3. Luxxaerys - Gaseper Spinosa&#10;4. Sir Zeryth - Jason Walker&#10;5. Atticus Velyrone - Matt Salus&#10;6. Van Yel Ashke-Calarco - Sidney Domholdt&#10;7. Francesco Tremaine - Preston Wros&#10;8. Fend'aloh - Jason Deal&#10;9. Brocce Stonehearth - David Dandridge&#10;10. Rohai - Kevin Hue&#10;12. Galangal - Joshua Jenkin&#10;13. Laveus MacDrib - John Charles Schmerluer</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-09T19:52:05.598</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">sphader@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Matthew Salus</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Atticus VVelyrone</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">1. Haymond Madok - Ashton Parks&#10;2. Richard - Clint Duff&#10;3. Luminitous - Devin McCarthy&#10;4. Martel - Gil Ramirez&#10;5. Lucada - Jeffrey Adams&#10;6. Atticus Velyrone - Matthew Salus&#10;7. Mont - Sam Fleyshman&#10;8. Thorkell - Van Franklin&#10;9. Augustus Invictus - Zachary Armine-Klien&#10;10. Sogor Proudeyes - Steven Maus&#10;11. Leonard Flank - Jacob Medchill&#10;12. Slhaarf - Nick Kanlovidd&#10;13. Mattias - Michael Butler&#10;14. Ser Wolffe - Avery Paris&#10;</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-09T22:50:44.481</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">justensperatos@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Justen Speratos</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Azymondias Zysyss</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Virgil Acula - Brady Heaton&#10;Zeffladin Keareth - Caleb Medchill&#10;Luminitous - Devin McCarthy &#10;Azymondias Zysyss - Jsuten Speratos&#10;Shadrek - Nick Prouty&#10;Lfvi - Levi Wardell&#10;Klepto - Michael Cline&#10;Az Ralqul - Steve Calise&#10;Gwillion Silduine - Albert Blattler&#10;Augustus Invictus - Zachary Armine-Klein</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-10T15:35:54.183</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">wulfriick@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Ash Luna</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Syr</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Syr - Ash Luna&#10;Roland d'Argent - Adam Campbell-Kruger&#10;Leila Corvinus Villalobos - Nanette Mendoza&#10;Slip Jasset - Gil Ramirez&#10;Kenji Zhu-Lung - Mike Morales&#10;Ritari Cecil - Stephen McArthur&#10;Xannik - Tom Cassera&#10;Azair - Matthew Bozin&#10;Telltale - Andrew Riley-Frola&#10;Fletch - Liam Barber&#10;Markus - Peter Knauss&#10;Jin Yumiya - TJ Reyes&#10;Gappo - Forrester Sherrick</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-10T18:58:51.243</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">gilthevlogsmith@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Gil Ramirez </Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Salomon Slip Jasset </Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The Assassin's Arts</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Omentos Vanlavius - Sebastian Gatta&#10;Isabella Montaige - Navja Sol&#10;Dale Fjord - Ronald Domholt&#10;Maxwell - Chris Feufg (?)&#10;Flames Embrace - Sambi&#10;Nalain Calae - Rose Kochanek&#10;Vice - Morgan &#10;Emrys - Jesse Riley&#10;Rook (Slevin) - Katt Jean</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-10T19:51:08.485</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">gilthevlogsmith@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Gil Ramirez </Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Salomon Slip Jasset </Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The Assassin's Arts</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Quincy Demir - Trevor Ryan&#10;Cowardice - John Tarbuskovich&#10;Grace Given Freely - Matthew Phillips&#10;Rembrandt von Tweeblommen - James Oneil&#10;Rhistiel - Nick Kinzei&#10;Jaguar - Taylor Harris&#10;Ilusio - Michael Lancaster &#10;Tema - Amanda Cohen&#10;Doctor Amelya - Iris Do</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-10T22:31:04.738</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Augustus Invictus - Zachary Armine-Klein&#10;Sahar - Lily Thiemens&#10;Sols’tur - Corin Edwards&#10;Luminitous - Devin McCarthy&#10;Seeker by Light and Shadow - Jonny Martinez&#10;Kitter, The Withering Thorn - Nick Cronin&#10;Adya - Dominic Criscitiello&#10;Vaelore Cisero- Andrew Frejek&#10;Anileia Astraea - Adriana Beals&#10;Marco Tisaris - Ray Trevino&#10;Zil - Trevor la Fountaine</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-10T22:31:58.511</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Jaerial - James McCloskey&#10;Gya - Kathleen Rios (Tonks)&#10;Keeper of Hearth's Embers - Andrew Cunado&#10;Urgur Agmundr - Eric Brittain&#10;Benny Bingewood - Weston Durant&#10;Darow - Jake Steinmetz&#10;Mazarel Noctora - Dean Jackman&#10;The Persevering Hope - Nicholas Marko&#10;Vulen Bylar - Pyro Huffman</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-13T21:43:09.706</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">adrain.case.ic@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">James O'Neil</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rembrandt</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The Assassin's Arts</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Jaguar - Taylor, Slip - Gil, </Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <NoSummaryRowsBelowDetail/>
+   <NoSummaryColumnsRightDetail/>
+   <Selected/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <ActivePane>2</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>8</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>
