@@ -52,6 +52,10 @@ def tmBloodline(dfCharacter):
         return dfCharacter.query("col4 == 'Race:'").iat[0,5]
     else:
         return ''
+    
+def tmCharacterId(dfCharacter):
+    #returns email (usually found in 2nd column, 3nd row)
+    return str(dfCharacter.query("col0 == 'Character ID:'").iat[0,1])
 
 def tmCulture(dfCharacter):
     culture = str(dfCharacter.query("col0 == 'Culture:'").iat[0,1])
@@ -93,6 +97,10 @@ def tmTethers(dfCharacter):
 
 def tmHealth(dfCharacter):
     return int(dfCharacter.query("col6 == 'HP:'").iat[0,7])
+
+def tmIP(dfCharacter):
+    #return str(dfCharacter.query("col4 == 'Character:'").iat[0,5])
+    return int(dfCharacter.query("col4.str.contains('Incentive', case=False, na=False) ").iat[0,6])
 
 def tmMana(dfCharacter):
     #could be blank
@@ -193,6 +201,7 @@ def tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath):
             "playerName": tmPlayerName(dfCharacter)
             ,"characterName": tmCharacterName(dfCharacter)
             ,"email": tmEmail(dfCharacter)
+            ,"characterId": tmCharacterId(dfCharacter)
             ,"bloodline": tmBloodline(dfCharacter)
             ,"culture": tmCulture(dfCharacter)
             ,"religion": tmReligion(dfCharacter)
@@ -200,6 +209,7 @@ def tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath):
             ,"tethers": tmTethers(dfCharacter)
             ,"health": tmHealth(dfCharacter)
             ,"mana": tmMana(dfCharacter)
+            ,"ip": tmIP(dfCharacter)
             ,"characterPoints": tmCharacterPoints(dfCharacter)
             ,"events": tmEvents(dfProgression)
             ,"skills": tmSkills(dfCharacter)
@@ -224,7 +234,7 @@ if __name__ == "__main__":
     load_dotenv(dotenv_path=r'C:\characterSheetReader\.env')
     sheetsDirectory=os.getenv('sheetsDirectory')
     print(f'sheetsDirectory {sheetsDirectory}  ')
-    excelFilePath=f'{sheetsDirectory}/Scott Ross (Gaeden) (Staff).xlsx'
+    excelFilePath=f'{sheetsDirectory}/Sheets (2018-Present)/Aaron Vandhana (Aeloss).xlsx'
     #print(tmPlayerName(tmReadSheet.tmReadSheet(excelFilePath)[0]))
     dfCharacter = tmReadSheet.tmReadSheet(excelFilePath)[0]
     dfProgression = tmReadSheet.tmReadSheet(excelFilePath)[1]

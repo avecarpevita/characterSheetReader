@@ -348,10 +348,13 @@ select game,style,realName,practiceWhen,count(*) from #practicesToDateDetail gro
 --[13]--union #practicesToDateDetail and #masterDetail, and rollup
 drop table if exists #new
 ;with cte as (
-select realName,characterName,style,game from #practicesToDateDetail -- #practicesToDateDetail where characterName='Oak'
+select participantRealNameMatched realName
+	,participantCharacterNameMatched characterName,style,game from #practicesToDateDetail -- #practicesToDateDetail where style like '%ass%'
 union
-select realName,characterName,style,game from #masterDetail
+select realName,characterName,style,game from #masterDetail				
 )
+--select * from cte where style like '%suf%'
+
 select realName,characterName,style,count(*) practiceCount,string_agg(game,', ') gameDetail 
 	into #new 
 	from cte group by realName,characterName,style order by 1,2
@@ -363,6 +366,10 @@ select * from #masterDetail where realName like '%Jackie%'--corrected that to na
 select * from #masterDetail where realName like '%jeff%'--gtg
 select * from #masterDetail where realName like '%cas%'--gtg
 select * from #master m where not exists (select null from #new n where n.characterName=m.characterName)--17, but I did a ton of name corrects
+
+select * from #new n where not exists (select null from #master m where n.realName=m.realName)--81, mostly dec25, but some from the name standardization
+select * from #new n where not exists (select null from #master m where n.characterName=m.characterName)--103, mostly dec25, but some from the name standardization
+
 
 --[14]
 select * from #new order by 1,2

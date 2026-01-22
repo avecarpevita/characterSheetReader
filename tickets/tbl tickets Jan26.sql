@@ -3,6 +3,9 @@ use tm
 
 --select top 100 * from sys.tables order by create_date desc--rawCpData
 --select * from eventsWithDates order by 2 desc
+declare @eventName nvarchar(255)='Event 88 January 2026'
+if not exists (select null from eventsWithDates ed where eventName='Event 88 January 2026')
+	insert into eventsWithDates select 'Event 88 January 2026','2026.01.09'
 
 drop table if exists tickets
 create table tickets (eventName nvarchar(255) not null
@@ -94,7 +97,12 @@ while @len>2
 insert into tickets (eventName,eventDate,rawPlayerName,playerName,ticketType)
 	select eventName,eventDate,rawPlayerName,isnull(matchedPlayerName,rawPlayerName),ticketType from #allRawTickets
 		where ticketType<>'Ticket type'
+		
 
-
-select * from tickets where eventName='Event 87 December 2025'--526--looks good for dec25
+select * from tickets where eventName='Event 88 January 2026'--536
+	and ticketType not like '%advo%'--366
+	and ticketType not like '%partial%'
+	and ticketType not like '%new player%'
+	and ticketType not like '%alt%'
+	and ticketType not like '%all day sat%'--198--smells right
 	

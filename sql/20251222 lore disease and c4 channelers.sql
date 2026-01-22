@@ -97,3 +97,39 @@ select convert(varchar(35),faction) faction
 
 select count(*) from #jan26MyreAnchor j
 		where faction not like '%Which%' and cp150Status<>'Yes' 
+
+select top 100 * from rawSkills where rawSkill like '%lore%medicine%'
+
+drop table if exists #work
+;with cte_charactersLast3Games as (select c.playerName,c.characterName
+	,try_cast(spentCp as int) spentCp
+	,try_cast(corruption as int) corruption
+	,e.eventName rawEventName
+	,case --when eventName like '%event 84%' then 'Event 84 April 2025'
+	when eventName like '%event 85%' then 'Event 85 August 2025'
+	when eventName like '%event 86%' then 'Event 86 September 2025' 
+	when eventName like '%event 87%' then 'Event 87 December 2025' 
+	--when try_cast(e.eventDate as date) between '2025.04.01' and '2025.04.30' then 'Event 84 April 2025'
+	when try_cast(e.eventDate as date) between '2025.08.01' and '2025.08.31' then 'Event 85 August 2025'
+	when try_cast(e.eventDate as date) between '2025.09.01' and '2025.09.30' then 'Event 85 September 2025'
+	when try_cast(e.eventDate as date) between '2025.12.01' and '2025.12.31' then 'Event 87 December 2025'
+		end eventName
+	,e.eventDate as rawEventDate
+	,try_cast(e.eventDate as date) eventDate
+	from rawCpData c
+		join rawEvents e on c.playerName=e.playerName and c.characterName=e.characterName
+		where eventName like '%event%'
+			and (try_cast(e.eventDate as date) between '2025.04.01' and '2026.01.01'
+			or eventName like '%event 8[4567]%')
+		)
+select * 
+	into #work from cte_charactersLast3Games
+		where eventName is not null
+
+		
+select distinct w.characterName,w.playerName,spentCp,rawSkill from rawSkills r join #work w on w.characterName=r.characterName
+	where rawSkill like '%lore%medicine%' order by spentCp desc
+	
+
+	
+select top 100 * from rawSkills where rawSkill like '%lore%ships%'

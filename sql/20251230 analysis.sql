@@ -17,6 +17,8 @@ drop table if exists #work
 		end eventName
 	,e.eventDate as rawEventDate
 	,try_cast(e.eventDate as date) eventDate
+	,(select count(*) from rawEvents ri where c.playerName=ri.playerName and c.characterName=ri.characterName and ri.eventName like '%event%') numEvents
+	,culture,religion,bloodline,[ip]
 	from rawCpData c
 		join rawEvents e on c.playerName=e.playerName and c.characterName=e.characterName
 		where eventName like '%event%'
@@ -28,6 +30,8 @@ select *
 		where eventName is not null
 
 
+
+
 select eventName,count(distinct playerName) playerCount,count(distinct characterName) characterCount from #work group by eventName order by 1
 
 
@@ -37,16 +41,39 @@ drop table if exists #deduped
 ;with cte as (select *,row_number() over(partition by playerName,characterName order by eventDate desc) rn from #work) 
 	select * 
 		,case 
-		when spentCP between 1 and 149 then '[1] under 150 CP'
-		when spentCp between 150 and 300 then '[2] 150-300 CP'
-		when spentCp between 301 and 450 then '[3] 301-450 CP'
-		when spentCp between 451 and 600 then '[4] 451-600 CP'
-		when spentCp>=601 then '[5] 601+ CP' end as cpGrouping
+		when spentCP between 1 and 149 and numEvents<3 then '[tier 1] 0-2 games'
+		when spentCP between 1 and 149 then '[tier 2] 3+ games, under 150 CP'
+		when spentCp between 150 and 300 then '[tier 3] 150-300 CP'
+		when spentCp between 301 and 450 then '[tier 4] 301-450 CP'
+		when spentCp between 451 and 600 then '[tier 5] 451-600 CP'
+		when spentCp>=601 then '[tier 6] 601+ CP' end as cpGrouping
 
 		into #deduped from cte where rn=1
 --dedupe to player
 ;with cte as (select *,row_number() over(partition by playerName order by spentCP desc) rn2 from #deduped) delete cte where rn2>1
 create unique clustered index cp on #deduped(playerName) --unique to players
+
+select * from #deduped order by spentCp desc
+
+select dbo.cleanRawCulture(culture,bloodline)
+	--,string_agg(min(culture),', ')
+	,count(*) 
+	,min(culture),max(culture)
+	from #deduped group by dbo.cleanRawCulture(culture,bloodline) order by 2 desc
+
+
+select dbo.cleanRawCulture(culture,bloodline)
+	--,string_agg(min(culture),', ')
+	,count(*) mainCharacterCount_active
+	,try_cast(sum(spentCp*1.0)/count(*)*1.0 as int) avgSpentCp_active
+	from #deduped group by dbo.cleanRawCulture(culture,bloodline) order by 2 desc
+
+select religion,count(*) from #deduped group by religion order by 2 desc
+select bloodline,count(*) from #deduped group by bloodline order by 2 desc
+select try_cast([ip] as int),count(*) from #deduped group by try_cast([ip] as int) order by 1 desc
+
+select * from #deduped where culture='Draconic/Demonic'
+
 
 --median/avg CP
 SELECT DISTINCT
@@ -65,9 +92,13 @@ select avg(corruption*1.0) from #deduped--avg is 1.5
 
 --bands
 select cpGrouping,count(*) numberOfMainCharacters
-	,avg(corruption*1.0) avgCorruption
+	--,avg(corruption*1.0) avgCorruption
 	--,min(corruption) minCorruption,max(corruption) maxCorruption
+	,min(spentCp),max(spentCp)
 	from #deduped group by cpGrouping order by 1
+
+--select * from #deduped where cpGrouping like '%tier 2%' order by spentCp
+--select * from rawEvents where characterName='Silver Sterling'
 
 /*
 ```
@@ -144,3 +175,15 @@ select * from 	rawEvents		 where characterName in (			select characterName from 
 rawSkills where rawSkill like '%cloak%'
 rawSkills where rawSkill like '%lett%'
 				
+
+select left(playerName,1) firstLetterOfPlayerName,count(*) from #deduped group by left(playerName,1) order by 1
+
+
+select left(playerName,patindex( '% %',playerName)),count(*),min(playerName),max(playername) from #deduped group by left(playerName,patindex( '% %',playerName)) order by 2 desc
+
+#deduped where left(playerName,patindex( '% %',playerName))=' '
+
+rawCPData
+
+select count(*),count(distinct characterId) from rawCPData--4413, damn son
+

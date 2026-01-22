@@ -35,7 +35,7 @@ if __name__ == "__main__":
     load_dotenv(dotenv_path=r'C:\characterSheetReader\.env')
     sheetsDirectory=os.getenv('sheetsDirectory')
     print(f'sheetsDirectory {sheetsDirectory}  ')
-    excelFilePath=f'{sheetsDirectory}/Aaron Vandhana (Aeloss).xlsx'
+    excelFilePath=f'{sheetsDirectory}/Sheets (2018-Present)/Aaron Vandhana (Aeloss).xlsx'
     print(excelFilePath)
     dictAllSheets = tmReadSheet(excelFilePath)[4]
     print(dictAllSheets.keys()) # Prints all sheet names
