@@ -68,6 +68,19 @@ select dbo.cleanRawCulture(culture,bloodline)
 	,try_cast(sum(spentCp*1.0)/count(*)*1.0 as int) avgSpentCp_active
 	from #deduped group by dbo.cleanRawCulture(culture,bloodline) order by 2 desc
 
+
+select dbo.cleanRawReligion(religion)
+	--,string_agg(min(culture),', ')
+	,count(*) mainCharacterCount_active
+	,try_cast(sum(spentCp*1.0)/count(*)*1.0 as int) avgSpentCp_active
+	from #deduped group by dbo.cleanRawReligion(religion) order by 2 desc
+
+select dbo.cleanRawReligion(religion)
+	--,string_agg(min(culture),', ')
+	,count(*) mainCharacterCount_active
+	,try_cast(sum(spentCp*1.0)/count(*)*1.0 as int) avgSpentCp_active
+	from #deduped group by dbo.cleanRawReligion(religion) order by 2 desc
+
 select religion,count(*) from #deduped group by religion order by 2 desc
 select bloodline,count(*) from #deduped group by bloodline order by 2 desc
 select try_cast([ip] as int),count(*) from #deduped group by try_cast([ip] as int) order by 1 desc
@@ -186,4 +199,47 @@ select left(playerName,patindex( '% %',playerName)),count(*),min(playerName),max
 rawCPData
 
 select count(*),count(distinct characterId) from rawCPData--4413, damn son
+
+--apostrophe data
+
+--get characters played in the last 3 events
+drop table if exists #work
+;with cte_charactersLast3Games as (select c.playerName,c.characterName
+	,try_cast(spentCp as int) spentCp
+	,try_cast(corruption as int) corruption
+	,e.eventName rawEventName
+	
+	,e.eventDate as rawEventDate
+	,try_cast(e.eventDate as date) eventDate
+	,(select count(*) from rawEvents ri where c.playerName=ri.playerName and c.characterName=ri.characterName and ri.eventName like '%event%') numEvents
+	,culture,religion,bloodline,[ip]
+	from rawCpData c
+		join rawEvents e on c.playerName=e.playerName and c.characterName=e.characterName
+		where eventName like '%event%'
+			--and (try_cast(e.eventDate as date) between '2025.04.01' and '2026.01.01'
+			--or eventName like '%event 8[4567]%')
+		)
+select * 
+	--,dbo.cleanRawCulture(culture,religion) cleanCulture
+	,convert(varchar(100),null) cleanCulture
+	into #work from cte_charactersLast3Games
+		where characterName like '%''%'
+
+
+;with cte as (select *,row_number() over(partition by characterName,playername order by eventDate,rawEventName) rn	from #work) delete cte where rn>1
+
+update #work set cleanCulture=dbo.cleanRawCulture(culture,bloodline)--?
+
+select top 10 *,dbo.cleanRawCulture(culture,bloodline) from #work
+
+
+select year(coalesce(eventDate,try_cast('01/'+rawEventDate as date))) [year]
+	,count(*) charactersCreatedWithAnApostropheInTheirName
+	,sum(case when cleanCulture like '%effendal%' then 1 else 0 end) alsoElves
+	from #work 
+	where year(coalesce(eventDate,try_cast('01/'+rawEventDate as date)))>2010
+	group by year(coalesce(eventDate,try_cast('01/'+rawEventDate as date))) order by 1
+
+
+select top 100 * from rawSkills where rawSkill like '%fugue%'
 
