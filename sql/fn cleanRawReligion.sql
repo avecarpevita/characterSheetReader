@@ -5,24 +5,29 @@ returns nvarchar(100)
 as
 begin
 declare @retval nvarchar(100)
-select @retval=ltrim(rtrim(@rawReligion))
 --double spaces, *, quotes, "restricted Religion" normalized to R. Religion
 
-if @retVal like '%old way%' set @retVal='Old Ways'
-if @retVal like '%Celestine%' set @retVal='Celestine Faith'
-if @retVal like '%Tree of Life%' set @retVal='World Tree Faith'
-if @retVal like '%World Tree%' set @retVal='World Tree Faith'
-if @retVal like '%Equilibrium%' set @retVal='The Equilibrium'
-if @retVal like '%Luck%' set @retVal='Luck Faith'
-if @retVal like '%Eden%' set @retVal='Eden'
-if @retVal like '%Xolo%' set @retVal='Xolo'
-if @retVal like '%Zodiac%' set @retVal='Trahazi Zodiac'
-if @retVal like '%Mist%' set @retVal='Lady of the Mists'
-if @retVal like '%Witch Queen%' set @retVal='The Children of the Witch Queen'
-if @retVal like '%Blood Cauldron%' set @retVal='The Blood Cauldron'
-if @retVal like '%gold%cho%' set @retVal='The Golden Choir'
-if @retVal like '%Chorus%' set @retVal='Church of Chorus'
-
+set @retVal=case 
+when @rawReligion like '%old way%' then 'Old Ways'
+when @rawReligion like '%Celestine%' then 'Celestine Faith'
+when @rawReligion like '%Tree of Life%' then 'World Tree Faith'
+when @rawReligion like '%World Tree%' then 'World Tree Faith'
+when @rawReligion like '%Equilibrium%' then 'The Equilibrium'
+when @rawReligion like '%Golden Choir%' then 'The Golden Choir'
+when @rawReligion like '%Luck%' then 'Luck Faith'
+when @rawReligion like '%Eden%' then 'Eden'
+when @rawReligion like '%Xolo%' then 'Xolo'
+when @rawReligion like '%Zodiac%' then 'Trahazi Zodiac'
+when @rawReligion like '%Mist%' then 'Lady of the Mists'
+when @rawReligion like '%Witch Queen%' then 'The Children of the Witch Queen'
+when @rawReligion like '%Blood Cauldron%' then 'The Blood Cauldron'
+when @rawReligion like '%gold%cho%' then 'The Golden Choir'
+when @rawReligion like '%Chorus%' then 'Church of Chorus'
+when @rawReligion like '%Mandala%' then 'Mandalan Faith'
+when @rawReligion like '%Dragon Faith%' then 'Dragon Faith/Worship'
+when @rawReligion like '%Dragon Worship%' then 'Dragon Faith/Worship'
+when @rawReligion like '%Moon%' then 'Moon Faith'
+else @rawReligion end
 
 
 
