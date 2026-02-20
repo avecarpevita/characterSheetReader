@@ -181,6 +181,8 @@ if __name__ == "__main__":
     server=os.getenv('server')
     database=os.getenv('database')
 
+    os.makedirs(outputPath, exist_ok=True)
+
     print('inputPath                ', inputPath)            
     print('outputPath               ', outputPath)  
     print('startFileName            ', startFileName)  

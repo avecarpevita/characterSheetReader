@@ -4,7 +4,7 @@ create or alter function parseParticipant (@rawParticipant nvarchar(100), @front
 returns varchar(50)
 as
 /*
-print dbo.parseParticipant('taco - greg',0) 
+print dbo.parseParticipant('Trainer&#45;- Justen Speratos&#45;- Azymondias Zysyss',0) 
 */
 begin
 declare @retVal varchar(50)=null
@@ -13,14 +13,16 @@ declare @characterName varchar(50)=null
 DECLARE @CharsToKill VARCHAR(50) = '0123456789.';
 
 
-
+--declare @rawParticipant nvarchar(100)='Trainer&#45;- Justen Speratos&#45;- Azymondias Zysyss'
 SELECT @rawParticipant=
     REPLACE(
         TRANSLATE(@rawParticipant, @CharsToKill, REPLICATE('*', LEN(@CharsToKill))), 
         '*', 
         ''
     ) 
-
+set @rawParticipant=replace(@rawParticipant,'-',' - ')
+while @rawParticipant like '%  %'
+	set @rawParticipant=replace(@rawParticipant,'  ',' ')
 
 	
 --if there is only one dash it is easy

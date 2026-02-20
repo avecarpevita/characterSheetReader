@@ -44,7 +44,7 @@ select * from #deduped x
 		and s.rawSkill like '%priest%')
 	--and exists (select null from rawSkills s where s.characterName=x.characterName and s.playerName=x.playerName
 	--	and s.rawSkill like '%mandala%faith%')
-	order by eventDate desc
+	order by eventDate desc,spentCp desc
 
 playerName                                  characterName                                                                                        
 ------------------------------------------- -------------------------------------------------
@@ -59,9 +59,18 @@ select dateadd(day,10,getdate())
 
 update #deduped set cleanReligion=dbo.cleanRawReligion(religion) where len(religion)>1
 --in general, what is the religion breakdown on mains
-select convert(varchar(35),cleanReligion) cleanReligion
+select top 20 convert(varchar(35),cleanReligion) cleanReligion
 	,count(*) totalMainCharacters
 	,sum(case when eventDate>=dateadd(month,-6,getdate()) then 1 end) active6moMainCharacters
 	from #deduped 
 		where len(cleanReligion)>1
 	group by cleanReligion order by 3 desc
+
+
+select * from #work x
+	where cleanReligion like '%world%'
+	and exists (select null from rawSkills s where s.characterName=x.characterName and s.playerName=x.playerName
+		and s.rawSkill like '%priest%')
+	--and exists (select null from rawSkills s where s.characterName=x.characterName and s.playerName=x.playerName
+	--	and s.rawSkill like '%mandala%faith%')
+	order by eventDate desc,spentCp desc

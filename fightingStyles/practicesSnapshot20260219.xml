@@ -1,0 +1,895 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Scott Ross</Author>
+  <LastAuthor>Scott Ross</LastAuthor>
+  <Created>2026-02-20T00:35:22Z</Created>
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Enabled dt:dt="string">true</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Enabled>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_SetDate dt:dt="string">2026-02-20T00:35:08Z</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_SetDate>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Method dt:dt="string">Standard</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Method>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Name dt:dt="string">defa4170-0d19-0005-0004-bc88714345d2</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Name>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_SiteId dt:dt="string">7c2701a1-19e9-4fed-abb6-c7884f7131c9</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_SiteId>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_ActionId dt:dt="string">50d7711b-3851-4c4e-9178-177ae171bfc1</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_ActionId>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_ContentBits dt:dt="string">0</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_ContentBits>
+  <MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Tag dt:dt="string">10, 3, 0, 1</MSIP_Label_defa4170-0d19-0005-0004-bc88714345d2_Tag>
+ </CustomDocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11865</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>32767</WindowTopX>
+  <WindowTopY>32767</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s16">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s17">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <NumberFormat ss:Format="m/d/yyyy\ h:mm:ss"/>
+  </Style>
+  <Style ss:ID="s18">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s20">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFF2CC" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="m/d/yyyy\ h:mm:ss"/>
+  </Style>
+  <Style ss:ID="s21">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFF2CC" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s23">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#F4CCCC" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="m/d/yyyy\ h:mm:ss"/>
+  </Style>
+  <Style ss:ID="s24">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#F4CCCC" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s26">
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFF2CC" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s27">
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <NumberFormat ss:Format="m/d/yyyy\ h:mm:ss"/>
+  </Style>
+  <Style ss:ID="s28">
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Form Responses 1">
+  <Names>
+   <NamedRange ss:Name="_FilterDatabase"
+    ss:RefersTo="='Form Responses 1'!R1C1:R14C9" ss:Hidden="1"/>
+  </Names>
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="14" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="66" ss:DefaultRowHeight="15.75">
+   <Column ss:AutoFitWidth="0" ss:Width="99" ss:Span="3"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="197.25" ss:Span="1"/>
+   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="151.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="197.25" ss:Span="1"/>
+   <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="99" ss:Span="5"/>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Timestamp</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Email Address</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Real Name</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Character Name</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What game did you organize the practice session? (e.g. December 2025)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What Style did you practice at this session? (if the session was for multiple styles, please make multiple entries)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">When was this practice session?</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What ooc rules did you review in this session?</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Please list the participants in this format.&#10;Character Name (as listed on character sheet) - Player name (as listed on character sheet).&#10;&#10;Example&#10;Gaeden - Scott Ross&#10;Atticus - Matt Salus </Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s20"><Data ss:Type="DateTime">2026-01-12T20:03:03.128</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">andrewtfrejek@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Andrew Frejek</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Skull Maggot</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Six Dragons</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Saturday Evening (before game end)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Skull Maggot  - Andrew Frejek&#10;Jack Martindale - Clint Worley&#10;Slip Jasset - Gil Ramirez&#10;Rolf Proudsmith - Gordon Deal&#10;Ronan Callax - Sean Clark&#10;Quincy Desslalc Demir - Trevor Ryan&#10;Daruis Dravik - Max Pflueger&#10;Kheldarin - Micah Lamdin&#10;Kavu - Sebastian della Gatta&#10;Sa'ad al Din Wajid - Shaun Wada&#10;Xannik - Tom Cassera&#10;Maxwell - Chris Rdangy-Fenry</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-12T20:19:02.772</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">moralesmike089@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mike Morales</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Kenji</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Six Dragons</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Avoye- Ashley Ferrum&#10;Virgil Acula- Brady Heaton&#10;Khar’tan- Brian Kibler&#10;Zeffladin Keareth- Caleb Medchill&#10;Val McAllister- Daniel West&#10;Roald Gould- Daniel Thwing&#10;Cassius Fynch- Jackson Korsgaard&#10;Kandoryn Pellintie- Jerrod Hayes &#10;Jarin’ael Aethyn- Jonathan Young &#10;Ryx- Justin Chan&#10;Zar’gest- Michel Wong&#10;Kenji- Mike Morales&#10;Saelinn Mordighan- Natasha Hayes&#10;Casutor- Nick Williams&#10;Ryo- Roel Mislan&#10;Sylver Sequoia- Russell Willoughby</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s20"><Data ss:Type="DateTime">2026-01-13T11:20:42.150</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">dealja@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Jason Deal</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Ard Proudsmith</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Mountain Meets the Sky</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Saturday Evening (before game end)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Sayid Ibn Rashid Al Shaitan - Carlos Baldeon&#10;Vladmir Von Luthren - Christopher Rice&#10;Luxxaerys - Gasper Spinosa&#10;Wayland Tarsis - Grant Rogers&#10;Ard Proudsmith - Jason Deal&#10;Sir Dimaretis - Jeremiah Rick&#10;Cian O'Fael - Brian McNeil&#10;Rhain - Cormac Sheehy&#10;Braegor the Terrible  - Neil Phelps&#10;Otto Harring - Jacob Reardon&#10;Gwillion Silduine - Albert Blattler&#10;Da'row - Jake Steinmetz&#10;Adya - Dominic Criscitiello</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-15T01:32:23.631</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">mpflueger@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Max Pflueger</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Darius Dravik</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The School of Suffering</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Skull Maggot - Andrew Frejek&#10;Jack Martindale - Clint Worley&#10;Slip Jasset - Gil Ramirez&#10;Rolf Proudsmith - Gordon Deal&#10;Ronan Caliax - Sean Clark&#10;Quincy Desslalc Demir - Trevor Ryan&#10;Daruis Dravik - Max Pflueger&#10;Kheldarin - Micah Lamdin&#10;Kavu - Sebastian della Gatta&#10;Sa'ad al Din Wajid - Shaun Wada&#10;Xannik - Tom Cassera&#10;Maxwell - Chris Rdangy-Fenry</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-15T20:26:48.518</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">thelastknighterrant@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Brady Heaton </Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Virgil Acula</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The School of Suffering</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Reniion Gauldir - AJ Lepe&#10;Virgil Acula - Brady Heaton&#10;Doctor Amelya - Iris Do&#10;Rai’byn Beleron - Jordan Irby&#10;Alira / Dawn's Radiance - Olivia Gobert-Hicks&#10;Laekmir Kottr - Pavana Somisetty&#10;Hyphitherean - Elliott Pullitto&#10;Junius - Aurum Pullitto&#10;Atticus Velyrone - Matt Salus&#10;Richard - Clint Duff&#10;Kandoryn Pellintie - Jerrod Hayes</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-15T20:30:36.579</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">thelastknighterrant@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Brady Heaton </Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Virgil Acula </Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The School of Suffering</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Virgil Acula - Brady Heaton&#10;Ikram Malverde - Ismael Alvarez&#10;Darius Dravik - Max Pflueger&#10;Tathlan Abyth - Phillip Stachelski&#10;Ainz the Foolish Mushroom - Isabel Robes&#10;Magpie of Scraps - Kenneth Han&#10;Jaguar - Taylor Harris&#10;Deacon Ariadne - William Tonx&#10;Aelis - Lesther Reynoso&#10;Ruinous Candor - Robert Perkins&#10;Aether Angishire - Andrew Perkins</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-16T15:43:17.500</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">abuczacki@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Andrew Buczacki</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Oak</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Luz Villalobos - Ana Alvarez&#10;Oak - Andrew Buczacki&#10;Haymond Valance Madok - Ashton Parks&#10;Strikarn Orson - Brian Williams&#10;Richard - Clint Duff&#10;Brocce Stoneheart - David Dandridge&#10;Luminitous - Devin McCarthy&#10;Lucada - Jeffrey Adams&#10;Aveus Mac Dris - John Charles Schmerker&#10;Baergrym Joybarrel - John Vescio&#10;Roderick - Jonathan Ying&#10;Mathias - Michael Butler&#10;Retitus Tenebris - Michael-Bryan Kelly&#10;Van Yel Ashke-Calarco - Sidney Domholdt&#10;Sagar Proudeyes - Steven Maus&#10;Thorkell Grimwaldsson - Van Franklin&#10;Augustus Invictus - Zachary Armine-Klein&#10;Cidolfus - Jonah Advento&#10;Casutor - Nick Williams&#10;Pebble McTuff - Keigin Tosh&#10;Derren Cross - Joshua Warner&#10;Khy'the - Justin Chan</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s20"><Data ss:Type="DateTime">2026-01-19T12:29:36.006</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">justensperatos@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Justen Speratos </Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Azymondias Zysyss </Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Six Dragons</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Saturday Morning (before noon)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Azymondias Zysyss - Justen Speratos&#10;Gwillion Silduine, the Cross Eyed Tiger - Albert Blattler&#10;Syrendra - Ash Luna&#10;Jack Martindale - Clint Worley&#10;Audax - Collin Babcock&#10;Chimera - Lux Icarian&#10;Darius Dravik - Max Pflueger&#10;Klepto - Michael Cline&#10;Shadrek Dario - Nick Prouty&#10;Cecil - Stephen McArthur&#10;AZ'Ralqul - Steve Calise&#10;Aegir - Ethan Eril&#10;Rin Davos - Rick Quitorcani&#10;Rhistel - Nick Kinzel</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+    <Cell ss:StyleID="s26"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-25T17:16:44.116</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">sphader@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Matthew Salus</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Atticus Velyrone</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">1. Clemency of Dusk - Ben Hasenbalg&#10;2. Richard - Clint Duff&#10;3. Val McAllister&#10;4. Vitus Cassian - Ethan Bell&#10;5. Rai Atsushi - Jeff Gerard&#10;6. Lucada - Jeffrey Adams&#10;7. Atticus Velyrone - Matthew Salus&#10;8. Van Yel Ashke-Calarco - Sidney Domholdt&#10;9. Taylor Harrs - Apotheosis&#10;10. Kamiryu Kibou - Reiner Perillo&#10;11.  Sarest - Jacqueline Salow-Wiley&#10;12. Doctor Amelya - Iris Do</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-25T20:09:40.895</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">kitswells@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Kit Wells</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Ke’wyn</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The Assassin's Arts</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Ke’wyn - Kit Wells&#10;Victory Wildsong- Cass Coomber&#10;Junius- Aurum Pallitto&#10;Doctor Amelya- Iris Do&#10;Snap- Ember Doherty&#10;Virgil Acula- Brady Heaton&#10;Ovela Miekka- Aisling Gorgon&#10;Jack of Spades- Clint Worley&#10;Omentos Ventavius- Sebastian della Gatta&#10;Isabella Montaigne- Najva Sol&#10;Rembrandt van Tweebloemen- James O’Neil&#10;Quincy Dessick Demir- Trevor Ryan&#10;Grace Given Freely- Matthew Phillips&#10;Darius Dravik- Max Pflueger&#10;Slip Jasset- Gil Ramirez&#10;Slevin- Katt Jean</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-29T14:43:13.138</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Jophiel Lito - Toya Raveneau&#10;Vidar Erikson - Ian Murtz&#10;CharlieI - Gillian Morris&#10;Brollin Whitestone - Trevor West&#10;Keeper of Hearth's Embers - Andrew Cunado&#10;Vaelore Cisero - Andrew Frejek&#10;Strikarn Orson - Brian Williams&#10;Luminitous - Devin McCarthy&#10;Jaerial Daxsharial - James McCloskey&#10;Seeker by Light and Shadow - Jonny Martinez&#10;Gya - Kathleen Rios&#10;Sahar Daxsharia - Lily Thiemens</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-29T14:47:04.029</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Hanlon Augner - Ian McGarraugh&#10;Blackwell - Jose Favela&#10;Aveus Mac Dris - John Charles Schmerker&#10;Vice - Morgan Smith&#10;Anileia Tigaris - Adriana Beals&#10;Vaelore Cisero - Andrew Frejek&#10;Sols'tur - Corin Edwards&#10;Mazarel Noctara - Dean Jackman&#10;Urgur Agmundr - Eric Brittain&#10;Seeker by Light and Shadow - Jonny Martinez&#10;The Persevering Hope - Nicholas Marko&#10;Kitter, The Withering Thorn - Nick Cronin</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-29T14:49:33.821</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Braegor the Terrible - Neil Phelps&#10;Otto Harring - Jacob Reardon&#10;Gwillion Silduine - Albert Blattler&#10;Wayland Tarsis - Grant Rogers&#10;Sayid Ibn Rashid Al Shaitan - Carlos Baldeon&#10;Luxxaerys - Gasper Spinosa&#10;Vladmir Von Luthren - Christopher Rice&#10;Ard Proudsmith - Jason Deal&#10;Adya - Dominic Criscitiello&#10;Darow - Jake Steinmetz&#10;Marco Interritus - Ray Trevino</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <NoSummaryRowsBelowDetail/>
+   <NoSummaryColumnsRightDetail/>
+   <Selected/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <ActivePane>2</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="backup of all">
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="25" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="66" ss:DefaultRowHeight="15.75">
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Timestamp</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Email Address</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Real Name</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Character Name</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What game did you organize the practice session? (e.g. December 2025)</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What Style did you practice at this session? (if the session was for multiple styles, please make multiple entries)</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">When was this practice session?</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What ooc rules did you review in this session?</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Please list the participants in this format.&#10;Character Name (as listed on character sheet) - Player name (as listed on character sheet).&#10;&#10;Example&#10;Gaeden - Scott Ross&#10;Atticus - Matt Salus </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-07T18:50:22.554</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">asoyatoe@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Clint Duff</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Richard</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Richard - Clint Duff&#10;Luz Villalobos - Ana Alvarez&#10;Sayid Ibn Rashid - Carlos Baldeon&#10;Valdmir Luthren - Christopher Rice&#10;Ard Proudsmith - Jason Deal&#10;Rai Atsushi - Jeffrey Gerard&#10;Dame Ti-zhan Payne - Kaitlyn Risser&#10;Retitus Tenebris - Michael-Bryan Kelly&#10;Baersrym Joybarrel - John Vescio&#10;Lucky Nova - Nicholas Avery&#10;Kaede - Cidny On&#10;Chainbreaker - Brian Reyes&#10;Tobias Finndaren - Christopher Bynum</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-09T18:00:54.644</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">andrewtfrejek@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Andrew Frejek</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Skull Maggot</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Khar'tan - Brian Kibler&#10;Audax - Collin Babcock&#10;Victor Frost - Dylan Yanke&#10;Jarin'ael Aethyn - Jonathan Young&#10;Chimera - Lux Icarian&#10;Sylver Sequioa - Russell Willoughby&#10;Kavu - Sebastian della Gatta&#10;Sa'ad Aldin Wajid - Shaun Wada&#10;Kandoryn Pellintie - Jerrod Hayes&#10;Saelinn Mordighan - Natasha Hayes&#10;Sufficient Wanderer - Chris Bennett&#10;Zar'ghest - Michel Wong&#10;Nimbus Tear - Josh Bisquera</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-09T19:45:45.265</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">sphader@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Matthew Salus</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Atticus Velyrone</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">1. Oak - Andrew Buczacki&#10;2. Clemency of Dusk -  Ben Hasenbalg&#10;3. Luxxaerys - Gaseper Spinosa&#10;4. Sir Zeryth - Jason Walker&#10;5. Atticus Velyrone - Matt Salus&#10;6. Van Yel Ashke-Calarco - Sidney Domholdt&#10;7. Francesco Tremaine - Preston Wros&#10;8. Fend'aloh - Jason Deal&#10;9. Brocce Stonehearth - David Dandridge&#10;10. Rohai - Kevin Hue&#10;12. Galangal - Joshua Jenkin&#10;13. Laveus MacDrib - John Charles Schmerluer</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-09T19:52:05.598</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">sphader@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Matthew Salus</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Atticus VVelyrone</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">1. Haymond Madok - Ashton Parks&#10;2. Richard - Clint Duff&#10;3. Luminitous - Devin McCarthy&#10;4. Martel - Gil Ramirez&#10;5. Lucada - Jeffrey Adams&#10;6. Atticus Velyrone - Matthew Salus&#10;7. Mont - Sam Fleyshman&#10;8. Thorkell - Van Franklin&#10;9. Augustus Invictus - Zachary Armine-Klien&#10;10. Sogor Proudeyes - Steven Maus&#10;11. Leonard Flank - Jacob Medchill&#10;12. Slhaarf - Nick Kanlovidd&#10;13. Mattias - Michael Butler&#10;14. Ser Wolffe - Avery Paris&#10;</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-09T22:50:44.481</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">justensperatos@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Justen Speratos</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Azymondias Zysyss</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Virgil Acula - Brady Heaton&#10;Zeffladin Keareth - Caleb Medchill&#10;Luminitous - Devin McCarthy &#10;Azymondias Zysyss - Jsuten Speratos&#10;Shadrek - Nick Prouty&#10;Lfvi - Levi Wardell&#10;Klepto - Michael Cline&#10;Az Ralqul - Steve Calise&#10;Gwillion Silduine - Albert Blattler&#10;Augustus Invictus - Zachary Armine-Klein</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-10T15:35:54.183</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">wulfriick@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Ash Luna</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Syr</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Syr - Ash Luna&#10;Roland d'Argent - Adam Campbell-Kruger&#10;Leila Corvinus Villalobos - Nanette Mendoza&#10;Slip Jasset - Gil Ramirez&#10;Kenji Zhu-Lung - Mike Morales&#10;Ritari Cecil - Stephen McArthur&#10;Xannik - Tom Cassera&#10;Azair - Matthew Bozin&#10;Telltale - Andrew Riley-Frola&#10;Fletch - Liam Barber&#10;Markus - Peter Knauss&#10;Jin Yumiya - TJ Reyes&#10;Gappo - Forrester Sherrick</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s20"><Data ss:Type="DateTime">2025-12-10T18:58:51.243</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">gilthevlogsmith@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Gil Ramirez </Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Salomon Slip Jasset </Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">The Assassin's Arts</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Omentos Vanlavius - Sebastian Gatta&#10;Isabella Montaige - Navja Sol&#10;Dale Fjord - Ronald Domholt&#10;Maxwell - Chris Feufg (?)&#10;Flames Embrace - Sambi&#10;Nalain Calae - Rose Kochanek&#10;Vice - Morgan &#10;Emrys - Jesse Riley&#10;Rook (Slevin) - Katt Jean&#10;Jack Martindale - Clint Worley</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s20"><Data ss:Type="DateTime">2025-12-10T19:51:08.485</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">gilthevlogsmith@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Gil Ramirez </Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Salomon Slip Jasset </Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">The Assassin's Arts</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Quincy Demir - Trevor Ryan&#10;Cowardice - John Tarbuskovich&#10;Grace Given Freely - Matthew Phillips&#10;Rembrandt von Tweeblommen - James Oneil&#10;Rhistiel - Nick Kinzei&#10;Jaguar - Taylor Harris&#10;Ilusio - Michael Lancaster &#10;Tema - Amanda Cohen&#10;Doctor Amelya - Iris Do</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-10T22:31:04.738</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Augustus Invictus - Zachary Armine-Klein&#10;Sahar - Lily Thiemens&#10;Sols’tur - Corin Edwards&#10;Luminitous - Devin McCarthy&#10;Seeker by Light and Shadow - Jonny Martinez&#10;Kitter, The Withering Thorn - Nick Cronin&#10;Adya - Dominic Criscitiello&#10;Vaelore Cisero- Andrew Frejek&#10;Anileia Astraea - Adriana Beals&#10;Marco Tisaris - Ray Trevino&#10;Zil - Trevor la Fountaine</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2025-12-10T22:31:58.511</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Jaerial - James McCloskey&#10;Gya - Kathleen Rios (Tonks)&#10;Keeper of Hearth's Embers - Andrew Cunado&#10;Urgur Agmundr - Eric Brittain&#10;Benny Bingewood - Weston Durant&#10;Darow - Jake Steinmetz&#10;Mazarel Noctora - Dean Jackman&#10;The Persevering Hope - Nicholas Marko&#10;Vulen Bylar - Pyro Huffman</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s23"><Data ss:Type="DateTime">2025-12-13T21:43:09.706</Data></Cell>
+    <Cell ss:StyleID="s24"><Data ss:Type="String">adrain.case.ic@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s24"><Data ss:Type="String">James O'Neil</Data></Cell>
+    <Cell ss:StyleID="s24"><Data ss:Type="String">Rembrandt</Data></Cell>
+    <Cell ss:StyleID="s24"><Data ss:Type="String" x:Ticked="1">December 2025</Data></Cell>
+    <Cell ss:StyleID="s24"><Data ss:Type="String">The Assassin's Arts</Data></Cell>
+    <Cell ss:StyleID="s24"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s24"><Data ss:Type="String">Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s24"><Data ss:Type="String">Jaguar - Taylor, Slip - Gil, </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s20"><Data ss:Type="DateTime">2026-01-12T20:03:03.128</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">andrewtfrejek@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Andrew Frejek</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Skull Maggot</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Andrew Frejek - Skull Maggot&#10;Clint Worley - Jack Martindale&#10;Gil Ramirez - Slip Jasset&#10;Gordon Deal - Rolf Proudsmith&#10;Sean Clark - Ronan Callax&#10;Trevor Ryan - Quincy Desslalc Demir&#10;Max Pflueger - Daruis Dravik&#10;Micah Lamdin - Kheldarin&#10;Sebastian della Gatta - Kavu&#10;Shaun Wada - Sa'ad al Din Wajid&#10;Tom Cassera - Xannik&#10;Chris Rdangy-Fenry - Maxwell</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-12T20:19:02.772</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">moralesmike089@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mike Morales</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Kenji</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Avoye- Ashley Ferrum&#10;Virgil Acula- Brady Heaton&#10;Khar’tan- Brian Kibler&#10;Zeffladin Keareth- Caleb Medchill&#10;Val McAllister- Daniel West&#10;Roald Gould- Daniel Thwing&#10;Cassius Fynch- Jackson Korsgaard&#10;Kandoryn Pellintie- Jerrod Hayes &#10;Jarin’ael Aethyn- Jonathan Young &#10;Ryx- Justin Chan&#10;Zar’gest- Michel Wong&#10;Kenji- Mike Morales&#10;Saelinn Mordighan- Natasha Hayes&#10;Casutor- Nick Williams&#10;Ryo- Roel Mislan&#10;Sylver Sequoia- Russell Willoughby</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s20"><Data ss:Type="DateTime">2026-01-13T11:20:42.150</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">dealja@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Jason Deal</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Ard Proudsmith</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Listing IRL Name - Character Name (every trainer did this)&#10;&#10;Carlos Baldeon - Sayid Ibn Rashid Al Shaitan&#10;Christopher Rice - Vladmir Von Luthren&#10;Gasper Spinosa - Luxxaerys&#10;Grant Rogers - Wayland Tarsis&#10;Jason Deal - Ard Proudsmith&#10;Jeremiah Rick - Sir Dimaretis&#10;Brian McNeil - Cian O'Fael&#10;Cormac Sheehy - Rhain&#10;Neil Phelps - Braegor the Terrible &#10;Jacob Reardon - Otto Harring&#10;Albert Blattler - Gwillion Silduine&#10;Jake Steinmetz - Da'row&#10;Dominic Criscitiello - Adya</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-15T01:32:23.631</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">mpflueger@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Max Pflueger</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Darius Dravik</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The School of Suffering</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Skull Maggot - Andrew Frejek&#10;Jack Martindale - Clint Worley&#10;Slip Jasset - Gil Ramirez&#10;Rolf Proudsmith - Gordon Deal&#10;Ronan Caliax - Sean Clark&#10;Quincy Desslalc Demir - Trevor Ryan&#10;Daruis Dravik - Max Pflueger&#10;Kheldarin - Micah Lamdin&#10;Kavu - Sebastian della Gatta&#10;Sa'ad al Din Wajid - Shaun Wada&#10;Xannik - Tom Cassera&#10;Maxwell - Chris Rdangy-Fenry</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-15T20:26:48.518</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">thelastknighterrant@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Brady Heaton </Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Virgil Acula</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The School of Suffering</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Reniion Gauldir - AJ Lepe&#10;Virgil Acula - Brady Heaton&#10;Doctor Amelya - Iris Do&#10;Rai’byn Beleron - Jordan Irby&#10;Alira / Dawn's Radiance - Olivia Gobert-Hicks&#10;Laekmir Kottr - Pavana Somisetty&#10;Hyphitherean - Elliott Pullitto&#10;Junius - Aurum Pullitto&#10;Atticus Velyrone - Matt Salus&#10;Richard - Clint Duff&#10;Kandoryn Pellintie - Jerrod Hayes</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-15T20:30:36.579</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">thelastknighterrant@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Brady Heaton </Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Virgil Acula </Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The School of Suffering</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Virgil Acula - Brady Heaton&#10;Ikram Malverde - Ismael Alvarez&#10;Darius Dravik - Max Pflueger&#10;Tathlan Abyth - Phillip Stachelski&#10;Ainz the Foolish Mushroom - Isabel Robes&#10;Magpie of Scraps - Kenneth Han&#10;Jaguar - Taylor Harris&#10;Deacon Ariadne - William Tonx&#10;Aelis - Lesther Reynoso&#10;Ruinous Candor - Robert Perkins&#10;Aether Angishire - Andrew Perkins</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-16T15:43:17.500</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">abuczacki@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Andrew Buczacki</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Oak</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Luz Villalobos - Ana Alvarez&#10;Oak - Andrew Buczacki&#10;Haymond Valance Madok - Ashton Parks&#10;Strikarn Orson - Brian Williams&#10;Richard - Clint Duff&#10;Brocce Stoneheart - David Dandridge&#10;Luminitous - Devin McCarthy&#10;Lucada - Jeffrey Adams&#10;Aveus Mac Dris - John Charles Schmerker&#10;Baergrym Joybarrel - John Vescio&#10;Roderick - Jonathan Ying&#10;Mathias - Michael Butler&#10;Retitus Tenebris - Michael-Bryan Kelly&#10;Van Yel Ashke-Calarco - Sidney Domholdt&#10;Sagar Proudeyes - Steven Maus&#10;Thorkell Grimwaldsson - Van Franklin&#10;Augustus Invictus - Zachary Armine-Klein&#10;Cidolfus - Jonah Advento&#10;Casutor - Nick Williams&#10;Pebble McTuff - Keigin Tosh&#10;Derren Cross - Joshua Warner&#10;Khy'the - Justin Chan</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s20"><Data ss:Type="DateTime">2026-01-19T12:29:36.006</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">justensperatos@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Justen Speratos </Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Azymondias Zysyss </Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s21"><Data ss:Type="String">Player Name&#45;- Character Name &#10;&#10;Trainer&#45;- Justen Speratos&#45;- Azymondias Zysyss&#10;Albert Blattler&#45;- Gwillion Silduine, the Cross Eyed Tiger&#10;Ash Luna&#45;- Syrendra&#10;Clint Worley&#45;- Jack Martindale&#10;Collin Babcock&#45;- Audax&#10;Lux Icarian&#45;- Chimera&#10;Max Pflueger&#45;- Darius Dravik&#10;Michael Cline&#45;- Klepto&#10;Nick Prouty&#45;- Shadrek Dario&#10;Stephen McArthur&#45;- Cecil&#10;Steve Calise&#45;- AZ'Ralqul&#10;Ethan Eril&#45;- Aegir&#10;Rick Quitorcani&#45;- Rin Davos&#10;Nick Kinzel&#45;- Rhistel</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-25T17:16:44.116</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">sphader@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Matthew Salus</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Atticus Velyrone</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">1. Clemency of Dusk - Ben Hasenbalg&#10;2. Richard - Clint Duff&#10;3. Val McAllister&#10;4. Vitus Cassian - Ethan Bell&#10;5. Rai Atsushi - Jeff Gerard&#10;6. Lucada - Jeffrey Adams&#10;7. Atticus Velyrone - Matthew Salus&#10;8. Van Yel Ashke-Calarco - Sidney Domholdt&#10;9. Taylor Harrs - Apotheosis&#10;10. Kamiryu Kibou - Reiner Perillo&#10;11.  Sarest - Jacqueline Salow-Wiley&#10;12. Doctor Amelya - Iris Do</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-25T20:09:40.895</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">kitswells@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Kit Wells</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Ke’wyn</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">The Assassin's Arts</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Ke’wyn - Kit Wells&#10;Victory Wildsong- Cass Coomber&#10;Junius- Aurum Pallitto&#10;Doctor Amelya- Iris Do&#10;Snap- Ember Doherty&#10;Virgil Acula- Brady Heaton&#10;Ovela Miekka- Aisling Gorgon&#10;Jack of Spades- Clint Worley&#10;Omentos Ventavius- Sebastian della Gatta&#10;Isabella Montaigne- Najva Sol&#10;Rembrandt van Tweebloemen- James O’Neil&#10;Quincy Dessick Demir- Trevor Ryan&#10;Grace Given Freely- Matthew Phillips&#10;Darius Dravik- Max Pflueger&#10;Slip Jasset- Gil Ramirez&#10;Slevin- Katt Jean</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-29T14:43:13.138</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Jophiel Lito - Toya Raveneau&#10;Vidar Erikson - Ian Murtz&#10;CharlieI - Gillian Morris&#10;Brollin Whitestone - Trevor West&#10;Keeper of Hearth's Embers - Andrew Cunado&#10;Vaelore Cisero - Andrew Frejek&#10;Strikarn Orson - Brian Williams&#10;Luminitous - Devin McCarthy&#10;Jaerial Daxsharial - James McCloskey&#10;Seeker by Light and Shadow - Jonny Martinez&#10;Gya - Kathleen Rios&#10;Sahar Daxsharia - Lily Thiemens</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-29T14:47:04.029</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Hanlon Augner - Ian McGarraugh&#10;Blackwell - Jose Favela&#10;Aveus Mac Dris - John Charles Schmerker&#10;Vice - Morgan Smith&#10;Anileia Tigaris - Adriana Beals&#10;Vaelore Cisero - Andrew Frejek&#10;Sols'tur - Corin Edwards&#10;Mazarel Noctara - Dean Jackman&#10;Urgur Agmundr - Eric Brittain&#10;Seeker by Light and Shadow - Jonny Martinez&#10;The Persevering Hope - Nicholas Marko&#10;Kitter, The Withering Thorn - Nick Cronin</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s17"><Data ss:Type="DateTime">2026-01-29T14:49:33.821</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s18"><Data ss:Type="String">Braegor the Terrible - Neil Phelps&#10;Otto Harring - Jacob Reardon&#10;Gwillion Silduine - Albert Blattler&#10;Wayland Tarsis - Grant Rogers&#10;Sayid Ibn Rashid Al Shaitan - Carlos Baldeon&#10;Luxxaerys - Gasper Spinosa&#10;Vladmir Von Luthren - Christopher Rice&#10;Ard Proudsmith - Jason Deal&#10;Adya - Dominic Criscitiello&#10;Darow - Jake Steinmetz&#10;Marco Interritus - Ray Trevino</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <NoSummaryRowsBelowDetail/>
+   <NoSummaryColumnsRightDetail/>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="jan26 for export">
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="14" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="66" ss:DefaultRowHeight="15.75">
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Timestamp</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Email Address</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Real Name</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Character Name</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What game did you organize the practice session? (e.g. December 2025)</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What Style did you practice at this session? (if the session was for multiple styles, please make multiple entries)</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">When was this practice session?</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">What ooc rules did you review in this session?</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">Please list the participants in this format.&#10;Character Name (as listed on character sheet) - Player name (as listed on character sheet).&#10;&#10;Example&#10;Gaeden - Scott Ross&#10;Atticus - Matt Salus </Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-12T20:03:03.128</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">andrewtfrejek@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Andrew Frejek</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Skull Maggot</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Andrew Frejek - Skull Maggot&#10;Clint Worley - Jack Martindale&#10;Gil Ramirez - Slip Jasset&#10;Gordon Deal - Rolf Proudsmith&#10;Sean Clark - Ronan Callax&#10;Trevor Ryan - Quincy Desslalc Demir&#10;Max Pflueger - Daruis Dravik&#10;Micah Lamdin - Kheldarin&#10;Sebastian della Gatta - Kavu&#10;Shaun Wada - Sa'ad al Din Wajid&#10;Tom Cassera - Xannik&#10;Chris Rdangy-Fenry - Maxwell</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-12T20:19:02.772</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">moralesmike089@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Mike Morales</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Kenji</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Avoye- Ashley Ferrum&#10;Virgil Acula- Brady Heaton&#10;Khar’tan- Brian Kibler&#10;Zeffladin Keareth- Caleb Medchill&#10;Val McAllister- Daniel West&#10;Roald Gould- Daniel Thwing&#10;Cassius Fynch- Jackson Korsgaard&#10;Kandoryn Pellintie- Jerrod Hayes &#10;Jarin’ael Aethyn- Jonathan Young &#10;Ryx- Justin Chan&#10;Zar’gest- Michel Wong&#10;Kenji- Mike Morales&#10;Saelinn Mordighan- Natasha Hayes&#10;Casutor- Nick Williams&#10;Ryo- Roel Mislan&#10;Sylver Sequoia- Russell Willoughby</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-13T11:20:42.150</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">dealja@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Jason Deal</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Ard Proudsmith</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Listing IRL Name - Character Name (every trainer did this)&#10;&#10;Carlos Baldeon - Sayid Ibn Rashid Al Shaitan&#10;Christopher Rice - Vladmir Von Luthren&#10;Gasper Spinosa - Luxxaerys&#10;Grant Rogers - Wayland Tarsis&#10;Jason Deal - Ard Proudsmith&#10;Jeremiah Rick - Sir Dimaretis&#10;Brian McNeil - Cian O'Fael&#10;Cormac Sheehy - Rhain&#10;Neil Phelps - Braegor the Terrible &#10;Jacob Reardon - Otto Harring&#10;Albert Blattler - Gwillion Silduine&#10;Jake Steinmetz - Da'row&#10;Dominic Criscitiello - Adya</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-15T01:32:23.631</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">mpflueger@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Max Pflueger</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Darius Dravik</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">The School of Suffering</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Skull Maggot - Andrew Frejek&#10;Jack Martindale - Clint Worley&#10;Slip Jasset - Gil Ramirez&#10;Rolf Proudsmith - Gordon Deal&#10;Ronan Caliax - Sean Clark&#10;Quincy Desslalc Demir - Trevor Ryan&#10;Daruis Dravik - Max Pflueger&#10;Kheldarin - Micah Lamdin&#10;Kavu - Sebastian della Gatta&#10;Sa'ad al Din Wajid - Shaun Wada&#10;Xannik - Tom Cassera&#10;Maxwell - Chris Rdangy-Fenry</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-15T20:26:48.518</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">thelastknighterrant@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Brady Heaton </Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Virgil Acula</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">The School of Suffering</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Reniion Gauldir - AJ Lepe&#10;Virgil Acula - Brady Heaton&#10;Doctor Amelya - Iris Do&#10;Rai’byn Beleron - Jordan Irby&#10;Alira / Dawn's Radiance - Olivia Gobert-Hicks&#10;Laekmir Kottr - Pavana Somisetty&#10;Hyphitherean - Elliott Pullitto&#10;Junius - Aurum Pullitto&#10;Atticus Velyrone - Matt Salus&#10;Richard - Clint Duff&#10;Kandoryn Pellintie - Jerrod Hayes</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-15T20:30:36.579</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">thelastknighterrant@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Brady Heaton </Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Virgil Acula </Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">The School of Suffering</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Virgil Acula - Brady Heaton&#10;Ikram Malverde - Ismael Alvarez&#10;Darius Dravik - Max Pflueger&#10;Tathlan Abyth - Phillip Stachelski&#10;Ainz the Foolish Mushroom - Isabel Robes&#10;Magpie of Scraps - Kenneth Han&#10;Jaguar - Taylor Harris&#10;Deacon Ariadne - William Tonx&#10;Aelis - Lesther Reynoso&#10;Ruinous Candor - Robert Perkins&#10;Aether Angishire - Andrew Perkins</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-16T15:43:17.500</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">abuczacki@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Andrew Buczacki</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Oak</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Luz Villalobos - Ana Alvarez&#10;Oak - Andrew Buczacki&#10;Haymond Valance Madok - Ashton Parks&#10;Strikarn Orson - Brian Williams&#10;Richard - Clint Duff&#10;Brocce Stoneheart - David Dandridge&#10;Luminitous - Devin McCarthy&#10;Lucada - Jeffrey Adams&#10;Aveus Mac Dris - John Charles Schmerker&#10;Baergrym Joybarrel - John Vescio&#10;Roderick - Jonathan Ying&#10;Mathias - Michael Butler&#10;Retitus Tenebris - Michael-Bryan Kelly&#10;Van Yel Ashke-Calarco - Sidney Domholdt&#10;Sagar Proudeyes - Steven Maus&#10;Thorkell Grimwaldsson - Van Franklin&#10;Augustus Invictus - Zachary Armine-Klein&#10;Cidolfus - Jonah Advento&#10;Casutor - Nick Williams&#10;Pebble McTuff - Keigin Tosh&#10;Derren Cross - Joshua Warner&#10;Khy'the - Justin Chan</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-19T12:29:36.006</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">justensperatos@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Justen Speratos </Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Azymondias Zysyss </Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Six Dragons</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Player Name&#45;- Character Name &#10;&#10;Trainer&#45;- Justen Speratos&#45;- Azymondias Zysyss&#10;Albert Blattler&#45;- Gwillion Silduine, the Cross Eyed Tiger&#10;Ash Luna&#45;- Syrendra&#10;Clint Worley&#45;- Jack Martindale&#10;Collin Babcock&#45;- Audax&#10;Lux Icarian&#45;- Chimera&#10;Max Pflueger&#45;- Darius Dravik&#10;Michael Cline&#45;- Klepto&#10;Nick Prouty&#45;- Shadrek Dario&#10;Stephen McArthur&#45;- Cecil&#10;Steve Calise&#45;- AZ'Ralqul&#10;Ethan Eril&#45;- Aegir&#10;Rick Quitorcani&#45;- Rin Davos&#10;Nick Kinzel&#45;- Rhistel</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-25T17:16:44.116</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">sphader@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Matthew Salus</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Atticus Velyrone</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Mountain Meets the Sky</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">1. Clemency of Dusk - Ben Hasenbalg&#10;2. Richard - Clint Duff&#10;3. Val McAllister&#10;4. Vitus Cassian - Ethan Bell&#10;5. Rai Atsushi - Jeff Gerard&#10;6. Lucada - Jeffrey Adams&#10;7. Atticus Velyrone - Matthew Salus&#10;8. Van Yel Ashke-Calarco - Sidney Domholdt&#10;9. Taylor Harrs - Apotheosis&#10;10. Kamiryu Kibou - Reiner Perillo&#10;11.  Sarest - Jacqueline Salow-Wiley&#10;12. Doctor Amelya - Iris Do</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-25T20:09:40.895</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">kitswells@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Kit Wells</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Ke’wyn</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">The Assassin's Arts</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Ke’wyn - Kit Wells&#10;Victory Wildsong- Cass Coomber&#10;Junius- Aurum Pallitto&#10;Doctor Amelya- Iris Do&#10;Snap- Ember Doherty&#10;Virgil Acula- Brady Heaton&#10;Ovela Miekka- Aisling Gorgon&#10;Jack of Spades- Clint Worley&#10;Omentos Ventavius- Sebastian della Gatta&#10;Isabella Montaigne- Najva Sol&#10;Rembrandt van Tweebloemen- James O’Neil&#10;Quincy Dessick Demir- Trevor Ryan&#10;Grace Given Freely- Matthew Phillips&#10;Darius Dravik- Max Pflueger&#10;Slip Jasset- Gil Ramirez&#10;Slevin- Katt Jean</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-29T14:43:13.138</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Friday Evening (before sunrise)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Jophiel Lito - Toya Raveneau&#10;Vidar Erikson - Ian Murtz&#10;CharlieI - Gillian Morris&#10;Brollin Whitestone - Trevor West&#10;Keeper of Hearth's Embers - Andrew Cunado&#10;Vaelore Cisero - Andrew Frejek&#10;Strikarn Orson - Brian Williams&#10;Luminitous - Devin McCarthy&#10;Jaerial Daxsharial - James McCloskey&#10;Seeker by Light and Shadow - Jonny Martinez&#10;Gya - Kathleen Rios&#10;Sahar Daxsharia - Lily Thiemens</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-29T14:47:04.029</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Saturday Morning (before noon)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Hanlon Augner - Ian McGarraugh&#10;Blackwell - Jose Favela&#10;Aveus Mac Dris - John Charles Schmerker&#10;Vice - Morgan Smith&#10;Anileia Tigaris - Adriana Beals&#10;Vaelore Cisero - Andrew Frejek&#10;Sols'tur - Corin Edwards&#10;Mazarel Noctara - Dean Jackman&#10;Urgur Agmundr - Eric Brittain&#10;Seeker by Light and Shadow - Jonny Martinez&#10;The Persevering Hope - Nicholas Marko&#10;Kitter, The Withering Thorn - Nick Cronin</Data></Cell>
+   </Row>
+   <Row ss:Height="12.75">
+    <Cell ss:StyleID="s27"><Data ss:Type="DateTime">2026-01-29T14:49:33.821</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">cormacsheehy0@gmail.com</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Cormac Sheehy</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Rhain</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String" x:Ticked="1">January 2026</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Swanwall</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Saturday Evening (before game end)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Charging &#45;- including charging between gaps. (pg. 352), Use of the Caution keyword. (pg. 339), The Flurry Rule. (pg. 350), Parry, Dodge, Willpower, Magic Resist, and Physical Resist. (pg. 335), Roleplaying your damage and acknowledging successful attacks (pg. 325)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">Braegor the Terrible - Neil Phelps&#10;Otto Harring - Jacob Reardon&#10;Gwillion Silduine - Albert Blattler&#10;Wayland Tarsis - Grant Rogers&#10;Sayid Ibn Rashid Al Shaitan - Carlos Baldeon&#10;Luxxaerys - Gasper Spinosa&#10;Vladmir Von Luthren - Christopher Rice&#10;Ard Proudsmith - Jason Deal&#10;Adya - Dominic Criscitiello&#10;Darow - Jake Steinmetz&#10;Marco Interritus - Ray Trevino</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <NoSummaryRowsBelowDetail/>
+   <NoSummaryColumnsRightDetail/>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>
