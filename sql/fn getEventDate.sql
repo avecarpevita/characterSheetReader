@@ -17,9 +17,9 @@ set @eventName=ltrim(rtrim(substring(@eventName,patindex('% %',@eventName),100))
 
 set @eventName=ltrim(rtrim(replace(@eventName,' ',' 1 ')))--Should not be something like 'December 1 2025'
 
-
-
-set @retVal=try_cast(@eventName as date)
+declare @try varchar(20)=try_cast(@eventName as date) 
+	
+	set @retVal=@try
 
 --select dbo.getEventDate('Event 87 December 2025',null)
 --select dbo.cleanRawEventName('Event 87 December 2025',null)

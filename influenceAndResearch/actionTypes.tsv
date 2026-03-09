@@ -1,0 +1,43 @@
+action	action count 2025 & 2026	mod request	type of influence
+Abduction	1	yes	Underworld
+Anarchy	1	no	Underworld
+Archival Backup	1	no	Academic
+Basic Scouting	15	no	Military
+Bestiary Analysis	1	no	Academic
+Contact Combatants	3	yes	Military
+Contact Merchant	1	yes	Economic
+Contact Scholars	9	yes	Academic
+Contact the Influential	4	yes	Political
+Contact Underworld	2	yes	Underworld
+Cultural Understanding	6	no	Political
+Eavesdrop	6	no	Political
+Etiquette	2	no	Political
+Exotic Gift	1	no	Political
+Follow the Money	17	no	Economic
+Guard Duty	1	no	Military
+Investigate Alliances	3	no	Political
+Investigate Criminal History	3	no	Underworld
+Investigate Enemies	7	no	Political
+Investigate Fame	3	no	Political
+Investigate History	39	no	Academic
+Investigate Loved Ones 	1	no	Underworld
+Investigate Political Stance	1	no	Political
+Investigate Prominent Figures	1	no	Political
+Investigate Prominent Groups	1	no	Political
+Investigate Region	5	no	Military
+Investigate Rivals	2	no	Political
+Investigate Rumors	67	no	Underworld
+Investigate Scandals	3	no	Political
+Investigate Vices & Routines	5	no	Underworld
+Investigate Wealth	5	no	Political
+Legal Code	1	no	Political
+Military Insight	23	no	Military
+Open-Ended Research	148	no	n/a
+Political Insight	37	no	Political
+Second Opinion	3	no	Academic
+Slaughter Livestock	4	no	Economic
+Speaking Fees	1	no	Academic
+Spread Through Song	23	no	Political
+State of the Court	7	no	Political
+Underworld Insight	13	no	Underworld
+Vandal's Message	1	no	Underworld

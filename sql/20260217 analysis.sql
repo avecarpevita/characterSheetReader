@@ -18,30 +18,61 @@ select c.playerName,c.characterName
 select * 
 	into #work from cte_charactersLast3Games
 		where eventName is not null
+drop table if exists #x
+select distinct rawEventName,rawEventDate,eventName,eventDate into #x from #work e
+create unique clustered index rr on #x(rawEventName,rawEventDate)
+drop table if exists #x2
+update #x
+	set eventDate=dbo.getEventDate(eventName,try_cast(e.rawEventDate as date))
+	from #x e
 update w
-	set w.eventDate=dbo.getEventDate(eventName,rawEventDate)
-	from #work w
+	set w.eventDate=x.eventDate
+	from #work w join #x x on x.rawEventName=w.rawEventName and x.rawEventDate=x.rawEventDate
 
-delete #work where eventDate<'2020.01.01'
+#work where eventDate is null
+#work where eventName is null
 
-select eventName,count(distinct playerName) playerCount,count(distinct characterName) characterCount from #work group by eventName order by min(eventDate) desc
+select eventName,count(distinct playerName) playerCount,count(distinct characterName) characterCount from #work 
+	where eventName>='Event 86 September 2025'
+	group by eventName order by min(eventDate) desc
 
-eventName                                                                                            playerCount characterCount
+		
+
 ---------------------------------------------------------------------------------------------------- ----------- --------------
-Event 87 December 2025                                                                               592         716
-Event 86 September 2025                                                                              469         561
-Event 85 August 2025                                                                                 490         589
-Event 84 April 2025                                                                                  656         775
-Event 83 March 2025                                                                                  637         755
-Event 82 February 2025                                                                               624         734
-Event 81 December 2024                                                                               588         686
-Event 80 November 2024                                                                               574         666
-Event 79 September 2024                                                                              564         655
-Event 78 August 2024                                                                                 552         647
-Event 77 July 2024                                                                                   501         591
+Event 88 January 2026                                                                                581         679
+Event 87 December 2025                                                                               609         737
+Event 85 August 2025                                                                                 491         590
+Event 86 September 2025                                                                              475         567
+Event 84 April 2025                                                                                  656         777
+Event 83 March 2025                                                                                  638         757
+Event 82 February 2025                                                                               624         736
+Event 80 November 2024                                                                               572         664
+Event 81 December 2024                                                                               588         687
+Event 79 September 2024                                                                              560         652
+Event 78 August 2024                                                                                 549         644
 Event 76 April 2024                                                                                  484         568
-Event 75 March 2024                                                                                  484         568
-Event 74 February 2024                                                                               530         617
+Event 75 March 2024                                                                                  483         568
+Event 73 December 2023                                                                               535         616
+Event 72 October 2023                                                                                608         693
+Event 71 September 2023                                                                              519         598
+Event 77 July 2024                                                                                   494         584
+Event 74 February 2024                                                                               529         617
+Event 65 December 2022                                                                               445         517
+Event 64 November 2022                                                                               488         557
+Event 63 September 2022                                                                              450         504
+Event 62 August 2022                                                                                 428         488
+Event 70 August 2023                                                                                 525         606
+Event 69 July 2023                                                                                   553         643
+Event 68 April 2023                                                                                  541         628
+Event 60 April 2022                                                                                  441         495
+Event 67 March 2023                                                                                  496         577
+Event 66 February 2023                                                                               410         478
+Event 59 March 2022                                                                                  431         481
+Event 56 November 2021                                                                               415         457
+Event 57 December 2021                                                                               409         460
+Event 61 July 2022                                                                                   388         437
+Event 58 February 2022                                                                               421         470
+Event 55 September 2021                                                                              366         399
 
 --dedupe to latest event
 drop table if exists #deduped
@@ -61,35 +92,40 @@ drop table if exists #deduped
 create unique clustered index cp on #deduped(playerName) --unique to players
 
 --retain only last 3 games (Sep25, Dec25, Jan26)
-delete #deduped where eventDate<'2025.09.01'
+delete #deduped where eventName<'Event 86 September 2025'
 
 select eventName,count(*) 
 	from #deduped
 	group by eventName
+	order by 1 desc
 
-
-select top 10 dbo.cleanRawCulture(culture,bloodline) culture
-	,count(*) numberOfMainCharacters
+select top 300 dbo.cleanRawCulture(culture,bloodline) culture
+	,count(*) [# active main characters]
 	from #deduped group by dbo.cleanRawCulture(culture,bloodline) order by 2 desc
 
-select top 10 dbo.cleanRawReligion(religion) culture
-	,count(*) numberOfMainCharacters
+select top 20 dbo.cleanRawReligion(religion) religion
+	,count(*) [# active main characters]
 	from #deduped group by dbo.cleanRawReligion(religion) order by 2 desc
+
+select top 20 dbo.cleanRawReligion(religion) religion
+	,count(*) [# active main characters]
+	from #deduped where cpGrouping in ('[tier 1] 0-2 games')
+	group by dbo.cleanRawReligion(religion) order by 2 desc
 
 --median/avg CP
 SELECT DISTINCT
     PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY spentCP) OVER (PARTITION BY 1) AS MedianValue
 FROM
     #deduped;		--114
-select avg(spentCp*1.0) from #deduped--114, 135.452141
+select avg(spentCp*1.0) from #deduped--120, 139.200517
 
 --bands
 declare @total float=(select count(*) from #deduped)
-select cpGrouping,count(*) numberOfMainCharacters
+select cpGrouping,count(*) [# active main characters]
 	,convert(varchar,convert(numeric(4,1),count(*)/@total*100))+'%' percentageOfPlayers
-	from #deduped 
+	from #deduped where cpGrouping is not null
 		group by cpGrouping order by 1
-
+		
 /*
 ```
 eventName               playerCount characterCount
