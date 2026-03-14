@@ -1,14 +1,8 @@
 use tm
-go
-create or alter proc buildAnchorPointSheet
-as
+
+--ALL OF THIS FUNCTIONALITY IS NOW IN sp buildAnchorPointSheet
+
 /*
-builds the updated sheet from tbl anchorChangeLog
-I then use that to full replace my detailed sheet
-that will also be a DUMP of anchorChangeLog -- which I can modifiy and re-import to restate anchorChangeLog
-*/
-begin
-set nocount on
 
 drop table if exists #earned
 select playerName
@@ -31,44 +25,26 @@ select playerName
 		where eventType='S'
 	group by playerName
 
-
-
 drop table if exists #points
-;with cte as (
-select a.playerName,a.characterId
-	,pointChange 
-	--,STRING_AGG(eventName+': '+notes, ', ') notes
-	,row_number() over(partition by a.playerName order by spentCp desc) rn
-		from anchorChangeLog a
-		left join rawCPData r on r.characterId=a.characterId)
-	select playerName
-		,sum(pointChange) pointsRemaining
-		,min(case when rn=1 then characterId end) characterId
-		into #points
-		from cte group by playerName
+select playerName
+	,sum(pointChange) pointsRemaining 
+	,STRING_AGG(eventName+': '+notes, ', ') notes
+	,min(characterId) characterId
+	into #points from anchorChangeLog group by PlayerName
 
---select playerName from #points group by playerName having count(*)>1
---select * from #points where playerName in (select playerName from #points group by playerName having count(*)>1) order by playerName
-
-
---dump current rollups for printing
---sheet is here https://docs.google.com/spreadsheets/d/1Mx0VpTE4YvObCOEV7enUb0DZof-AkbekaFARlq6kXWI
+drop table if exists #allPlayers
 select p.playerName
 	,isnull(e.earningEvents,'') earningEvents
 	,isnull(s.spendEvents,'') spendEvents
 	,isnull(s.spendEventsScrubbed,'') spendEventsScrubbed
 	,p.pointsRemaining
-	,p.characterId
+	,isnull(p.notes,'') notes
+	,characterId
+	into #allPlayers
 	from #points p
 		left join #earned e on e.playerName=p.playerName
 		left join #spent s on s.playerName=p.playerName
-order by p.playerName 
-
---dump the log to store in the 2nd tab for backup
-select * from anchorChangeLog order by playerName,id
-
-
-
+		
 drop table if exists #work
 ;with cte_charactersLast3Games as (
 select c.playerName,c.characterName
@@ -114,14 +90,30 @@ drop table if exists #deduped
 ;with cte as (select *,row_number() over(partition by playerName order by spentCP desc) rn2 from #deduped) delete cte where rn2>1
 create unique clustered index cp on #deduped(playerName) --unique to players
 
---third gives me the negatives with emails
+
+
 select a.*,r.email
-	,(select eventName from #deduped e where e.playerName=r.playerName) [Last Event in Sheets]
-	,(select top 1 eventName+' '+ticketType from tickets t where t.playerName=r.playerName order by eventDate desc) [Last Event in Tickets]
-	from #points a
+	,(select eventName from #deduped e where e.playerName=r.playerName) eventName
+	,(select top 1 eventName+' '+ticketType from tickets t where t.playerName=r.playerName order by eventDate desc)
+	from #allPlayers a 
 		left join rawCpData r on r.characterId=a.characterId
 		where pointsRemaining<0
 		order by playerName
 
+/*
 
-end
+crfelley@gmail.com
+heradewan@gmail.com
+mtlancaster54@gmail.com
+green.left.eye@gmail.com
+awarenyx@gmail.com
+
+My records show that you are in the negative on anchor points. 
+I've just posted the opportunities for the April event here.
+https://discord.com/channels/168929364271038464/747663220143292507/1482018373989826602
+The tracking form is here:
+https://docs.google.com/spreadsheets/d/1VXufjsrcyVLM6Oyhq22-CifnUq2dm6AXEPO-V8h9QCc/edit?usp=sharing
+
+If there's an error, please let me know.
+
+*/

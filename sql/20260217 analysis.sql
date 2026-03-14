@@ -127,6 +127,10 @@ select cpGrouping,count(*) [# active main characters]
 		group by cpGrouping order by 1
 		
 /*
+select * from #deduped where spentCp>=300
+#deduped where playerName like '%oliv%'
+#deduped where playerName like '%liza%'
+
 ```
 eventName               playerCount characterCount
 ----------------------- ----------- --------------
