@@ -61,6 +61,9 @@ select actionType,count(*) from #work
 	where eventName like 'Event % 202[5/6]'
 	group by actionType order by 1
 
+select actionType,count(*) from #work 
+	where eventName like 'Event % 202[5/6]'
+	group by actionType order by 2 desc
 
 drop table if exists #actionTypes
 create table #actionTypes (

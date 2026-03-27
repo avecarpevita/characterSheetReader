@@ -10,6 +10,9 @@ select @rawCulture=ltrim(rtrim(@rawCulture))
 
 if @retval is null and @rawCulture like '%citadel%' begin; set @retVal='Cultural Effendal'; goto eoj; end
 
+if @retval is null and @rawCulture like '%Radolond%' begin; set @retVal='Cultural Effendal'; goto eoj; end
+if @retval is null and @rawCulture like '%Ranes%' begin; set @retVal='Cultural Effendal'; goto eoj; end
+
 if @retval is null and @rawCulture like '%endurant%' begin; set @retVal='Cultural Effendal'; goto eoj; end
 
 if @retval is null and @rawCulture like '%Effendal%' begin; set @retVal='Cultural Effendal'; goto eoj; end
@@ -23,6 +26,7 @@ if @retval is null and @rawCulture like '%Oni''ven%' begin; set @retVal='Cultura
 if @retval is null and @rawCulture like '%Etilvor%' begin; set @retVal='Cultural Effendal'; goto eoj; end
 
 if @retval is null and @rawCulture like '%Castle%th%n%' begin; set @retVal='Castle Thorn'; goto eoj; end
+if @retval is null and @rawCulture like '%Caslte Thorn%' begin; set @retVal='Castle Thorn'; goto eoj; end
 
 if @retval is null and @rawCulture like '%Dace%' begin; set @retVal='Dace'; goto eoj; end
 

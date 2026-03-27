@@ -110,6 +110,7 @@ set @retVal=case
 	when @eventName like '%event 86%' then 'Event 86 September 2025' 
 	when @eventName like '%event 87%' then 'Event 87 December 2025' 
 	when @eventName like '%event 88%' then 'Event 88 January 2026' 
+	when @eventName like '%event 89%' then 'Event 89 February 2026' 
 	when month(try_cast(@eventDate as date))=2     and year(try_cast(@eventDate as date))=2011     then 'Event 1 February 2011' 
 	when month(try_cast(@eventDate as date))=5     and year(try_cast(@eventDate as date))=2011     then 'Event 2 May 2011' 
 	when month(try_cast(@eventDate as date))=7     and year(try_cast(@eventDate as date))=2011     then 'Event 3 July 2011' 
@@ -208,6 +209,7 @@ set @retVal=case
 	when try_cast(@eventDate as date) between '2025.09.01' and '2025.09.30' then 'Event 85 September 2025'
 	when try_cast(@eventDate as date) between '2025.12.01' and '2025.12.31' then 'Event 87 December 2025'
 	when try_cast(@eventDate as date) between '2026.01.01' and '2026.01.31' then 'Event 88 January 2026'
+	when try_cast(@eventDate as date) between '2026.02.01' and '2026.02.31' then 'Event 89 January 2026'
 		else null end
 
 set @retval=ltrim(rtrim(@retval))		

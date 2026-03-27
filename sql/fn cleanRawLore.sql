@@ -35,7 +35,18 @@ while @retval like '%  %'
 --remove anything with "POK Lore"
 if @retval like '%POK%Lore%' set @retval=null
 
---handle the (magic) 
+--handle the (restricted lores and REALLY clean them up)
+
+if @retval like '%assass%' set @retVal='R. Lore: The Assassin''s Arts'
+if @retval like '%Blood Som%' set @retVal='R. Lore: Blood Sommelier'
+if @retval like '%litho%y%' set @retVal='R. Lore: Lithoturgy'
+if @retval like '%Magic%Theory%' set @retVal='R. Lore: Magical Theory'
+if @retval like '%mount%sky%' set @retVal='R. Lore: Mountain Meets the Sky'
+if @retval like '%Sewer%' set @retVal='R. Lore: Catacombs'
+if @retval like '%treat%meth%' set @retVal='R. Lore: Treatise Methodologies'
+
+
+
 
 
 
