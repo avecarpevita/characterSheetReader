@@ -160,7 +160,8 @@ select r.characterId
 --check for tests and prereqs
 --SOS first
 
---#revisedMasterExploded where characterId='7EQ5W' and style like '%suff%'
+--select * from #newMaster where realName like 'oliv%'
+update #newMaster set practiceCount=3, gameDetail='January 2026, December 2025, February 2026' where characterId='7DJ4V'
 
 select * from #newMaster where practiceCount>=3 and style like '%suff%' order by 2--8
 R. Lore - School of Suffering
@@ -259,3 +260,42 @@ characterId realName                            characterName
 8XZRD       Dean Jackman                        Mazarel Noctara
 8YARE       Adriana Beals                       Anileia Tigaris
 8YQPE       Corin Edwards                       Sóls'tur
+
+
+
+*/
+
+--also check against tickets
+select distinct n.characterId
+	,convert(varchar(35),n.realName) realName
+	,convert(varchar(35),n.characterName) characterName
+	,(select string_agg(game,', ') from #revisedMasterExploded re where re.characterId=n.characterId and re.style=n.style)
+	,(select top 1 ticketType from tickets t where eventName='Event 90 April 2026' and t.playerName=n.realName)
+	from #newMaster n join rawSkills s on s.characterId=n.characterId 
+	
+
+	where practiceCount>=3 and style like '%suff%' 
+		and (s.rawskill like '%suff%'
+		or s.rawskill like '%Forearm%'
+		or s.rawskill like '%Shin%')
+	order by 1
+
+7K4WB	Christopher Rainey-Felley	Maxwell	December 2025, February 2026, January 2026	Full Event: NPC Saturday 10pm-2am--npc shift is during the test
+
+
+
+
+select distinct n.characterId
+	,convert(varchar(35),n.realName) realName
+	,convert(varchar(35),n.characterName) characterName
+,(select top 1 ticketType from tickets t where eventName='Event 90 April 2026' and t.playerName=n.realName)
+	from #newMaster n join rawSkills s on s.characterId=n.characterId 
+	where practiceCount>=3 and style like '%swan%' 
+		and (s.rawskill like '%Swan%w%'
+		or s.rawskill like '%Armor%Train%'
+		or s.rawskill like '%oversiz%' or s.rawskill like '%weapon%master%'
+		or s.rawskill like '%armorsmith%' or s.rawskill like '%tailor%'
+		or s.rawskill like '%Fortify%' or s.rawskill like '%Field Repair%'
+		)
+	order by 1
+	--looks good
