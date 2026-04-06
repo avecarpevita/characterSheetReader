@@ -47,27 +47,33 @@ bulk insert #influence from 'C:\characterSheetReader\influenceAndResearch\apr26A
 
 --combine
 drop table if exists #combine
-select [timestamp],email,ticketNum,playerName,characterName,characterId,'open-ended research' as [action] 
-	,'research topic: '+researchTopic as [actionDetail]
-	,'goal: '+goal as [actionGoal]
-	,'research object(s): '+researchObject as actionDetail2
-	,'researcher lores: '+(select string_agg(dbo.cleanRawLore(rawSkill),', ') from rawSkills s where s.characterId=r.characterId and s.rawSkill like '%lore%') as actionDetail3
-	,'assistant lores: '+(select string_agg(dbo.cleanRawLore(rawSkill),', ') from rawSkills s where s.characterId in (r.assistant1,r.assistant2) and s.rawSkill like '%lore%') as actionDetail4
+select storyStaff as [requested Story Staff]
+	,storyStaff as [final Story Staff]
+	,email,ticketNum,playerName,characterName,characterId,'open-ended research' as [action] 
+	,'research topic: '+researchTopic as [Action Detail]
+	,goal as c
+	,'research object(s): '+researchObject as [Action Detail 2]
+	,'researcher lores: '+(select string_agg(dbo.cleanRawLore(rawSkill),', ') from rawSkills s where s.characterId=r.characterId and s.rawSkill like '%lore%') as [Action Detail 3]
+	,'assistant lores: '+(select string_agg(dbo.cleanRawLore(rawSkill),', ') from rawSkills s where s.characterId in (r.assistant1,r.assistant2) and s.rawSkill like '%lore%') as [Action Detail 4]
 	into #combine
 	from #research r
 union all
-select [timestamp],email,ticketNum,playerName,characterName,characterId,influenceAction as [action] 
-	,influenceDetail as [actionDetail]
-	,goal as [actionGoal]
-	,'' actionDetail2
-	,'' actionDetail3
-	,'' actionDetail4
+select storyStaff as [requested Story Staff]
+	,storyStaff as [final Story Staff]
+	,email,ticketNum,playerName,characterName,characterId,influenceAction as [action] 
+	,influenceDetail as [Action Detail]
+	,goal as [Action Detail]
+	,'' [Action Detail 2]
+	,'' [Action Detail 3]
+	,'' [Action Detail 4]
 	from #influence
 		
 
 
 --look for anomolous or duped tickets
-select * from #combine
+
 delete #combine where ticketNum='4JJ3NNYU'
+update #combine set [requested Story Staff]=isnull([requested Story Staff],''), [final Story Staff]=isnull([final Story Staff],'')
 
 
+select * from #combine
