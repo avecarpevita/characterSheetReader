@@ -10,16 +10,28 @@ SELECT @json = BulkColumn
 FROM OPENROWSET(BULK 'C:\characterSheets20250916\json\Fei Leung (Anziel).json', SINGLE_CLOB) AS j; 
 
 exec readCharacterJsonForCpData @characterJsonPath='C:\characterSheets20250916\json\Fei Leung (Anziel).json', @show=1
-exec readCharacterJsonForCpData @characterJsonPath='C:\characterSheets20251230\json\Gaige Geyer (Edo).json', @show=1
-select * from rawCPDAta
+exec readCharacterJsonForCpData @characterJsonPath='C:\characterSheets20260507\json\Oak Lane (DeLunaria).json', @show=1
+
+
+exec readCharacterJsonForCpData @characterJsonPath='c:/characterSheets20260507/json/Or Taylor (Vox MaCairn) - Pregen Conversion.json', @show=1
+
+exec readCharacterJsonForCpData @characterJsonPath='C:\characterSheets20260507\json\Olivia Lizardo (Odile) [STAFF].json', @show=1
+
+
+
+select * from rawCPDAta order by playerName
+select * from rawEvents
+
+select * from rawEvents
 
 --2026.01.21--added characterId, email, culture, religion, bloodline(race), hp, mana, ip
+--2026.05.07--added characterId to rawEvents
 
 */
 begin
 set nocount on
 
---declare @characterJsonPath nvarchar(max)='C:\characterSheets20251230\json\Gaige Geyer (Tekon).json', @show bit=1
+--declare @characterJsonPath nvarchar(max)='C:\characterSheets20260507\json\Olivia Lizardo (Odile) [STAFF].json', @show bit=1
 declare @characterJson nvarchar(max)
 drop table if exists #characterJson
 create table #characterJson (bulkColumn nvarchar(max))
@@ -71,8 +83,14 @@ select @playerName=playerName,@characterName=characterName,@corruption=corruptio
 	,@characterId=characterId,@email=email,@culture=culture, @religion=religion, @bloodline=bloodline, @hp=health, @mana=mana, @ip=ip
 	from #characterSheet c
 select @spentCP=spentCP from #characterPoints
+
+if nullif(@characterId,'') is null 
+	select @characterId=dbo.tempCharacterId(@playerName,@characterName)
+
 if @show=1 select * from #characterSheet
 if @show=1 select * from #characterPoints
+
+
 
 
 declare @events nvarchar(max)=(select [events] from #characterSheet)
@@ -97,16 +115,20 @@ insert into rawCpData (characterName,playerName,spentCp,corruption
 		--added characterId, email, culture, religion, bloodline(race), hp, mana, ip
 		,isnull(@characterId,''),isnull(@email,''),isnull(@culture,''),isnull(@religion,''),isnull(@bloodline,'')
 		,isnull(@hp,0),isnull(@mana,0),isnull(@ip,0)
-		where not exists (select null from rawCPData r where r.characterName=@characterName and r.playerName=@playerName)
-		and @characterName is not null and @playerName is not null
+		where not exists (select null from rawCPData r where r.characterId=@characterId)
+		and not exists (select null from rawCPData r where r.playerName=@playerName and r.characterName=@characterName)
+		and isnull(@characterName,'')<>'' and isnull(@playerName,'')<>''
 
-insert into rawEvents (characterName,playerName,eventName,eventDate)
-	select @characterName,@playerName,eventName,max(eventDate)
+insert into rawEvents (characterName,playerName,eventName,eventDate,characterId)
+	select @characterName,@playerName,eventName,max(eventDate),isnull(@characterId,'')
 		from #events e
-			where not exists (select null from rawEvents r where r.characterName=@characterName and r.playerName=@playerName
+			where not exists (select null from rawEvents r where r.characterId=@characterId
 				and r.eventName=e.eventName
 				)
-			and @characterName is not null and @playerName is not null
+				and not exists (select null from rawEvents r where r.playerName=@playerName and r.characterName=@characterName
+				and r.eventName=e.eventName
+				)
+				and isnull(@characterName,'')<>'' and isnull(@playerName,'')<>''
 				group by eventName
 
 if @show=1 select * from rawCpData

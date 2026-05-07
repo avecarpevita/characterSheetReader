@@ -23,6 +23,14 @@ import json
 import os
 from dotenv import load_dotenv
 import math
+from termcolor import colored
+
+def tryint(input_string:str) -> int:
+    try:
+        int(input_string)
+        return int(input_string)
+    except (ValueError, TypeError):
+        return None
 
 def nan_to_none(obj):
     if isinstance(obj, dict):
@@ -55,38 +63,49 @@ def tmBloodline(dfCharacter):
     
 def tmCharacterId(dfCharacter):
     #returns email (usually found in 2nd column, 3nd row)
-    return str(dfCharacter.query("col0 == 'Character ID:'").iat[0,1])
+    characterId:str=None
+    try:
+        characterId=str(dfCharacter.query("col0 == 'Character ID:'").iat[0,1])
+    except Exception as e:
+        print(colored(f"fn tmCharacterId exception {e}", "red"))
+    finally: 
+        return characterId
 
 def tmCulture(dfCharacter):
     culture = str(dfCharacter.query("col0 == 'Culture:'").iat[0,1])
     if culture != culture or culture == "nan":
-        return ''
+        return None
     else:
         return culture
 
 def tmReligion(dfCharacter):
     religion = str(dfCharacter.query("col0 == 'Religion:'").iat[0,1])
     if religion != religion or religion == "nan": 
-        return ''
+        return None
     else:
         return religion
     
 def tmCharacterPoints(dfCharacter):
     #returns a dictionary of total, spent, unspent
-    totalCP = int(dfCharacter.query("col1 == 'Total CP:'").iat[0,2])
-    spentCP = int(dfCharacter.query("col1 == 'Spent CP:'").iat[0,2])
+    totalCP = tryint(dfCharacter.query("col1 == 'Total CP:'").iat[0,2])
+    spentCP = tryint(dfCharacter.query("col1 == 'Spent CP:'").iat[0,2])
     unspentCP = totalCP-spentCP
     return {'totalCP':totalCP, 'spentCP': spentCP, 'unspentCP': unspentCP}
 
 def tmCorruption(dfCharacter):
     #could be under Corruption or Taint
-    
-    if dfCharacter.query("col4 == 'Corruption:'").empty is False:
-        return int(dfCharacter.query("col4 == 'Corruption:'").iat[0,5])
-    if dfCharacter.query("col4 == 'Taint:'").empty is False:
-        return int(dfCharacter.query("col4 == 'Taint:'").iat[0,5])
-    else:
-        return None
+    #2026.05.07--need handling for trash in the corruption field
+    corruption:int=None
+    try:
+
+        if dfCharacter.query("col4 == 'Corruption:'").empty is False:
+            corruption=tryint(dfCharacter.query("col4 == 'Corruption:'").iat[0,5])
+        if dfCharacter.query("col4 == 'Taint:'").empty is False:
+            corruption=tryint(dfCharacter.query("col4 == 'Taint:'").iat[0,5])
+    except Exception as e:
+        print(colored(f"fn tmCorruption exception {e}", "red"))
+        raise e
+    return corruption
 
 def tmTethers(dfCharacter):
     if dfCharacter.query("col4 == 'Tethers:'").empty is False:
@@ -96,11 +115,11 @@ def tmTethers(dfCharacter):
 
 
 def tmHealth(dfCharacter):
-    return int(dfCharacter.query("col6 == 'HP:'").iat[0,7])
+    return tryint(dfCharacter.query("col6 == 'HP:'").iat[0,7])
 
 def tmIP(dfCharacter):
     #return str(dfCharacter.query("col4 == 'Character:'").iat[0,5])
-    return int(dfCharacter.query("col4.str.contains('Incentive', case=False, na=False) ").iat[0,6])
+    return tryint(dfCharacter.query("col4.str.contains('Incentive', case=False, na=False) ").iat[0,6])
 
 def tmMana(dfCharacter):
     #could be blank
@@ -108,7 +127,7 @@ def tmMana(dfCharacter):
     if manaCell!=manaCell:  #detects for NaN
         return 0
     else:   
-        return int(manaCell)
+        return tryint(manaCell)
     
 def tmEvents(dfProgression):
     #list of cp event dictionaries
@@ -234,16 +253,17 @@ if __name__ == "__main__":
     load_dotenv(dotenv_path=r'C:\characterSheetReader\.env')
     sheetsDirectory=os.getenv('sheetsDirectory')
     print(f'sheetsDirectory {sheetsDirectory}  ')
-    excelFilePath=f'{sheetsDirectory}/Sheets (2018-Present)/Aaron Vandhana (Aeloss).xlsx'
+    excelFilePath=f'{sheetsDirectory}/Sheets (2018-Present)-20260507T131451Z-3-001\Sheets (2018-Present)\Olivia Lizardo (Odile) [STAFF].xlsx'
     #print(tmPlayerName(tmReadSheet.tmReadSheet(excelFilePath)[0]))
     dfCharacter = tmReadSheet.tmReadSheet(excelFilePath)[0]
     dfProgression = tmReadSheet.tmReadSheet(excelFilePath)[1]
     dfHistory = tmReadSheet.tmReadSheet(excelFilePath)[2]
     dfEmergency = tmReadSheet.tmReadSheet(excelFilePath)[3]
 
-    '''
+    
     print('player ',tmPlayerName(dfCharacter))
     print('character ',tmCharacterName(dfCharacter))
+    print('characterId ',tmCharacterId(dfCharacter))
     print('email ',tmEmail(dfCharacter))
     print('bloodline ',tmBloodline(dfCharacter))
     print('culture ',tmCulture(dfCharacter))
@@ -253,11 +273,14 @@ if __name__ == "__main__":
     print('health ',tmHealth(dfCharacter))
     print('mana ',tmMana(dfCharacter))
     print('cp ',tmCharacterPoints(dfCharacter))
-    '''
+    print(f"events {tmEvents(dfProgression)}")
+    print(f"skills {tmSkills(dfCharacter)}")
+    print(f"ip {tmIP(dfCharacter)}")
+    
     #print(tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath))
     print(tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath).strip())
     
 
-    
+  
     
     

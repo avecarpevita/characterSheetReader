@@ -6,3 +6,4 @@ truncate table rawCpData
 truncate table rawEvents
 truncate table rawLores
 truncate table rawSkills
+

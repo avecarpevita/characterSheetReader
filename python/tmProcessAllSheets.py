@@ -28,6 +28,7 @@ import os
 from dotenv import load_dotenv
 import sys
 import pyodbc
+from termcolor import colored
 
 
 def getXlsxInputPathRecursive(inputPath,startFileName,endFileName):
@@ -85,12 +86,15 @@ def exportCharacterToJson(inputFilePath,outputFilePath):
         f.write(characterJson)
         f.close()
         
-def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2):
+def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2)-> str:
     dfCharacter = tmReadSheet.tmReadSheet(inputFilePath)[0]
     dfProgression = tmReadSheet.tmReadSheet(inputFilePath)[1]
     dfHistory = tmReadSheet.tmReadSheet(inputFilePath)[2]
     dfEmergency = tmReadSheet.tmReadSheet(inputFilePath)[3]
     characterJson = tmParseSheet.tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,inputFilePath)
+    #check for exceptions here
+    
+
     with open(outputFilePath, "w") as f:
         f.write(characterJson)
         f.close()
@@ -117,6 +121,11 @@ def exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2):
     finally:
         cursor2.close()     
 
+    exceptionFile:str=None
+    if "exceptions" in characterJson:
+        print(colored(f"exceptions found for {inputFilePath}", "red"))
+        exceptionFile=inputFilePath
+    return exceptionFile
 
 def processRangeOfSheets(inputPath,outputPath,startFileName,endFileName, server, database):
 
@@ -134,6 +143,7 @@ def processRangeOfSheets(inputPath,outputPath,startFileName,endFileName, server,
     cnxn = pyodbc.connect(conn_str)
 
     processCount=0
+    exceptionFiles=[]
     for inputFilePath in listXlsx:
         outputFilePath = outputPath + os.path.basename(inputFilePath)[:len(os.path.basename(inputFilePath))-5] + '.json'
         processCount+=1
@@ -144,7 +154,11 @@ def processRangeOfSheets(inputPath,outputPath,startFileName,endFileName, server,
         #query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl the cp/corruption/event data for Olivia
         query=f"exec readCharacterJsonForSkills ?, ?"        #this is the query to populate tbl rawLores for Olivia
         query2=f"exec readCharacterJsonForCpData ?, ?"  
-        exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2)
+        exceptionFile = exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2)
+        if exceptionFile: exceptionFiles.append(exceptionFile)
+
+    for exceptionFile in exceptionFiles:
+        print(colored(f"exceptions found for {exceptionFile}", "red"))        
         
     
   
