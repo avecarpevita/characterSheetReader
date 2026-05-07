@@ -73,5 +73,21 @@ select playerName,email,getdate() as timestamp
 	from rawCPData
 	where characterId in ('8ZZ4Q')
 				   order by pointChange
-				   --13
+				   --1
 
+
+
+insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourceFile,characterId)
+select playerName,email,getdate() as timestamp
+	,'C' as eventType
+	,'Event 90 April 2026' eventName
+	,'lotto' timeSlot
+	,5 pointChange
+	,'manual20260406' sourcefile
+	,characterId
+	from rawCPData
+	where characterId in ('7YBNR')
+				   order by pointChange
+				   --1
+
+exec buildAnchorPointSheet

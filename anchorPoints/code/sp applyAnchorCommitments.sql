@@ -1,10 +1,20 @@
 use tm
 go
-create or alter procedure applyAnchorCommitments (@file varchar(255), @eventName varchar(255), @doublePointSlots varchar(30)=null, @triplePointSlots varchar(30)=null)
+create or alter procedure applyAnchorCommitments (@file varchar(255)
+	, @eventName varchar(255)
+	, @doublePointSlots varchar(30)=null
+	, @triplePointSlots varchar(30)=null
+	, @whitelistCharacterIdList varchar(max)=null)
 as 
 /*
 ingests a .tsv file, straight from the anchor signups
 applies that to tbl anchorChangeLog
+
+
+when					what
+=====================================================================
+2026.05.01				added @whitelistCharacterIdList (usage is a pipe delimited list -- 81111|82322 etc.)
+
 
 --truncate table anchorChangeLog
 exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\signupsDec25.tsv', @eventName='Event 87 December 2025',@doublePointSlots='SatAM'
@@ -30,7 +40,7 @@ exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\sig
 begin
 set nocount on
 
---declare @file varchar(255)='c:\characterSheetReader\anchorpoints\data\signupsApr26.tsv'
+--declare @file varchar(255)='c:\characterSheetReader\anchorpoints\data\signupsMay26.tsv'
 declare @sql varchar(max)
 drop table if exists #signupsRaw
 create table #signupsRaw (
@@ -75,6 +85,13 @@ select x.value as timeSlot
 	from STRING_SPLIT(@triplePointSlots, '|') x
 	where len(x.value)>1
 
+--declare @whitelistCharacterIdList  varchar(255)='7W6V9'
+drop table if exists #whitelistCharacterIds
+select x.value as characterId
+	into #whitelistCharacterIds
+	from string_split(@whitelistCharacterIdList, '|') x
+	where len(x.value)=5
+
 
 drop table if exists #signups--#signups where playerName like '%maus%'
 ;with cte as (select try_cast(timestamp as datetime) timestamp 
@@ -84,6 +101,7 @@ drop table if exists #signups--#signups where playerName like '%maus%'
 	,case when timeSlots like '%Friday Night%triple%' then '|FriPM3' else '' end
 	+case when timeSlots like '%Friday Night%game on%Thom%' then '|FriPMa' else '' end
 	+case when timeSlots like '%Friday Night%11%' then '|FriPMb' else '' end
+	+case when timeSlots like '%Friday Night%' then '|FriPM' else '' end
 	+case when timeSlots like '%Saturday%Carnival%' then '|SatPMCarnival' else '' end
 	+case when timeSlots like '%Saturday Night%' and timeslots not like '%carnival%' then '|SatPM' else '' end
 	--+case when timeSlots like '%Friday Night%' then '|FriPM' else '' end
@@ -108,7 +126,7 @@ drop table if exists #signups--#signups where playerName like '%maus%'
 --select playerName from #signups group by playername having count(*)>1
 --select * from #signups where playerName in (select playerName from #signups group by playername having count(*)>1) order by playerName
 create unique clustered index c on #signups(playerName,timeslot6)
---#signups where playerName like '%Adriana Griot%'
+--#signups where playerName like '%Justen Speratos%'
 
 --build #names from existing data
 drop table if exists #names
@@ -129,8 +147,11 @@ update s
 	--joshuawarner333@gmail.com	Joshua Warner	8RYYE -- should not have signed up, but I'm gonna kick him out for lack of a full pre-reg ticket
 --select * from #signups s where not exists (select null from rawCpData r where r.characterId=s.characterId)
 
-if exists (select null from #signups s where not exists (select null from rawCpData r where r.characterId=s.characterId))
+if exists (select null from #signups s where not exists (select null from rawCpData r where r.characterId=s.characterId)
+	and not exists (select null from #whitelistCharacterIds w where w.characterId=s.characterId)
+	)
 	begin
+	select * from #signups s where not exists (select null from rawCpData r where r.characterId=s.characterId)
 	raiserror('CHARACTER ID EXISTS THAT IS NOT IN SHEETS YET',16,16)
 	goto error
 	end

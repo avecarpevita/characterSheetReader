@@ -3,7 +3,7 @@ use tm
 --get characters played in the last 3 events
 drop table if exists #work
 ;with cte_charactersLast3Games as (
-select c.playerName,c.characterName
+select c.playerName,c.characterName,c.characterId
 	,try_cast(spentCp as int) spentCp
 	,try_cast(corruption as int) corruption
 	,e.eventName rawEventName
@@ -67,7 +67,7 @@ select eventName,count(*)
 	group by eventName
 	order by 1 desc
 
-select top 300 dbo.cleanRawCulture(culture,bloodline) culture
+select top 10 convert(varchar(30),dbo.cleanRawCulture(culture,bloodline)) culture
 	,count(*) [# active main characters]
 	from #deduped group by dbo.cleanRawCulture(culture,bloodline) order by 2 desc
 
@@ -90,7 +90,16 @@ select cpGrouping,count(*) [# active main characters]
 	,convert(varchar,convert(numeric(4,1),count(*)/@total*100))+'%' percentageOfPlayers
 	from #deduped where cpGrouping is not null
 		group by cpGrouping order by 1
-		
+
+select count(*) from #deduped where spentCp>=250
+	
+declare @total float=(select count(*) from #deduped)
+select cpGrouping,count(*) [# active main characters]
+	,convert(varchar,convert(numeric(4,1),count(*)/@total*100))+'%' percentageOfPlayers
+	from #deduped where cpGrouping is not null and eventName='Event 89 February 2026'
+		group by cpGrouping order by 1
+	
+
 /*
 select * from #deduped where spentCp>=300
 #deduped where playerName like '%oliv%'
@@ -115,4 +124,84 @@ median CP = 114, average CP = 135
 ```
 */
 
+
+select top 100 * from rawSkills s where rawSkill like 'Black%Market%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Herbalism%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Mining%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Woodcutting%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Mercantile%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Hunting%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Academic%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Economic%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Military%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Political%4%' 
+select top 100 * from rawSkills s where rawSkill like 'Underworld%4%' 
+
+select top 100 * from #deduped d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Black%Market%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Herbalism%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Mining%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Woodcutting%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Mercantile%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Hunting%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Mining%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Academic%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Economic%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Military%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Political%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Underworld%4%')
+
+
+drop table if exists #dedupedCharacter
+;with cte as (select *,row_number() over(partition by playerName,characterName order by eventDate desc) rn from #work) 
+	select * 
+		,case 
+		when spentCP between 1 and 149 and numEvents<3 then '[tier 1] 0-2 games'
+		when spentCP between 1 and 149 then '[tier 2] 3+ games, under 150 CP'
+		when spentCp between 150 and 300 then '[tier 3] 150-300 CP'
+		when spentCp between 301 and 450 then '[tier 4] 301-450 CP'
+		when spentCp between 451 and 600 then '[tier 5] 451-600 CP'
+		when spentCp>=601 then '[tier 6] 601+ CP' end as cpGrouping
+
+		into #dedupedCharacter from cte where rn=1
+--dedupe to character
+
+--retain only last 3 games (Sep25, Dec25, Jan26)
+delete #dedupedCharacter where eventName<'Event 87 December 2025'
+
+
+select top 100 * from #dedupedCharacter d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Black%Market%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Herbalism%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Mining%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Woodcutting%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Mercantile%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Hunting%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Mining%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Academic%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Economic%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Military%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Political%4%')
+	and exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like 'Underworld%4%')
+
+
+select top 100 * from #dedupedCharacter d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like '%lore%treat%') order by 1--43 characters with the lore
+select distinct email from #dedupedCharacter d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like '%lore%treat%') order by 1--43 characters with the lore
+
+select email from #dedupedCharacter d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like '%lore%treat%') group by email having count(*)>1--43 characters with the lore
+
+
+select top 100 * from #deduped d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like '%lore%treat%') --order by eventName--43 characters with the lore
+	and not exists (select null from #dedupedCharacter dc where dc.characterId=d.characterId)
+	
+select email from #dedupedCharacter d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like '%lore%treat%') 
+	and not exists (select email from #deduped d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like '%lore%treat%'))
+
+
+
+
+select top 100 * from #dedupedCharacter d where exists (select null from rawSkills s where s.characterId=d.characterId and s.rawSkill like '%lore%treat%') order by eventDate--43 characters with the lore
+
+select * from #dedupedCharacter where spentCp between 143 and 149--18
+select * from #dedupedCharacter where spentCp between 136 and 142--27
+select * from #dedupedCharacter where spentCp between 129 and 135--26
+select * from #dedupedCharacter where spentCp between 122 and 128--30
 
