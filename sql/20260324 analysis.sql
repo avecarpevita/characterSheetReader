@@ -91,7 +91,8 @@ select cpGrouping,count(*) [# active main characters]
 	from #deduped where cpGrouping is not null
 		group by cpGrouping order by 1
 
-select count(*) from #deduped where spentCp>=250
+select count(*) from #deduped where spentCp>=451 order by spentCp desc
+#deduped where spentCp>=451 order by spentCp desc
 	
 declare @total float=(select count(*) from #deduped)
 select cpGrouping,count(*) [# active main characters]
@@ -205,3 +206,9 @@ select * from #dedupedCharacter where spentCp between 136 and 142--27
 select * from #dedupedCharacter where spentCp between 129 and 135--26
 select * from #dedupedCharacter where spentCp between 122 and 128--30
 
+
+select * from #dedupedCharacter where characterName like 'd%n%'
+select * from #dedupedCharacter where characterName like 'a%a%' and culture like '%nad%'
+
+Elliot Gutierrez	Daman Fercilaine
+Fritz Phillips		Azura Strigindae
