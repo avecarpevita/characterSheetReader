@@ -59,8 +59,17 @@ drop table if exists #deduped
 create unique clustered index cp on #deduped(playerName) --unique to players
 select * from #deduped where email not like '%_@%.___'
 
+
+
 --retain only last 3 games (Sep25, Dec25, Jan26)
 delete #deduped where eventName<'Event 87 December 2025'
+
+select * from #deduped where spentCp>='300' order by eventDate
+select * from #deduped where spentCp>='300' order by spentCp desc
+
+select * from #deduped d  where spentCp>='300' 
+	and not exists (select null from anchorChangeLog a where a.characterId=d.characterId)
+	order by spentCp desc
 
 select eventName,count(*) 
 	from #deduped
@@ -212,3 +221,22 @@ select * from #dedupedCharacter where characterName like 'a%a%' and culture like
 
 Elliot Gutierrez	Daman Fercilaine
 Fritz Phillips		Azura Strigindae
+
+
+--2026.05.28--GM dream and channeling
+
+select * from #deduped d
+	join rawSkills r on r.characterId=d.characterId
+	where r.rawSkill like '%dream%' and r.rawSkill like '%grand%'--30 GM dream mages
+	order by spentCp
+
+select * from #deduped d
+	join rawSkills r on r.characterId=d.characterId
+	where r.rawSkill like '%channel%' and r.rawSkill like '%grand%'--59 GM channelers
+	order by spentCp
+
+select rawSkill,count(distinct d.characterId) from #deduped d
+	join rawSkills r on r.characterId=d.characterId
+	where rawSkill like '%grand%'
+	group by rawSkill
+	order by 2 desc
