@@ -64,6 +64,11 @@ bulk insert #newPractices from 'C:\characterSheetReader\fightingStyles\practices
 --select * from #newPractices where game<>'April 2026' order by 1
 
 --delete any that are NOT for last game (April 2026)
+--FOR JULY AND BEYOND, make this a datestamp cutoff (ie. the high date after the last process!)
+--FOR JULY AND BEYOND, make this a datestamp cutoff (ie. the high date after the last process!)
+--FOR JULY AND BEYOND, make this a datestamp cutoff (ie. the high date after the last process!)
+--FOR JULY AND BEYOND, make this a datestamp cutoff (ie. the high date after the last process!)
+--FOR JULY AND BEYOND, make this a datestamp cutoff (ie. the high date after the last process!)
 delete #newPractices where game<>'April 2026'
 	and timestamp<>'2026-03-26 18:46:45.000'
 --smell test

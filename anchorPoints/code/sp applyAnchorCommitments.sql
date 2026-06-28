@@ -2,6 +2,7 @@ use tm
 go
 create or alter procedure applyAnchorCommitments (@file varchar(255)
 	, @eventName varchar(255)
+	, @possibleShifts varchar(4000)
 	, @doublePointSlots varchar(30)=null
 	, @triplePointSlots varchar(30)=null
 	, @whitelistCharacterIdList varchar(max)=null)
@@ -14,7 +15,8 @@ applies that to tbl anchorChangeLog
 when					what
 =====================================================================
 2026.05.01				added @whitelistCharacterIdList (usage is a pipe delimited list -- 81111|82322 etc.)
-
+2026.06.27				added @possibleShifts to clean things up
+						added handling to exclude NLP shifts
 
 --truncate table anchorChangeLog
 exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\signupsDec25.tsv', @eventName='Event 87 December 2025',@doublePointSlots='SatAM'
@@ -40,7 +42,7 @@ exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\sig
 begin
 set nocount on
 
---declare @file varchar(255)='c:\characterSheetReader\anchorpoints\data\signupsMay26.tsv'
+--declare @file varchar(255)='c:\characterSheetReader\anchorpoints\data\signupsJul26.tsv'
 declare @sql varchar(max)
 drop table if exists #signupsRaw
 create table #signupsRaw (
@@ -71,64 +73,54 @@ print @sql; exec(@sql)
 --select * from  #signupsRaw where playername like '%mari%'
 --select * from  #signupsRaw where playername like '%soph%'
 
---declare @doublePointSlots varchar(255)=null
+--declare @doublePointSlots varchar(255)='Saturday Night (7/11), 7:30pm, 2 AP'
 drop table if exists #doublePointSlots
 select x.value as timeSlot
 	into #doublePointSlots
 	from STRING_SPLIT(@doublePointSlots, '|') x
 	where len(x.value)>1
 
---declare @triplePointSlots  varchar(255)='FriPM3'
+--declare @triplePointSlots  varchar(255)=null
 drop table if exists #triplePointSlots
 select x.value as timeSlot
 	into #triplePointSlots
 	from STRING_SPLIT(@triplePointSlots, '|') x
 	where len(x.value)>1
 
---declare @whitelistCharacterIdList  varchar(255)='7W6V9'
+--declare @whitelistCharacterIdList  varchar(255)=null
 drop table if exists #whitelistCharacterIds
 select x.value as characterId
 	into #whitelistCharacterIds
 	from string_split(@whitelistCharacterIdList, '|') x
 	where len(x.value)=5
 
+--declare @possibleShifts varchar(4000)='Friday Night (7/10), 10pm -- 1 AP|Friday Night (7/10), 10pm -- 1 NLP|Saturday Night (7/11), 7:30pm, 1 NLP|Saturday Night (7/11), 7:30pm, 2 AP|Saturday Night (7/11), 9:00pm, 1 AP (note: this conflicts with the earlier 7:30 call)'
+drop table if exists #possibleShifts
+select x.value as possibleShift
+	into #possibleShifts
+	from string_split(@possibleShifts, '|') x
+	where len(x.value)>1
+
+
 
 drop table if exists #signups--#signups where playerName like '%maus%'
 ;with cte as (select try_cast(timestamp as datetime) timestamp 
 	,email,playerName
 	,characterId
-	,timeSlots
-	,case when timeSlots like '%Friday Night%triple%' then '|FriPM3' else '' end
-	+case when timeSlots like '%Friday Night%game on%Thom%' then '|FriPMa' else '' end
-	+case when timeSlots like '%Friday Night%11%' then '|FriPMb' else '' end
-	+case when timeSlots like '%Friday Night%' then '|FriPM' else '' end
-	+case when timeSlots like '%Saturday%Carnival%' then '|SatPMCarnival' else '' end
-	+case when timeSlots like '%Saturday Night%' and timeslots not like '%carnival%' then '|SatPM' else '' end
-	--+case when timeSlots like '%Friday Night%' then '|FriPM' else '' end
-	+case when timeSlots like '%Saturday Morning%' then '|SatAM' else '' end 
-	+case when timeSlots like '%Saturday Afternoon%' then '|SatAF' else '' end 
-	+case when timeSlots like '%Manual%' or timeSlots like '%Special%' or timeSlots like '%kid%' then '|Manual' else '' end timeSlotsPiped
+	,timeSlots as allTimeSlots
+	,p.possibleShift as timeSlot
 	from #signupsRaw r 
+		left join #possibleShifts p on r.timeSlots like '%'+p.possibleShift+'%' 
 		where try_cast(timestamp as datetime) is not null 
 		)
-		select c.* 
-			,x.value as timeSlot
-			,case when t.timeSlot is not null then 3
-				when d.timeSlot is not null then 2 
-				else 1 end pointChange
-			,left(x.value,6) timeslot6
-			into #signups
-			from cte c
-			cross apply STRING_SPLIT(timeSlotsPiped, '|') x
-			left join #doublePointSlots d on d.timeSlot=x.value
-			left join #triplePointSlots t on t.timeSlot=x.value
-			where len(x.value)>0
---select playerName from #signups group by playername having count(*)>1
---select * from #signups where playerName in (select playerName from #signups group by playername having count(*)>1) order by playerName
-create unique clustered index c on #signups(playerName,timeslot6)
---#signups where playerName like '%Justen Speratos%'
-
---build #names from existing data
+select c.*
+	,case when timeSlot like '%1 AP%' then 1
+	when timeSlot like '%2 AP%' then 2
+	when timeSlot like '%3 AP%' then 3
+	else null end pointChange
+into #signups
+	from cte c where timeslot not like '%1 NLP%'
+create unique clustered index c on #signups(playerName,timeslot)
 drop table if exists #names
 ;with cte as (select * 
 	,row_number() over(partition by playerName order by [timeStamp] desc) rn
@@ -156,6 +148,9 @@ if exists (select null from #signups s where not exists (select null from rawCpD
 	goto error
 	end
 
+	
+
+
 --stomp on the playerName with what is in the character database
 update s
 	set s.playerName=r.playerName
@@ -166,7 +161,7 @@ update s
 --select * from #signups
 --select * from anchorChangeLog
 --alter table anchorChangelog alter column characterId char(5) not null
---alter table anchorChangeLog alter column timeSlot varchar(20)
+--alter table anchorChangeLog alter column timeSlot varchar(100)
 
 delete anchorChangeLog where sourcefile=@file
 insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId)
@@ -183,3 +178,42 @@ raiserror('error',16,16)
 return 1
 
 end
+
+
+/*
+
+
+
+drop table if exists #signups--#signups where playerName like '%maus%'
+;with cte as (select try_cast(timestamp as datetime) timestamp 
+	,email,playerName
+	,characterId
+	,timeSlots as allTimeSlots
+	,p.possibleShift as timeSlot
+	--,case when timeSlots like '%Friday Night%triple%' then '|FriPM3' else '' end
+	--+case when timeSlots like '%Friday Night%game on%Thom%' then '|FriPMa' else '' end
+	--+case when timeSlots like '%Friday Night%11%' then '|FriPMb' else '' end
+	--+case when timeSlots like '%Friday Night%' then '|FriPM' else '' end
+	--+case when timeSlots like '%Saturday%Carnival%' then '|SatPMCarnival' else '' end
+	--+case when timeSlots like '%Saturday Night%' and timeslots not like '%carnival%' then '|SatPM' else '' end
+	--+case when timeSlots like '%Saturday Morning%' then '|SatAM' else '' end 
+	--+case when timeSlots like '%Saturday Afternoon%' then '|SatAF' else '' end 
+	--+case when timeSlots like '%Manual%' or timeSlots like '%Special%' or timeSlots like '%kid%' then '|Manual' else '' end timeSlotsPiped
+	from #signupsRaw r 
+		left join #possibleShifts p on r.timeSlots like '%'+p.possibleShift+'%' 
+		where try_cast(timestamp as datetime) is not null 
+		)
+		select c.* 
+			,x.value as timeSlot
+			,case when t.timeSlot is not null then 3
+				when d.timeSlot is not null then 2 
+				else 1 end pointChange
+			,left(x.value,6) timeslot6
+			into #signups
+			from cte c
+			cross apply STRING_SPLIT(timeSlotsPiped, '|') x
+			left join #doublePointSlots d on d.timeSlot=x.value
+			left join #triplePointSlots t on t.timeSlot=x.value
+			where len(x.value)>0
+
+			*/

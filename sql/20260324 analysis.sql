@@ -240,3 +240,50 @@ select rawSkill,count(distinct d.characterId) from #deduped d
 	where rawSkill like '%grand%'
 	group by rawSkill
 	order by 2 desc
+
+
+	select top 100 * from rawskills where rawSkill='R. Lore: Primogenitor Dragons'
+
+--what are the r lores out there
+
+select rawSkill,count(*) from rawCPData c join rawSkills s on s.characterId=c.characterId 
+	where rawSkill like '%r%lore%' and rawSkill not like '%native%'
+	and rawSkill not in (
+	'R. Lore: Blood Sommelier','R. Lore: Blood Somellier','R. Lore: Bargains / Contracts'
+,'R. Lore: Catacombs','Restricted Lore: Artifacts','Restricted Lore: Blood Somellier'
+,'R. Lore: Treatise Methodologies'
+,'R. Lore: Lucenturgy'
+,'R. Lore: Six Dragons'
+,'R. Lore: Tenebrimancy'
+,'R. Lore: Mountain Meets the Sky'
+,'R. Lore: Hydrology'
+,'R. Lore: School of Suffering'
+,'R. Lore: Souls'
+,'R. Lore: Ruins of Port Frey'
+,'R. Lore: Caverns of Tear','Restricted Lore: Guerilla Warfare','Restricted Lore: Smuggling'
+,'R. Lore: Aethermancy'
+,'R. Lore: Swanwall'
+,'Restricted Lore: Demon Etiquette'
+,'R. Lore: Magical Theory'
+,'R. Lore: Assassin''s Arts'
+,'R. Lore: Lithoturgy'
+,'Restricted Lore: Blood Science'
+)
+	group by rawSkill 
+		having count(*)>=3
+		order by 2
+
+R. Lore: Bargains & Contracts 
+R. Lore: Smuggling
+R. Lore: Legendary Monsters
+R. Lore: Artifacts
+R. Lore: Mathematics
+R. Lore: Leylines
+R. Lore: Geography of Tear
+
+--the mod could teach Geography of Tear (if I'm there in a role, which I can probably swing)
+--Mathematics could be done
+--R. Lore: Artifacts could be done
+
+
+select * from #deduped where spentCP>293 order by spentCP

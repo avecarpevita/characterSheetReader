@@ -62,6 +62,7 @@ alter table #newPractices add primary key clustered(game,tradition,realName,prac
 bulk insert #newPractices from 'C:\characterSheetReader\magicalTraditions\practicesSnapshot20260507.tsv' with(datafiletype='char',firstrow=4)--7
 
 --delete any that are NOT for last game (April 2026)
+--NEXT TIME, I need to do better, and get in the 3/27 practice
 delete #newPractices where game<>'April 2026'
 --smell test
 #newPractices order by 1--4 count looks good
