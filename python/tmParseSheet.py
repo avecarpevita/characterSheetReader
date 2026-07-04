@@ -213,7 +213,7 @@ def tmSkills(dfCharacter):
             returnList.append(returnDict)
     return returnList
 
-def tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath):
+def tmParseSheet(dfCharacter,dfProgression,dfHistory,dfEmergency,excelFilePath,debug:bool=False):
     #returns a json blob
     try:
         dictCharacter = {

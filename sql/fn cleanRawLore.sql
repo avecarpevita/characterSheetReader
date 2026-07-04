@@ -42,8 +42,12 @@ if @retval like '%Blood Som%' set @retVal='R. Lore: Blood Sommelier'
 if @retval like '%litho%y%' set @retVal='R. Lore: Lithoturgy'
 if @retval like '%Magic%Theory%' set @retVal='R. Lore: Magical Theory'
 if @retval like '%mount%sky%' set @retVal='R. Lore: Mountain Meets the Sky'
+--R. Lore: Mtn Meets the Sky
+if @retval like '%Mtn%sky%' set @retVal='R. Lore: Mountain Meets the Sky'
 if @retval like '%Sewer%' set @retVal='R. Lore: Catacombs'
 if @retval like '%treat%meth%' set @retVal='R. Lore: Treatise Methodologies'
+--R. Lore: Lucentergy
+if @retval like '%Lucen%' set @retVal='R. Lore: Lucenturgy'
 
 
 
