@@ -62,6 +62,7 @@ alter table #newPractices add primary key clustered(game,style,realName,practice
 bulk insert #newPractices from 'C:\characterSheetReader\fightingStyles\practicesSnapshot20260702.tsv' with(datafiletype='char',firstrow=2)--9
 
 select * from #newPractices order by try_cast(timestamp as datetime) desc--32 is correct
+--select top 100 * from #newPractices where game='May 2026'
 
 --manual fix
 update n
@@ -158,11 +159,15 @@ update n
 		left join rawCPData r on r.characterId=n.characterId
 		--rawCPData where characterId='8MG4R'
 
---fix script
-select distinct 'update #newPracticesExploded set characterId=''taco'' where nameInfoRaw='''+nameInfoRaw+''''  from #newPracticesExploded where characterName is null--4
 
-
-
+update n
+	set n.characterId=upper(n.characterId)
+		,n.nameInfoRaw=ltrim(rtrim(n.nameInfoRaw))
+		,n.characterName=r.characterName
+		,n.playerName=r.playerName
+	from #newPracticesExploded n
+		left join postApr26.rawCPData r on r.characterId=n.characterId
+		where n.playerName is null
 
 update n
 	set n.characterId=upper(n.characterId)
@@ -172,6 +177,11 @@ update n
 	from #newPracticesExploded n
 		left join postFeb26.rawCPData r on r.characterId=n.characterId
 		where n.playerName is null
+
+--fix script
+select distinct 'update #newPracticesExploded set characterId=''taco'' where nameInfoRaw='''+nameInfoRaw+''''  from #newPracticesExploded where characterName is null--4
+
+		
 		 
 
 --[5]--explode #master
@@ -220,7 +230,7 @@ select * from #newMaster order by realName,characterName
 
 --select * from #newMaster where realName like 'oliv%'
 
-select * from #newMaster where practiceCount>=3 and style like '%mountain%' order by 2--11, smells right
+select * from #newMaster where practiceCount>=3 and style like '%mountain%' order by 2--39 for now
 
 /*
 R. Lore - Mountain Meets the Sky
@@ -310,6 +320,7 @@ select characterId,realName,characterName,'Apprentice' rankQualified from #check
 select c.* 
 	,r.email
 	from cte c join rawCpData r on r.characterId=c.characterId
+	order by rankQualified,characterName
 
 characterId realName                            characterName                       rankQualified email
 ----------- ----------------------------------- ----------------------------------- ------------- ----------------------------------------------------------------------------------------------------
