@@ -167,3 +167,16 @@ select cpGrouping,count(*) [# active main characters]
 	from #deduped where cpGrouping is not null and eventName='Event 89 February 2026'
 		group by cpGrouping order by 1
 	
+
+select * from #deduped order by spentCp desc
+
+Scott Ross			Bonk
+Jordan Hassay		Vibes
+Kai Norman			Vibes
+Chris Montgomery	Lore Nerd
+Stephen McArthur	Bonk
+Loryanna Michalek	Vibes
+Brian Brown			Vibes
+Kyle Duong			Vibes
+Richard Choi		Vibes
+Jeremy Fariss		Bonk
