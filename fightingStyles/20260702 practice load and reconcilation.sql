@@ -57,6 +57,16 @@ create table #newPractices (
 	,participant18 varchar(1000) not null
 	,participant19 varchar(1000) not null
 	,participant20 varchar(1000) not null
+	,participant21 varchar(1000) not null
+	,participant22 varchar(1000) not null
+	,participant23 varchar(1000) not null
+	,participant24 varchar(1000) not null
+	,participant25 varchar(1000) not null
+	,participant26 varchar(1000) not null
+	,participant27 varchar(1000) not null
+	,participant28 varchar(1000) not null
+	,participant29 varchar(1000) not null
+	,participant30 varchar(1000) not null
 	)
 alter table #newPractices add primary key clustered(game,style,realName,practicewhen)
 bulk insert #newPractices from 'C:\characterSheetReader\fightingStyles\practicesSnapshot20260702.tsv' with(datafiletype='char',firstrow=2)--9
@@ -105,6 +115,16 @@ union select game,style,participant17 as participant	from #newPractices
 union select game,style,participant18 as participant	from #newPractices
 union select game,style,participant19 as participant	from #newPractices
 union select game,style,participant20 as participant	from #newPractices
+union select game,style,participant21 as participant	from #newPractices
+union select game,style,participant22 as participant	from #newPractices
+union select game,style,participant23 as participant	from #newPractices
+union select game,style,participant24 as participant	from #newPractices
+union select game,style,participant25 as participant	from #newPractices
+union select game,style,participant26 as participant	from #newPractices
+union select game,style,participant27 as participant	from #newPractices
+union select game,style,participant28 as participant	from #newPractices
+union select game,style,participant29 as participant	from #newPractices
+union select game,style,participant30 as participant	from #newPractices
 )
 ,cte2 as (
 	select * from cte where participant<>''

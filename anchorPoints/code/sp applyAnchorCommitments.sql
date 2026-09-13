@@ -3,8 +3,8 @@ go
 create or alter procedure applyAnchorCommitments (@file varchar(255)
 	, @eventName varchar(255)
 	, @possibleShifts varchar(4000)
-	, @doublePointSlots varchar(30)=null
-	, @triplePointSlots varchar(30)=null
+	--, @doublePointSlots varchar(30)=null
+	--, @triplePointSlots varchar(30)=null
 	, @whitelistCharacterIdList varchar(max)=null)
 as 
 /*
@@ -21,51 +21,41 @@ when					what
 --truncate table anchorChangeLog
 exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\signupsDec25.tsv', @eventName='Event 87 December 2025',@doublePointSlots='SatAM'
 
-select * into anchorChangeLog_bak20260106 from anchorChangeLog
+select * into anchorChangeLog_bak20260907 from anchorChangeLog
 
-exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\signupsJan26.tsv', @eventName='Event 88 January 2026',@doublePointSlots='SatAF|SatPM'
+exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\signupsSep26.tsv'
+	,@eventName='Event 93 September 2026'
+	,@possibleShifts='Friday Night (9/18), 8:30m -- 1 NLP|Friday Night (9/18), 8:30m -- 2 AP|Friday Night (9/18), 9:30m -- 1 NLP (this conflicts with the earlier 8:30 call)|Saturday Night (9/19), 9:00pm, 1 AP|Saturday Night (9/19), 9:00pm, 1 NLP|Saturday Night (9/19), 11:00pm, 1 AP'
 
-exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\signupsApr26.tsv', @eventName='Event 90 April 2026',@doublePointSlots=null, @triplePointSlots=''
-
-delete anchorChangeLog where sourcefile='c:\characterSheetReader\anchorpoints\data\signupsJan26.tsv'
-select * from anchorChangeLog--77
-select * from anchorChangeLog where playerName like '%justen%'
-select * from anchorChangeLog where playerName like '%maus%'
-
-insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange)
-	select 'Sophia Boyd','shboyd20@gmail.com','11/11/2025 9:34:25','c','Mar25','SatAM',1
-11/11/2025 9:34:25	shboyd20@gmail.com	Sophia Boyd	playing The Kid in March 2025	Yes	Yes	School of Suffering	I like combat, but I'm not a strong fighter and/or I don't know the rules that well.
-
-exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\signupsFeb26.tsv', @eventName='Event 89 February 2026',@doublePointSlots='',@triplePointSlots='|SatPMCarnival'
+select * from anchorChangeLog where eventName='Event 93 September 2026'
 
 */
 begin
 set nocount on
 
---declare @file varchar(255)='c:\characterSheetReader\anchorpoints\data\signupsJul26.tsv'
+--declare @file varchar(255)='c:\characterSheetReader\anchorpoints\data\signupsSep26.tsv'
 declare @sql varchar(max)
 drop table if exists #signupsRaw
 create table #signupsRaw (
 	timestamp varchar(255)
 	,email nvarchar(255)
 	,playerName nvarchar(255)
+	,characterId nvarchar(255)
 	,timeSlots varchar(1000)
 	,check1 varchar(100)
-	,check2 varchar(100)
-	,plan1 varchar(255)
 	,combat1 varchar(255)
 	)
-if @file not in ('c:\characterSheetReader\anchorpoints\data\signupsJan26.tsv','c:\characterSheetReader\anchorpoints\data\signupsDec25.tsv')
-	begin
+--if @file not in ('c:\characterSheetReader\anchorpoints\data\signupsJan26.tsv','c:\characterSheetReader\anchorpoints\data\signupsDec25.tsv')
+--	begin
 	
-	alter table #signupsRaw drop column timeslots
-	alter table #signupsRaw drop column check1
-	alter table #signupsRaw drop column check2
-	alter table #signupsRaw drop column plan1
-	alter table #signupsRaw drop column combat1
-	alter table #signupsRaw add characterId nvarchar(100)
-	alter table #signupsRaw add timeslots nvarchar(1000)
-	end
+--	alter table #signupsRaw drop column timeslots
+--	alter table #signupsRaw drop column check1
+--	alter table #signupsRaw drop column check2
+--	alter table #signupsRaw drop column plan1
+--	alter table #signupsRaw drop column combat1
+--	alter table #signupsRaw add characterId nvarchar(100)
+--	alter table #signupsRaw add timeslots nvarchar(1000)
+--	end
 
 
 set @sql='bulk insert #signupsRaw from '''+@file+''' with(datafiletype=''char'',firstrow=2) '
@@ -73,19 +63,19 @@ print @sql; exec(@sql)
 --select * from  #signupsRaw where playername like '%mari%'
 --select * from  #signupsRaw where playername like '%soph%'
 
---declare @doublePointSlots varchar(255)='Saturday Night (7/11), 7:30pm, 2 AP'
-drop table if exists #doublePointSlots
-select x.value as timeSlot
-	into #doublePointSlots
-	from STRING_SPLIT(@doublePointSlots, '|') x
-	where len(x.value)>1
+----declare @doublePointSlots varchar(255)='Friday Night (9/18), 8:30m -- 2 AP'
+--drop table if exists #doublePointSlots
+--select x.value as timeSlot
+--	into #doublePointSlots
+--	from STRING_SPLIT(@doublePointSlots, '|') x
+--	where len(x.value)>1
 
---declare @triplePointSlots  varchar(255)=null
-drop table if exists #triplePointSlots
-select x.value as timeSlot
-	into #triplePointSlots
-	from STRING_SPLIT(@triplePointSlots, '|') x
-	where len(x.value)>1
+----declare @triplePointSlots  varchar(255)=null
+--drop table if exists #triplePointSlots
+--select x.value as timeSlot
+--	into #triplePointSlots
+--	from STRING_SPLIT(@triplePointSlots, '|') x
+--	where len(x.value)>1
 
 --declare @whitelistCharacterIdList  varchar(255)=null
 drop table if exists #whitelistCharacterIds
@@ -94,7 +84,7 @@ select x.value as characterId
 	from string_split(@whitelistCharacterIdList, '|') x
 	where len(x.value)=5
 
---declare @possibleShifts varchar(4000)='Friday Night (7/10), 10pm -- 1 AP|Friday Night (7/10), 10pm -- 1 NLP|Saturday Night (7/11), 7:30pm, 1 NLP|Saturday Night (7/11), 7:30pm, 2 AP|Saturday Night (7/11), 9:00pm, 1 AP (note: this conflicts with the earlier 7:30 call)'
+--declare @possibleShifts varchar(4000)='Friday Night (9/18), 8:30m -- 1 NLP|Friday Night (9/18), 8:30m -- 2 AP|Friday Night (9/18), 9:30m -- 1 NLP (this conflicts with the earlier 8:30 call)|Saturday Night (9/19), 9:00pm, 1 AP|Saturday Night (9/19), 9:00pm, 1 NLP|Saturday Night (9/19), 11:00pm, 1 AP'
 drop table if exists #possibleShifts
 select x.value as possibleShift
 	into #possibleShifts
@@ -120,7 +110,7 @@ select c.*
 	else null end pointChange
 into #signups
 	from cte c where timeslot not like '%1 NLP%'
-create unique clustered index c on #signups(playerName,timeslot)
+create unique clustered index c on #signups(playerName,timeslot) -- select * from #signupsRaw where timeslots like '%1 NLP%'
 drop table if exists #names
 ;with cte as (select * 
 	,row_number() over(partition by playerName order by [timeStamp] desc) rn
@@ -134,8 +124,8 @@ create unique index p on #names(playerName); if @@ERROR<>0 goto error -- must be
 --select * from #names order by 1
 
 update s
-	set s.playerName=n.playerName
-	from #signups s join #names n on n.email=s.email
+	set s.playerName=r.playerName
+	from #signups s join rawCPData r on r.characterId=s.characterId
 	--joshuawarner333@gmail.com	Joshua Warner	8RYYE -- should not have signed up, but I'm gonna kick him out for lack of a full pre-reg ticket
 --select * from #signups s where not exists (select null from rawCpData r where r.characterId=s.characterId)
 
@@ -167,7 +157,7 @@ delete anchorChangeLog where sourcefile=@file
 insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId)
 	select playerName,email,timestamp,'C' eventType, @eventName eventName, timeSlot, pointChange,@file,characterId
 		from #signups s
-		where not exists (select null from anchorChangeLog a where a.timeStamp=s.timestamp and a.playerName=s.playerName)
+		where not exists (select null from anchorChangeLog a where a.timeStamp=s.timestamp and a.playerName=s.playerName and a.timeSlot=s.timeslot)
 
 		--#signups order by len(timeSlot) desc
 

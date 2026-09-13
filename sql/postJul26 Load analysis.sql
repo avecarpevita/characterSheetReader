@@ -1,60 +1,122 @@
 use tm
 
---how clean is the load--compare postMay26 to postApr26
-select count(*) from rawCpData--4751
+--how clean is the load--compare postMay26 to this build ("postJul26")
+select count(*) from rawCpData--4128
 	where characterId is null--0
-select count(*) from postApr26.rawCpData--4989
+select count(*) from postMay26.rawCpData--4973
 	where characterId is null
 
-select *,dbo.getEventDate(eventName,eventDate) as cleanEventdate into #e from postApr26.rawEvents
 
-select cleanEventdate,count(*)  from postApr26.rawCpData a join #e e on e.characterId=a.characterId and e.cleanEventdate is not null
+--how many are missing in this build that were in the last build
+
+--get characters played in the last 3 events
+drop table if exists #lastBuild
+;with cte_charactersLast3Games as (
+select c.playerName,c.characterName,c.characterId
+	,try_cast(spentCp as int) spentCp
+	,try_cast(corruption as int) corruption
+	,e.eventName rawEventName
+	,dbo.cleanRawEventName(e.eventName,e.eventDate) eventName
+	,e.eventDate as rawEventDate
+	,try_cast(e.eventDate as date) eventDate
+	,(select count(*) from rawEvents ri where c.playerName=ri.playerName and c.characterName=ri.characterName and ri.eventName like '%event%') numEvents
+	,culture,religion,bloodline,[ip]
+	,email
+	from postMay26.rawCpData c
+		join postMay26.rawEvents e on c.playerName=e.playerName and c.characterName=e.characterName
+		)
+select * 
+	into #lastBuild from cte_charactersLast3Games
+		where eventName is not null
+drop table if exists #x
+select distinct rawEventName,rawEventDate,eventName,eventDate into #x from #lastBuild e
+create unique clustered index rr on #x(rawEventName,rawEventDate)
+drop table if exists 
+update e
+	set eventDate=dbo.getEventDate(eventName,try_cast(e.rawEventDate as date))
+	from #x e
+update w
+	set w.eventDate=x.eventDate
+	from #lastBuild w join #x x on x.rawEventName=w.rawEventName and x.rawEventDate=x.rawEventDate
+--#lastBuild order by eventName desc
+--select * from #x order by eventName desc
+delete #lastBuild where eventName<'Event 89 February 2026'
+;with cte as (select *,row_number() over(partition by playerName,characterName order by eventName desc) rn from #lastBuild) delete cte where rn>1
+select eventName,count(*) from #lastBuild group by eventName order by 1 desc	
+
+select * from #lastBuild l where not exists (select null from rawCpData r where r.characterId=l.characterId) and spentCP>50
+/*
+playerName	characterName	characterId
+J'Amy Pacheco	Morgynne the Strong	744PB
+Travers Capps	Remnus Pandrego	7ZVK4
+*/
+drop table if exists #reProcess
+select distinct 'C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-s'+rtrim(left(l.playerName,patindex('% %',l.playername)))+'" "-e'+rtrim(left(l.playerName,patindex('% %',l.playername)))+'"' as codeline
+	 from #lastBuild l where not exists (select null from rawCpData r where r.characterId=l.characterId) 
+		and spentCP>50
+
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sSilver Norman" "-eSilver Norman"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sTravers Capps" "-eTravers Capps"
+C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-sSilver Norman" "-eSilver Norman"
+
+
+select top 100 * from rawCPData where characterId='7ZVK4'
+
+drop table if exists #e
+select *,dbo.getEventDate(eventName,eventDate) as cleanEventdate into #e from postMay26.rawEvents
+
+select cleanEventdate,count(*)  from postMay26.rawCpData a join #e e on e.characterId=a.characterId and e.cleanEventdate is not null
 	where not exists (select null from rawCPData n where n.characterId=a.characterId)
 	group by cleanEventDate order by 1 desc
-	--167 from april did not load
+	--150 from april did not load
 
+--fix any temp characterids
+update c
+	set c.characterId=a.characterId
+	from rawCPData c
+		join postMay26.rawCpData a on a.playerName=c.playerName and a.characterName=c.characterName
+		where c.characterId like 'T%' and a.characterId not like 'T%'--13
 update c
 	set c.characterId=a.characterId
 	from rawCPData c
 		join postApr26.rawCpData a on a.playerName=c.playerName and a.characterName=c.characterName
 			where c.characterId like 'T%' and a.characterId not like 'T%'
-
 update c
 	set c.characterId=a.characterId
 	from rawCPData c
 		join postFeb26.rawCpData a on a.playerName=c.playerName and a.characterName=c.characterName
 			where c.characterId like 'T%' and a.characterId not like 'T%'
 
-update c
-	set c.characterId=a.characterId
-	from rawCPData c
-		join postJan26.rawCpData a on a.playerName=c.playerName and a.characterName=c.characterName
-			where c.characterId like 'T%' and a.characterId not like 'T%'
-
+--try to reprocess
+drop table if exists #reProcess
 select distinct 'C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-s'+rtrim(left(a.playerName,patindex('% %',a.playername)))+'" "-e'
-	+rtrim(left(a.playerName,patindex('% %',a.playername)))+'"'
-	,* 
+	+rtrim(left(a.playerName,patindex('% %',a.playername)))+'"' as codeline
+	,a.* 
+	into #reProcess
+	from postMay26.rawCpData a join #e e on e.characterId=a.characterId and e.cleanEventdate is not null 
+	where not exists (select null from rawCPData n where n.characterId=a.characterId)
+	and e.cleanEventdate in ('2026.05.01','2026.04.01','2026.02.01')
+	and len(rtrim(left(a.playerName,patindex('% %',a.playername))))>=3
+union
+select distinct 'C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-s'+rtrim(left(a.playerName,patindex('% %',a.playername)))+'" "-e'
+	+rtrim(left(a.playerName,patindex('% %',a.playername)))+'"' as codeline
+	,a.* 
 	from postApr26.rawCpData a join #e e on e.characterId=a.characterId and e.cleanEventdate is not null 
 	where not exists (select null from rawCPData n where n.characterId=a.characterId)
-	and e.cleanEventdate in ('2026.04.01','2026.02.01','2026.01.01')
-	order by 1
-
+	and e.cleanEventdate in ('2026.05.01','2026.04.01','2026.02.01')
+	and len(rtrim(left(a.playerName,patindex('% %',a.playername))))>=3
+union
 select distinct 'C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-s'+rtrim(left(a.playerName,patindex('% %',a.playername)))+'" "-e'
-	+rtrim(left(a.playerName,patindex('% %',a.playername)))+'"'
-	,* 
-	from postJan26.rawCpData a join #e e on e.characterId=a.characterId and e.cleanEventdate is not null 
+	+rtrim(left(a.playerName,patindex('% %',a.playername)))+'"' as codeline
+	,a.* 
+	from postfeb26.rawCpData a join #e e on e.characterId=a.characterId and e.cleanEventdate is not null 
 	where not exists (select null from rawCPData n where n.characterId=a.characterId)
-	and e.cleanEventdate in ('2026.04.01','2026.02.01','2026.01.01')
-	order by 1
+	and e.cleanEventdate in ('2026.05.01','2026.04.01','2026.02.01')	
+	and len(rtrim(left(a.playerName,patindex('% %',a.playername))))>=3
 
-select distinct 'C:/Users/scott.ross/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/characterSheetReader/python/tmProcessAllSheets.py "-s'+rtrim(left(a.playerName,patindex('% %',a.playername)))+'" "-e'
-	+rtrim(left(a.playerName,patindex('% %',a.playername)))+'"'
-	,* 
-	from postFeb26.rawCpData a join #e e on e.characterId=a.characterId and e.cleanEventdate is not null 
-	where not exists (select null from rawCPData n where n.characterId=a.characterId)
-	and e.cleanEventdate in ('2026.04.01','2026.02.01','2026.01.01')
-	order by 1
+delete #reProcess where spentCp<50--don't care
 
+select distinct codeline from #reProcess order by 1
 	
 
 

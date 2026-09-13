@@ -253,7 +253,7 @@ if __name__ == "__main__":
     load_dotenv(dotenv_path=r'C:\characterSheetReader\.env')
     sheetsDirectory=os.getenv('sheetsDirectory')
     print(f'sheetsDirectory {sheetsDirectory}  ')
-    excelFilePath=f'{sheetsDirectory}/Sheets (2018-Present)-20260507T131451Z-3-001\Sheets (2018-Present)\Olivia Lizardo (Odile) [STAFF].xlsx'
+    excelFilePath=f'{sheetsDirectory}/Sheets (2018-Present)-20260913T141632Z-1-001/Sheets (2018-Present)/Staff Character Sheets/Travers Capps (Rem) (Staff).xlsx'
     #print(tmPlayerName(tmReadSheet.tmReadSheet(excelFilePath)[0]))
     dfCharacter = tmReadSheet.tmReadSheet(excelFilePath)[0]
     dfProgression = tmReadSheet.tmReadSheet(excelFilePath)[1]
