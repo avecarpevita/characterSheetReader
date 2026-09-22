@@ -152,11 +152,9 @@ update w
 
 select eventName,count(*) from #work group by eventName order by 1 desc--where is 89?
 
-#work where eventDate is null
-#work where eventName is null
 
 select eventName,count(distinct playerName) playerCount,count(distinct characterName) characterCount from #work 
-	where eventName>='Event 86 September 2025'
+	where eventName>='Event 90 April 2026'
 	group by eventName order by min(eventDate) desc
 
 		
@@ -182,7 +180,7 @@ select * from #deduped where email not like '%_@%.___'
 
 
 --retain only last 3 games (Sep25, Dec25, Jan26)
-delete #deduped where eventName<'Event 89 February 2026'
+delete #deduped where eventName<'Event 90 April 2026'
 
 select * from #deduped where spentCp>='300' order by eventDate
 select * from #deduped where spentCp>='300' order by spentCp desc
