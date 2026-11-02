@@ -1,4 +1,4 @@
-use TM
+use tm
 
 select top 100 * from anchorChangelog where characterId='8M9ZY'
 anchorChangelog order by 1 desc
@@ -106,3 +106,86 @@ select sum(pointChange) from anchorChangeLog where characterId='8QV4A'
 
 --Wesley Rockholzf flaked, but did reach out afterwards
 delete anchorChangeLog where id=2633
+
+
+
+select * from anchorChangeLog where playername like '%has%'
+
+insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId) 
+	select playerName,email,getdate() timestamp,'C' eventType,'Event 93 September 2026' eventName,'manual' timeSlot,1 pointChange,'manual 20260921' sourcefile,characterId
+		from rawCPData where characterId in ('8J5GP')
+
+
+
+
+select * from anchorChangeLog where playername like '%baxter%'
+delete anchorChangeLog where id=2311
+
+rawCPData where playerName like '%kelsi%'
+
+select * from anchorChangeLog where id=1946
+
+insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId) 
+	select playerName,email,getdate() timestamp,'C' eventType,'Event 89 February 2026' eventName,'SatPMCarnival' timeSlot,3 pointChange,'manual 20260921' sourcefile,characterId
+		from rawCPData where characterId='8XZPK'
+
+select top 100 * from anchorChangeLog where playerName like '%hall%'
+
+
+select top 100 * from anchorChangelog where playerName like '%pedersen%'
+
+update a 
+	set timeSlot='cxl '+timeSlot, pointChange=0, notes='was a no show, but did fess up later'
+	from anchorChangeLog a where id in (2596,2597)
+
+select top 100 * from anchorChangeLog where characterId='8KGJM'
+
+select top 100 * from anchorChangeLog where playerName like '%mca%'
+
+select top 100 * from anchorChangeLog where playerName like '%aurum%'
+select top 100 * from anchorChangeLog where playerName like '%Steven Calise%'
+
+insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId) 
+	select playerName,email,getdate() timestamp,'C' eventType,'Event 92 July 2026' eventName,'manual' timeSlot,1 pointChange,'manual 20260928' sourcefile,characterId
+		from rawCPData where characterId in('85GKA','8J6WX','7V6ME')
+
+
+
+select top 100 * from anchorChangelog where playerName like '%collin%'
+insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId) 
+	select playerName,email,getdate() timestamp,'C' eventType,'Event 92 July 2026' eventName,'manual' timeSlot,2 pointChange,'manual 20260928' sourcefile,characterId
+		from rawCPData where characterId in('8EDVE')
+insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId) 
+	select playerName,email,getdate() timestamp,'C' eventType,'Event 93 September 2026' eventName,'manual' timeSlot,1 pointChange,'manual 20260928' sourcefile,characterId
+		from rawCPData where characterId in('8EDVE')
+
+
+
+
+select top 100 * from anchorChangelog where playerName like '%corin%'
+insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId) 
+	select playerName,email,getdate() timestamp,'C' eventType,'Event 92 July 2026' eventName,'manual' timeSlot,2 pointChange,'manual 20260928' sourcefile,characterId
+		from rawCPData where characterId in('8YQPE')
+
+
+select top 100 * from anchorChangelog where characterId='86DG5' -- 
+delete anchorChangelog where characterId='86DG5' and id=2512
+
+
+select top 100 * from anchorChangelog where eventName like 'Event 93 September 2026'
+select top 100 * from anchorChangelog where playerName like '%Bay%'--7A4EX. 2546
+
+insert into anchorChangeLog (playerName,email,timestamp,eventType,eventName,timeSlot,pointChange,sourcefile,characterId) 
+	select playerName,email,getdate() timestamp,'C' eventType,'Event 93 September 2026' eventName,'Friday Night (9/18), 8:30m -- 2 AP' timeSlot,2 pointChange,'manual 20261010' sourcefile,characterId
+		from rawCPData where characterId in('7A4EX')
+
+buildAnchorPointSheet
+
+select * from anchorChangeLog where playerName like '%corin%' order by eventName
+
+update a
+	set pointChange=2, notes='both extra hour after hexcrawl, and extra before'
+	from anchorChangeLog a where id=2681
+
+select top 100 * from anchorChangeLog where characterId='T0245'--James Medina, false spend for Treatise
+delete anchorChangeLog where id=2324

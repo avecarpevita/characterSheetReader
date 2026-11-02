@@ -1,5 +1,10 @@
 use tm
 
+
+/*
+note, I'm comparing builds/snapshots -- so if sheets are late, it PROBABLY still works
+*/
+
 --select * from sys.schemas--postDec25
 
 --[1] determine the r. lores I'm looking for
@@ -56,6 +61,7 @@ select distinct s.characterName,s.playerName,s.rawSkill,r.cleanLore,e.characterI
 		join #rLores r on r.lore=s.rawSkill
 --428
 
+
 drop table if exists #lastBuild
 select distinct s.characterName,s.playerName,s.rawSkill,r.cleanLore,c.characterId
 	into #lastBuild 
@@ -79,8 +85,6 @@ select * from #work w
 --smelled this, and looks right
 delete w from #work w
 	where not exists (select null from rawEvents e where e.characterName=w.characterName and e.playerName=w.playerName and eventName like '%event 91%')--8
-
-
 
 
 --smell test 5

@@ -30,7 +30,7 @@ SCOPES = [
 ]
 
 #this is the folder for raw scans
-FOLDER_ID = '1egtJj6maZVFxhI0WZW76eXKf3OBtooK7'
+FOLDER_ID = '12yL5SaK2ZtGyC6uuc-p-HGvYOMeDO_QP'
 
 def get_google_services():
     """Authenticates and returns Drive and Sheets services."""

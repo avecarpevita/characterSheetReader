@@ -10,8 +10,8 @@ from googleapiclient.discovery import build
 # ---------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------
-INPUT_SHEET_ID = '1rRqLTACdCv7mGYP6rrZS2kWxrDkJj0jX6FNvyUdS8JI'   # REPLACE WITH STEP 2 SHEET ID
-OUTPUT_FOLDER_ID = '14bRyZftDXsUoXP41OIIRcJRnUZfoCzAk'       # REPLACE WITH THE ID OF THE FOLDER FOR DOCS
+INPUT_SHEET_ID = '1kcJiJSdKeG_PdxmDPYZ7lrlbhJkSoG0o7JjX5yozwm4'   # REPLACE WITH STEP 2 SHEET ID
+OUTPUT_FOLDER_ID = '1r4nj_28-V-_2KcUAx8ByKQNpHelOM4Vo'       # REPLACE WITH THE ID OF THE FOLDER FOR DOCS
 STAFF_NAME_FILTER = 'scott'                                  # FILTER ROWS BY THIS NAME IN STAFF (CLEAN) COLUMN
 
 # Scopes needed for Drive (read/write), Sheets (read), and Docs (write)

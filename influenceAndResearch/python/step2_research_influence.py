@@ -11,7 +11,7 @@ from thefuzz import process
 # ---------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------
-INPUT_SPREADSHEET_ID = '1P7n54bfJ1h_5yFuRb4GFXdQS9rDkaH_oz5cydNfdYbo'  # REPLACE THIS WITH THE ID FROM STEP 1
+INPUT_SPREADSHEET_ID = '1PH3KK9c7SXwaSIqme63W8X0iF044sN82q3-1CCc1ERg'  # REPLACE THIS WITH THE ID FROM STEP 1
 MATCH_THRESHOLD = 60
 
 # Scopes needed for Drive read/write and Sheets read/write

@@ -31,7 +31,6 @@ select *
 drop table if exists #x
 select distinct rawEventName,rawEventDate,eventName,eventDate into #x from #lastBuild e
 create unique clustered index rr on #x(rawEventName,rawEventDate)
-drop table if exists 
 update e
 	set eventDate=dbo.getEventDate(eventName,try_cast(e.rawEventDate as date))
 	from #x e
@@ -247,3 +246,12 @@ select * from #deduped where spentCp>='293' and playerName not like '%lizardo%' 
 
 select distinct(email) from #deduped where spentCp>='293' and playerName not like '%lizardo%' order by email
 	
+
+select * from #deduped d join rawSkills s on s.characterId=d.characterId where s.rawSkill like '%engin%'
+
+select distinct d.* from #deduped d join rawSkills s on s.characterId=d.characterId where (s.rawSkill like '%pyro%'
+	or s.rawSkill like '%aeth%'
+	or s.rawSkill like '%lith%'
+	or s.rawSkill like '%lucen%'
+	or s.rawSkill like '%teneb%'
+	or s.rawSkill like '%hydro%')

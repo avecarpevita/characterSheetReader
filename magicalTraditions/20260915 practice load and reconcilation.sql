@@ -118,7 +118,8 @@ select left(participant,5) characterId
 	,* 
 	into #newPracticesExploded
 	from cte2
-	
+
+update #newPracticesExploded set nameInfoRaw=ltrim(rtrim(NameInfoRaw))	
 update #newPracticesExploded set characterId='8VNNK',characterName='Cowardice Menagerie',playerName='John Tarbuskovich' where nameInfoRaw='Cowardice - John Tarbuskovich'
 update #newPracticesExploded set characterId='8ZMXP',characterName='El',playerName='Ashley Jones'  where nameInfoRaw='El - Ashley Jones'
 update #newPracticesExploded set characterId='8ZE4A' where nameInfoRaw in ('Cyren Ithilden - Alejandro (Alex) Gonzalez','Cyren Ithildin-Alejandro Gonzalez')
@@ -201,3 +202,20 @@ select r.characterId
 select * from #newMaster order by realName,characterName
 --#revisedMasterExploded
 
+
+--analysis
+
+select * from #newMaster n where practiceCount>=3 
+	and exists (select null from rawSkills r where r.characterId=n.characterId
+		and r.rawSkill like '%'+tradition+'%'		)
+		order by tradition,characterName
+
+select * from #newMaster n where practiceCount>=2	and exists (select null from rawSkills r where r.characterId=n.characterId
+		and r.rawSkill like '%'+tradition+'%'		)
+		order by tradition,characterName
+
+select * from #newMaster n where practiceCount>=1	and exists (select null from rawSkills r where r.characterId=n.characterId
+		and r.rawSkill like '%'+tradition+'%'		)
+		order by tradition,characterName
+
+		
