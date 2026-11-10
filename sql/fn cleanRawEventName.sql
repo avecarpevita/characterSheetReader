@@ -212,16 +212,18 @@ set @retVal=case
 	when try_cast(@eventDate as date) between '2025.03.01' and '2025.03.31' then 'Event 83 March 2025'
 	when try_cast(@eventDate as date) between '2025.04.01' and '2025.04.30' then 'Event 84 April 2025'
 	when try_cast(@eventDate as date) between '2025.08.01' and '2025.08.31' then 'Event 85 August 2025'
-	when try_cast(@eventDate as date) between '2025.09.01' and '2025.09.30' then 'Event 85 September 2025'
-	when try_cast(@eventDate as date) between '2025.12.01' and '2025.12.31' then 'Event 87 December 2025'
-	when try_cast(@eventDate as date) between '2026.01.01' and '2026.01.31' then 'Event 88 January 2026'
-	when try_cast(@eventDate as date) between '2026.02.01' and '2026.02.28' then 'Event 89 February 2026'
-	when try_cast(@eventDate as date) between '2026.04.01' and '2026.04.30' then 'Event 90 April 2026'
-	when try_cast(@eventDate as date) between '2026.07.01' and '2026.07.30' then 'Event 91 July 2026'
-	when try_cast(@eventDate as date) between '2026.09.01' and '2026.09.30' then 'Event 92 September 2026'
-	when try_cast(@eventDate as date) between '2026.11.01' and '2026.11.30' then 'Event 93 November 2026'
-	when try_cast(@eventDate as date) between '2026.12.01' and '2026.12.31' then 'Event 94 December 2026'
+	when try_cast(@eventDate as date) between '2025.09.01' and '2025.09.30' then 'Event 86 September 2025'
+	when try_cast(@eventDate as date) between '2025.11.01' and '2025.11.30' then 'Event 87 November 2025'
+	when try_cast(@eventDate as date) between '2025.12.01' and '2025.12.31' then 'Event 88 December 2025'
+	when try_cast(@eventDate as date) between '2026.01.01' and '2026.01.31' then 'Event 89 January 2026'
+	when try_cast(@eventDate as date) between '2026.02.01' and '2026.02.28' then 'Event 90 February 2026'
+	when try_cast(@eventDate as date) between '2026.04.01' and '2026.04.30' then 'Event 91 April 2026'
+	when try_cast(@eventDate as date) between '2026.07.01' and '2026.07.30' then 'Event 92 July 2026'
+	when try_cast(@eventDate as date) between '2026.09.01' and '2026.09.30' then 'Event 93 September 2026'
+	when try_cast(@eventDate as date) between '2026.11.01' and '2026.11.30' then 'Event 94 November 2026'
+	when try_cast(@eventDate as date) between '2026.12.01' and '2026.12.31' then 'Event 95 December 2026'
 		else null end
+
 
 set @retval=ltrim(rtrim(@retval))		
 

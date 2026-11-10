@@ -189,3 +189,21 @@ update a
 
 select top 100 * from anchorChangeLog where characterId='T0245'--James Medina, false spend for Treatise
 delete anchorChangeLog where id=2324
+
+select top 100 * from anchorChangeLog where spendReason like '%hydro%' and eventName like 'event 92%'
+
+Cass Coomber				--on Dany's list
+Dominic Criscitiello		--on list
+Keigin Tosh					--on list
+Michael Cline				--on list
+Nicholas Marko				--on list
+Franklin Hansen				--on list
+Andrew Frejek				--on list
+Shayna Javaherian			--on list
+Hera Dewan					--on list
+Sam Fleyshman				--on list
+Ari Fitzer					--on list
+
+update x
+	set pointChange=0, spendReason='', notes='2026.11.02-- got the lore for free from Dany in July 26'
+	from anchorChangeLog x where spendReason like '%hydro%' and eventName like 'event 92%'

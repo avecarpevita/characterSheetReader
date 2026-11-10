@@ -70,7 +70,7 @@ if nullif(@characterId,'') is null
 	--rawSkills where rawSkill like 'Disarm%'
 
 insert into rawSkills (rawSkill,characterName,playerName,rawCpSpent,characterId)
-	select rawSkillName,@characterName,@playerName,max(rawCpCost),isnull(@characterId,'')
+	select distinct rawSkillName,@characterName,@playerName,max(rawCpCost),isnull(@characterId,'')
 		from #skills l 
 		where not exists (select null from rawSkills r where r.rawSkill=l.rawSkillName
 			and r.characterId=@characterId)

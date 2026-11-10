@@ -154,8 +154,11 @@ def processRangeOfSheets(inputPath,outputPath,startFileName,endFileName, server,
         #query=f"exec readCharacterJsonForCpData ?, ?"        #this is the query to populate tbl the cp/corruption/event data for Olivia
         query=f"exec readCharacterJsonForSkills ?, ?"        #this is the query to populate tbl rawLores for Olivia
         query2=f"exec readCharacterJsonForCpData ?, ?"  
-        exceptionFile = exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2)
-        if exceptionFile: exceptionFiles.append(exceptionFile)
+        try:
+            exceptionFile = exportCharacterToJsonAndDB(inputFilePath,outputFilePath,cnxn,query,query2)
+            if exceptionFile: exceptionFiles.append(exceptionFile)
+        except:
+            print(f"exception on {inputFilePath}")            
 
     for exceptionFile in exceptionFiles:
         print(colored(f"exceptions found for {exceptionFile}", "red"))        

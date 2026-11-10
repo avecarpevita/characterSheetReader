@@ -33,7 +33,7 @@ select * from anchorChangeLog where eventName='Event 93 September 2026'
 begin
 set nocount on
 
---declare @file varchar(255)='c:\characterSheetReader\anchorpoints\data\signupsSep26.tsv'
+--declare @file varchar(255)='c:\characterSheetReader\anchorpoints\data\nov26Fri1.tsv'
 declare @sql varchar(max)
 drop table if exists #signupsRaw
 create table #signupsRaw (
@@ -84,7 +84,7 @@ select x.value as characterId
 	from string_split(@whitelistCharacterIdList, '|') x
 	where len(x.value)=5
 
---declare @possibleShifts varchar(4000)='Friday Night (9/18), 8:30m -- 1 NLP|Friday Night (9/18), 8:30m -- 2 AP|Friday Night (9/18), 9:30m -- 1 NLP (this conflicts with the earlier 8:30 call)|Saturday Night (9/19), 9:00pm, 1 AP|Saturday Night (9/19), 9:00pm, 1 NLP|Saturday Night (9/19), 11:00pm, 1 AP'
+--declare @possibleShifts varchar(4000)='Friday Night (11/13), 8:30m -- 2 AP|Friday Night (11/13), 8:30m -- 1 NLP'
 drop table if exists #possibleShifts
 select x.value as possibleShift
 	into #possibleShifts

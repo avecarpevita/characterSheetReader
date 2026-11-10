@@ -39,6 +39,13 @@ exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\nov
 select * from anchorChangeLog where eventName='Event 94 November 2026' and timeslot='Saturday Afternoon (11/14) 3:30 pm -- 2 AP' order by timeSlot--11, correct
 
 
+exec applyAnchorCommitments @file='c:\characterSheetReader\anchorpoints\data\nov26Sat3.tsv'
+	, @eventName='Event 94 November 2026'
+	, @possibleShifts='Saturday Night (11/14) 9:30 pm - 1 NLP|Saturday Night (11/14) 9:30 pm - 2 AP'
+	--, @doublePointSlots=null, @triplePointSlots=null
+	--, @whitelistCharacterIdList='8QRKJ|7N6JZ'
+
+select * from anchorChangeLog where eventName='Event 94 November 2026' and timeslot='Saturday Night (11/14) 9:30 pm - 2 AP' order by timeSlot--48, correct
 
 exec buildAnchorPointSheet--use this to update the private master
 

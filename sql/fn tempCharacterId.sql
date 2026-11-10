@@ -7,20 +7,30 @@ as
 select dbo.tempCharacterId('taco','tues')
 select dbo.tempCharacterId('Olivia Lizardo','Lark Morrigan')
 
+2026.11.09 -- revised to not use T, but the first characetr of playerName and characterNAME
+
 	
 */
 begin
 declare @maxTempCharacterId varchar(5), @work int
 declare @characterId varchar(5)
---select @characterId=characterId from rawSkills r where r.playerName=@playerName and r.characterName=@characterName
---if nullif(@characterId,'') is null
---	select @characterId=characterId from rawCpData r where r.playerName=@playerName and r.characterName=@characterName
---if nullif(@characterId,'') is null
---	begin
-	select @work=max(substring(characterId,2,4)) from rawCpData where characterId like 'T%'
-	set @work=isnull(@work,0)
-	set @characterId='T'+right('000'+convert(varchar,@work+1),4)
-	--end
+declare @p1 varchar(1), @c1 varchar(1)
+
+SELECT @p1=upper(SUBSTRING(
+    @playerName, 
+    NULLIF(PATINDEX('%[a-zA-Z]%', @playerName), 0), 
+    1
+))
+SELECT @c1=upper(SUBSTRING(
+    @characterName, 
+    NULLIF(PATINDEX('%[a-zA-Z]%', @characterName), 0), 
+    1
+))
+
+
+select @work=max(substring(characterId,2,4)) from rawCpData where characterId like @p1+@c1+'%'
+set @work=isnull(@work,0)
+set @characterId=@p1+@c1++right('000'+convert(varchar,@work+1),3)
 
 
 
